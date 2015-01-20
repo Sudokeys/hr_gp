@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record model="ir.ui.view" id="employee_form_view">
+        <field name="name">employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <label for="category_ids" position="before">
+                  <label for="matricule" class="oe_edit_only"/>
+                  <field name="matricule"/>
+                  <field name="street" invisible="1"/>
+                  <field name="street2" invisible="1"/>
+                  <field name="zip" invisible="1"/>
+                  <field name="city" invisible="1"/>
+                </label>
+               <field name="otherid" position="after">
+                  <field name="mode_reglement_p" />
+               </field>
+                <notebook position="inside">
+                    <page string="Contract Frames">
+                        <field name="contract_ids" colspan="4" nolabel = "1">
+                            <tree string="Contract Frames">
+                                <field name="name"/>
+                                <field name="date_begin"/>
+                                <field name="date_end"/>
+                                <field name="activity"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string= "Payroll parameters">
+                        <field name="params" colspan="4" nolabel="1">
+                            <tree string="parameters">
+                                <field name="param_name"/>
+                                <field name="title"/>
+                                <field name="date_begin"/>
+                                <field name="date_end2"/>
+                                <field name="inp"/>
+                                <field name="res_n"/>
+                                <field name="res_d"/>
+                                <field name="format"/>
+                            </tree>
+                            <form string="parameters">
+                                <field name="param_name" domain="[('entity_type','=','emp')]"/>
+                                <field name="title"/>
+                                <field name="entity_type"/>
+                                <field name="format"/>
+                                <newline/>
+                                <separator colspan="4"/>
+                                <field name="inp"/>
+                                <newline/>
+                                <separator colspan="4"/>
+                                <field name="res_n"/>
+                                <newline/>
+                                <field name="res_d"/>
+                                <newline/>
+                                <field name="res_t2"/>
+                                <newline/>
+                                <separator colspan="4"/>
+                                <field name="date_begin"/>
+                                <field name="date_end2"/>
+                            <!--    <field name="employee_key"/> -->
+                            </form>
+                        </field>
+                    </page>
+                    <page string="Cumuls">
+                        <field name="cumuls" colspan="4" nolabel="1" mode="tree" >
+                            <tree string="Cumuls val tree">
+                                <field name="param_name"/>
+                                <field name="title"/>
+                                <field name="year_cum"/>
+                                <field name="moan"/>
+                                <field name="mo1"/>
+                                <field name="mo2"/>
+                                <field name="mo3"/>
+                                <field name="mo4"/>
+                                <field name="mo5"/>
+                                <field name="mo6"/>
+                                <field name="mo7"/>
+                                <field name="mo8"/>
+                                <field name="mo9"/>
+                                <field name="mo10"/>
+                                <field name="mo11"/>
+                                <field name="mo12"/>
+                                <field name="last_update"/>
+                                <field name="employee_key"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="DADSU">
+                        
+                    </page>
+                </notebook>     
+            </data>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="employee_tree_view">
+        <field name="name">employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Employee tree">
+                <field name="resource_id"/>
+                <field name="name"/>
+                <field name="place_of_birth"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+</data>
+</openerp>

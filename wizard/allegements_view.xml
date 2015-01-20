@@ -1,0 +1,57 @@
+<openerp>
+    <data>
+    
+    <record model="ir.ui.view" id="allegements_view">
+            <field name="name">Allègements</field>
+            <field name="model">hr_gp.allegements</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml" >
+                    <form string="Allègements" col="4" version="7.0">
+                        <group colspan="4" col="4">
+                            <separator string="Salariés" colspan="4"/>
+                            <field name="employee_ids" colspan="4" nolabel="1"/>
+                            <separator string="Date" colspan="4"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <separator string="Modèle de paramètres" colspan="4"/>
+                            <field name="param_model" colspan="2"/>
+                        </group>
+                        <footer>
+                            <button type="object" name="launch" string="Launch" icon="gtk-ok" /> 
+                            or
+                            <button class="oe_link" special="cancel" string="cancel" /> 
+                        </footer>
+                    </form>
+            </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="allegements_action">
+            <field name="name">Allègements</field>
+            <field name="res_model">hr_gp.allegements</field>
+            <field name="view_id" ref="allegements_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <!--<field name="context">{'jasper': {''}}</field>-->
+            <field name="target">new</field>
+    </record>
+    
+   <!--<menuitem id="allegements" icon="terp-hr" name="Allègements" parent = "menu_pay_report" action="allegements_action" sequence="50"/>-->
+
+      
+    
+    <record model="jasper.document" id="jasper_allegements">
+        <field name="name">Allègements</field>
+        <field name="depth">2</field>
+        <field name="jasper_file">allegements.jrxml</field>
+        <field name="format_choice">mono</field>
+        <field name="model_id" ref="hr_gp.model_hr_gp_allegements"/>
+        <field name="enabled" eval="1"/>
+        <field name="report_unit">allegements</field>
+        <field name="mode">sql</field>
+        <field name="service">allegements</field>
+        <field name="format">PDF</field>
+        <field name="toolbar" eval="0"/>
+    </record><!--
+    -->
+</data>
+</openerp>

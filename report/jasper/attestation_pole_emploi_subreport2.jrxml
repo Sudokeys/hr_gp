@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="declaration_pole_emploi_subreport2" language="groovy" pageWidth="572" pageHeight="752" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a29ffd3b-f366-4092-98f3-b8d206cf3f1a">
+	<property name="ireport.zoom" value="0.9330147604194666"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.reportUnit" value="/openerp/bases/openiae_v7/attestation_pole_emploi"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:5080/jasperserver/services/repository"/>
+	<parameter name="contract_id" class="java.lang.Integer"/>
+	<parameter name="employee_name" class="java.lang.String"/>
+	<parameter name="nosecu" class="java.lang.String"/>
+	<parameter name="employer_name" class="java.lang.String"/>
+	<parameter name="age" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/openerp/Bureau/adn/attestation_pole_emploi/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+	hr_gp_payslip.date_begin,
+	hr_gp_payslip.date_end,
+	hr_gp_payrun.date_pay,
+	hr_gp_payslip.ctt_id,
+	sum(case when hr_gp_payslip_line.param_name=260 --BRUT MENSUEL
+		then hr_gp_payslip_line.res_ne
+		else
+		0
+	end	) as salaire_brut,
+	sum(case when hr_gp_payslip_line.param_name=261 --TOTAL HEURES TRAVAILLEES
+		then hr_gp_payslip_line.res_ne
+		else
+		0 end) as heures_travaillees,
+	sum(case when hr_gp_payslip_line.param_name=169 --CHOM_POL_EMPLOI
+		then -1*hr_gp_payslip_line.res_ne
+		else
+		0 end ) as pole_emploi,
+	max('') as observations
+
+from
+	hr_gp_payrun,
+	hr_gp_payslip,
+	hr_gp_payslip_line,
+	hr_gp_params_dict
+where
+	hr_gp_payslip.pay_run=hr_gp_payrun.id and
+	hr_gp_payslip.id=hr_gp_payslip_line.pay_id and
+	hr_gp_payslip.ctt_id=$P{contract_id}
+	/* hr_gp_payslip.id = 11  and
+	sequence=78 and
+	seqcalc=200 */
+	and
+	hr_gp_payslip_line.param_name = hr_gp_params_dict.id and
+	hr_gp_payslip.date_begin > current_date -interval '12 months' and
+	hr_gp_payslip.state='acc' --Je ne prends que les payes comptabilisées
+
+group by
+	hr_gp_payslip.date_begin,
+	hr_gp_payslip.date_end,
+	hr_gp_payrun.date_pay,
+	hr_gp_payslip.ctt_id
+order by
+	hr_gp_payslip.date_begin]]>
+	</queryString>
+	<field name="date_begin" class="java.sql.Date">
+		<fieldDescription><![CDATA[Start Date]]></fieldDescription>
+	</field>
+	<field name="date_end" class="java.sql.Date">
+		<fieldDescription><![CDATA[End Date]]></fieldDescription>
+	</field>
+	<field name="date_pay" class="java.sql.Date">
+		<fieldDescription><![CDATA[Date payment]]></fieldDescription>
+	</field>
+	<field name="ctt_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Contrat]]></fieldDescription>
+	</field>
+	<field name="salaire_brut" class="java.math.BigDecimal"/>
+	<field name="heures_travaillees" class="java.math.BigDecimal"/>
+	<field name="pole_emploi" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Inscrit au pôle emploi ?]]></fieldDescription>
+	</field>
+	<field name="observations" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="299" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="3b2cfc8b-77f3-4b8b-9b47-331795e794cb" x="0" y="13" width="572" height="20" backcolor="#EDECEB"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement uuid="3d5df717-e35a-45ba-8050-75f7edef43f8" x="0" y="50" width="572" height="71"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement uuid="7d0c8e88-1633-4bd4-974d-687863af267a" x="27" y="39" width="316" height="20" backcolor="#EDECEB"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="81bcc727-960b-4d26-9a6c-0397b7ec24fd" x="49" y="39" width="279" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[5. Chômage total sans rupture de contrat de travail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d8ff6e9d-9b15-4505-bf6c-0198e54a7f2f" x="12" y="72" width="278" height="13"/>
+				<textElement/>
+				<text><![CDATA[(40) Chômage total sans rupture de contrat :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="acd3df0e-fda4-44eb-a124-ee53dac1fbaa" x="12" y="85" width="278" height="13"/>
+				<textElement/>
+				<text><![CDATA[Demande d'allocations de chômage partiel à la DDTEFP :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac035406-1b70-4a4a-ad9c-94c0e97140ba" x="328" y="72" width="127" height="13"/>
+				<textElement/>
+				<text><![CDATA[Date de reprise prévue :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="caa00713-a49f-4957-887e-633e0cbe761e" x="290" y="72" width="24" height="13"/>
+				<textElement/>
+				<text><![CDATA[Non]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5654a419-1c4d-4849-9976-7d769ca4cac5" x="290" y="85" width="24" height="13"/>
+				<textElement/>
+				<text><![CDATA[Non]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ad189278-28bd-47cd-baf9-e43f9def1946" x="328" y="85" width="127" height="13"/>
+				<textElement/>
+				<text><![CDATA[Période indemnisée du :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="406f51cc-db72-4a06-8242-45c555220f1a" x="427" y="98" width="28" height="13"/>
+				<textElement/>
+				<text><![CDATA[au :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="00f0212d-0404-4ac7-bccc-5e299731e040" x="170" y="13" width="233" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{employer_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="12eb8655-f065-4a0b-ad75-f2169977c49a" x="12" y="13" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{employee_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d554f527-b608-4bd9-b83e-eee9f40a66bf" x="427" y="13" width="128" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{nosecu}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement uuid="5ddde121-6354-41d5-84c7-3052fc1794ab" x="0" y="137" width="572" height="151"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement uuid="f55c1374-89f8-4e69-af33-d206eb4b0308" x="27" y="127" width="316" height="20" backcolor="#EDECEB"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="12833c32-a588-431a-b7c4-dc673d86f19b" x="49" y="127" width="279" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. Motif de la rupture de contrat de travail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d9a300c-cb4e-4a75-bede-1c901b10eda2" x="12" y="157" width="468" height="13"/>
+				<textElement/>
+				<text><![CDATA[(      )         _______________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fc8ae17a-c555-4f6e-b515-143a59325037" x="12" y="182" width="142" height="32"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Salariés licenciés dans le cadre d'un plan de sauvegarde de l'emploi (ou plan social)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="af969268-5bcf-4639-a811-a7abc8be3ab7" x="204" y="182" width="139" height="32"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date de la première présentations du plan aux instances représentatives du personnel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d343d80-4b55-48ba-9acf-2b8c054acef4" x="443" y="182" width="101" height="22"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Congé de reclassement :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4dc339e3-52f9-4b95-b813-5aa5694e3f26" x="170" y="182" width="24" height="13"/>
+				<textElement/>
+				<text><![CDATA[Non]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="548bfe96-bec5-4bc0-aff2-ccc48459e7d3" x="544" y="182" width="24" height="13"/>
+				<textElement/>
+				<text><![CDATA[Non]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2e67f624-e6ee-4dda-bbd9-f3690192bd7b" x="12" y="224" width="182" height="13">
+					<printWhenExpression><![CDATA[($P{age}>=55? true : false)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[- Salarié licencié à l'age de 55 ans ou plus -]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a38a83c-0632-4ba9-aa69-cc9a8de2a681" x="204" y="224" width="319" height="23"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Si une convention FNE a été conclue par l'entreprise, l'intéressé a-t-il refusé la proposition d'adhérer à la convention ?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d3ddec4f-ae87-46c6-9544-1ef5427373d0" x="523" y="224" width="45" height="13"/>
+				<textElement/>
+				<text><![CDATA[(21) Non]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="192" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="32da013b-22b7-4212-a605-db32a2c15eff" stretchType="RelativeToTallestObject" x="0" y="10" width="572" height="67"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement uuid="4636aef4-3f29-4361-88d7-2d3b01a2042c" x="27" y="0" width="528" height="20" backcolor="#EDECEB"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="23976c2b-1aa9-4ef8-9729-29158b41f20b" x="49" y="0" width="495" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[7.1. Salaire des 12 mois civils complets précédent le dernier jour travaillé et payé]]></text>
+			</staticText>
+			<subreport>
+				<reportElement uuid="9e2cce87-0ea2-41e0-b9e0-300f6ab9aabb" x="4" y="29" width="564" height="28"/>
+				<subreportParameter name="contract_id">
+					<subreportParameterExpression><![CDATA[$P{contract_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:attestation_pole_emploi_subreport21.jrxml"]]></subreportExpression>
+			</subreport>
+			<rectangle radius="10">
+				<reportElement uuid="3dd68ccc-e0ec-4717-9b92-3c49cd7e1983" positionType="Float" stretchType="RelativeToTallestObject" x="0" y="102" width="572" height="67"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement uuid="ecd9ce7f-6ef5-4760-8ba7-1c4be501ac2b" positionType="Float" x="27" y="92" width="528" height="20" backcolor="#EDECEB"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="e854579e-858d-4344-9b71-367fb6ca683c" positionType="Float" x="49" y="92" width="495" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[7.2. Primes et indemnités de périodicité différente des salaires, non mentionnées en 7.1.]]></text>
+			</staticText>
+			<subreport>
+				<reportElement uuid="65674166-b864-4002-8e2f-5bb92c0340e9" positionType="Float" stretchType="RelativeToTallestObject" x="4" y="122" width="564" height="30"/>
+				<subreportParameter name="contract_id"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:attestation_pole_emploi_subreport22.jrxml"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

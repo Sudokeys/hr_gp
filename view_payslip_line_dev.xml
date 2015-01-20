@@ -1,0 +1,126 @@
+<openerp>
+<data>
+
+	<record model="ir.ui.view" id="pay_slip_line_tree_view">
+		<field name="name">pay_slip_line.tree</field>
+		<field name="model">hr_gp.payslip_line</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">	
+			<tree string="Slip line tree">
+				<field name="pay_id"/>
+				<field name="param_name" select="1"/>
+				<field name="title"/>
+				<field name="inp"/>
+				<field name="res_ne"/>
+				<field name="res_nr"/>
+				<field name="registee"/>
+				<field name="register"/>
+				<field name="printable"/>
+				<field name="cumul"/>
+				<field name="sequence"/>
+				<field name="seqcalc"/>
+				<field name="group"/>
+			</tree>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="pay_slip_line_form_view">
+		<field name="name">pay_slip_line.form</field>
+		<field name="model">hr_gp.payslip_line</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Slip line form">
+				<group col="4" colspan="4">
+					<!-- <field name="payslip_subper"/> -->
+					<field name="param_name" domain="[('entity_type','in',('pay','payreg'))]"  on_change="onchange_paramdict(param_name)"/>
+					<field name="title" size="48" nolabel = "1"/>
+					<newline/>
+				</group>
+				<group col="8" colspan="8">
+					<field name="payslip_id" readonly="1"/>
+					<field name="category" readonly="1"/>
+					<field name="entity_type" readonly="1"/>
+					<field name="format" readonly="1"/>
+					<newline/>
+				</group>
+				<group col="4" colspan="4" attrs="{'invisible':[('category','=','f')]}">
+					<label string="                "/>
+					<field name="inp"/>
+					<button name="getvalfromcalendar" string="Get qty from calendar" attrs="{'invisible':[('category','!=','v')]}" type="object"/>
+					<newline/>
+				</group>
+				<group col="6" colspan="6" attrs="{'invisible':[('category','=','f')]}">
+					<label string="    "/>
+					<button name="diff_date_cal" string="^ jours calendriers ^" type="object"/>
+					<button name="diff_date_ouv" string="^ jours ouvrables ^" type="object"/>
+					<newline/>
+					<field name="ddeb"/>
+					<field name="dfin"/>
+					<newline/>
+				</group>
+				<newline/>
+				<group col="6" colspan="6" attrs="{'invisible':[('category','=','v')]}">
+					<field name="a_"/>
+					<field name="b_"/>
+					<field name="c_"/>
+					<field name="d_"/>
+					<field name="e_"/>
+					<field name="f_"/>
+				</group>
+				<group col="3" colspan="3" attrs="{'invisible':[('category','=','v')]}">
+					<field name="base"/>
+					<field name="base_formula" nolabel="1"/>
+				</group>
+				<group col="6" colspan="6" attrs="{'invisible':[('category','=','v')]}">
+					<field name="rate"/>
+					<field name="rate_formula" nolabel="1" size = "24"/>
+					<field name="ratr"/>
+					<field name="ratr_formula" nolabel="1" size = "24"/>
+					<field name="qtye"/>
+					<field name="qtye_formula" nolabel="1" size = "24"/>
+					<field name="qtyr"/>
+					<field name="qtyr_formula" nolabel="1" size = "24"/>
+				</group>
+				<group col="6" colspan="6">
+					<field name="val_sim_e"/>
+					<button name="calculate" string="calculez" type="object"/>
+					<newline/>
+				</group>
+				<group col="6" colspan="6">
+					<label string="        E  m  p  l  o  y  e  e : "/>
+					<label string="        "/>
+					<label string="        "/>
+					<label string="        E  m  p  l  o  y  e  r :  "/>
+					<newline/>
+					<field name="res_ne"/>
+					<label string="              "/>
+					<field name="res_nr"/>
+					<newline/>
+					<field name="res_t"/>
+					<newline/>
+					<field name="res_d"/>
+					<separator colspan="6"/>
+					<field name="registee"/>
+					<label string="              "/>
+					<field name="register"/>
+					<newline/>
+					<field name="val_e"/>
+					<label string="              "/>
+					<field name="val_r"/>
+				</group>
+				<newline/>
+				<group col="8" colspan="8">
+					<field name="sequence"/>
+					<field name="group"/>
+					<field name="printable"/>
+					<field name="cumul"/>
+				</group>
+				<newline/>
+					<field name="state" widget="statusbar" statusbar_visible="draft,calc,val,clo"/>
+					<field name="baseprint"/>
+				<newline/>
+			</form>
+		</field>
+	</record>
+    
+</data>
+</openerp>

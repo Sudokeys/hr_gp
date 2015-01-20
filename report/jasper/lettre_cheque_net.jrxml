@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bulletin_paie_lignes" language="groovy" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5afbf953-ec16-41cc-93aa-336fc69c91c3">
+	<property name="ireport.zoom" value="1.9965000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.url" value="http://192.168.1.151:5080/jasperserver/services/repository"/>
+	<parameter name="PAY_ID" class="java.lang.Integer">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT pay_id,hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} AND printable=True AND hgpd.group='NET'
+AND (hgpl.base IS NULL OR hgpl.base!=0) AND ((hgpl.rate IS NULL OR hgpl.rate!=0) OR (hgpl.ratr IS NULL OR hgpl.ratr!=0))
+AND ((hgpl.res_ne!=0 OR hgpl.res_ne IS NULL OR hgpl.res_nr!=0 OR hgpl.res_ne IS NULL)
+OR (hgpl.registee!=0 OR hgpl.registee IS NULL OR hgpl.register!=0 OR hgpl.register IS NULL))
+ORDER BY hgpl.sequence]]>
+	</queryString>
+	<field name="pay_id" class="java.lang.Integer"/>
+	<field name="sequence" class="java.lang.Integer"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="title" class="java.lang.String"/>
+	<field name="base" class="java.math.BigDecimal"/>
+	<field name="rate" class="java.math.BigDecimal"/>
+	<field name="ratr" class="java.math.BigDecimal"/>
+	<field name="res_nr" class="java.math.BigDecimal"/>
+	<field name="res_ne" class="java.math.BigDecimal"/>
+	<field name="registee" class="java.math.BigDecimal"/>
+	<field name="register" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="10">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="62a27b09-78ee-4d51-baa1-71c9e200d672" x="0" y="0" width="255" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="f450db97-a762-415c-b742-20046007a9d1" x="255" y="0" width="50" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{base}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00000;-#,##0.00000" isBlankWhenNull="true">
+				<reportElement uuid="ec2cde6d-5249-4609-96b4-edaf2d7e2d73" x="305" y="0" width="50" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="e4b50aae-7e4c-4d2f-bec6-ec2d2e183229" x="355" y="0" width="50" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{res_ne} ? ($F{res_ne}.doubleValue()>0 ? $F{res_ne} : "") : ($F{registee}.doubleValue()>0 ? $F{registee} : "")]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="308c30f0-697c-4efb-80af-3d79d313b520" x="405" y="0" width="50" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{res_ne} ? ($F{res_ne}.doubleValue()<0 ? $F{res_ne} : "") : ($F{registee}.doubleValue()<0 ? $F{registee} : "")]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00000;-#,##0.00000" isBlankWhenNull="true">
+				<reportElement uuid="436a4880-da4a-4af8-acdd-886bbbb5a0f1" x="455" y="0" width="50" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ratr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="5af5df86-02e3-44b6-a1b4-0940b5a1aae9" x="505" y="0" width="50" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{res_nr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

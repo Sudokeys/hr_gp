@@ -1,0 +1,58 @@
+<openerp>
+<data>
+	<record model="ir.ui.view" id="inversepay_form_view">
+		<field name="name">hr_gp.inversepay.form</field>
+		<field name="model">hr_gp.inversepay.wizard</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Inverse pay " col="2">
+				<group colspan="2" states="to_comp">
+					<field name="gross_line" />
+					<newline/>
+					<field name="line2adjust"/>
+					<newline/>
+					<field name="net_target"/>
+					<newline/>
+					<field name="net_line"/>
+					<field name="log"/>
+				</group>
+				<field name="state" invisible="1"/>
+				<group colspan= "2" states="computed">
+					<field name="gross_result" />
+					<field name="nbstep"/>
+				</group>
+	   			   <group colspan="2" col="2" states="to_comp">					
+	  				  <button type="special" special="cancel" string="cancel" icon="gtk-cancel"/>
+					  <button type="object" name="payinverse" string="Inverse pay" icon="gtk-ok" />  
+					</group>
+					<group colspan="2" col="2" states="computed">
+						<button type="special" special="cancel" string="Hold result - Quit" icon="gtk-ok"/>
+						<button type="object" name="erase_res" string="Erase result" icon="gtk-ok" /> 
+					</group>
+					<group colspan="2" col="2" states="restored">
+						<button type="special" special="cancel" string="Payslip restored - Quit" icon="gtk-ok"/>
+					</group>
+			</form>
+		</field>
+	</record>
+	
+	<record model="ir.actions.act_window" id="inversepay_action">
+		<field name="name">hr_gp.inversepay.action</field>
+		<field name="res_model">hr_gp.inversepay.wizard</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+	</record> 
+
+<act_window
+    id="inversepay_act_win"
+    name="Inverse pay"
+    src_model="hr_gp.payslip"
+    res_model="hr_gp.inversepay.wizard"
+    view_mode="form"
+    target="new"
+    />
+
+
+</data>
+</openerp>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="declaration_pole_emploi" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7c1fe231-ca13-421c-ba6d-acc4aec5cc7c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.reportUnit" value="/openerp/bases/openiae_v7/attestation_pole_emploi"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:5080/jasperserver/services/repository"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/openerp/Bureau/adn/attestation_pole_emploi/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_HR_GP_CONTRACT_FRAME_ID" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select
+	hr_gp_contractframe.id contract_id,
+	hr_gp_contractframe.name employee_name,
+	hr_employee.secu,
+	hr_employee.age,
+	employer.name employer_name
+
+from
+	hr_gp_contractframe,
+	hr_gp_activity,
+	res_partner employer,
+	hr_employee
+where
+	hr_gp_contractframe.employee_id=hr_employee.id and
+	hr_gp_contractframe.activity=hr_gp_activity.id and
+	hr_gp_activity.establishment=employer.id and
+	hr_gp_contractframe.id=$P{CUSTOM_HR_GP_CONTRACT_FRAME_ID}]]>
+	</queryString>
+	<field name="contract_id" class="java.lang.Integer"/>
+	<field name="employee_name" class="java.lang.String">
+		<fieldDescription><![CDATA[Employee name]]></fieldDescription>
+	</field>
+	<field name="secu" class="java.lang.String">
+		<fieldDescription><![CDATA[N° de sécurité sociale]]></fieldDescription>
+	</field>
+	<field name="age" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Age]]></fieldDescription>
+	</field>
+	<field name="employer_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="a564e505-297a-499d-91d0-42e531478997" x="189" y="0" width="177" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATTESTATION POLE EMPLOI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0664c86-be44-45b7-b195-66b1551c04ee" x="0" y="0" width="121" height="20"/>
+				<textElement/>
+				<text><![CDATA[Agrément n° .... (ADN)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a36e019-c28d-45cd-8112-3b26c95b8bcf" x="449" y="0" width="66" height="20"/>
+				<textElement/>
+				<text><![CDATA[N° d'ordre :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e9b4978f-cc9d-45bd-b3e9-c8f6e3fe650b" x="515" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_HR_GP_CONTRACT_FRAME_ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="200" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="02e73a4f-f641-4873-8c13-03ad8d4baf91" x="0" y="16" width="555" height="48"/>
+				<subreportParameter name="custom_contract_id">
+					<subreportParameterExpression><![CDATA[$F{contract_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:attestation_pole_emploi_subreport1.jrxml"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement uuid="43f31c88-b618-4306-8f68-1a51ba3a971a" x="0" y="74" width="100" height="1"/>
+			</break>
+			<subreport>
+				<reportElement uuid="9ae6ab66-5234-496c-b066-c217138d8991" x="0" y="86" width="555" height="41"/>
+				<subreportParameter name="nosecu">
+					<subreportParameterExpression><![CDATA[$F{secu}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="age">
+					<subreportParameterExpression><![CDATA[$F{age}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="employer_name">
+					<subreportParameterExpression><![CDATA[$F{employer_name}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="contract_id">
+					<subreportParameterExpression><![CDATA[$F{contract_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="employee_name">
+					<subreportParameterExpression><![CDATA[$F{employee_name}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:attestation_pole_emploi_subreport2.jrxml"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement uuid="01115f24-f93a-4718-a1c8-367a260709be" x="0" y="137" width="100" height="1"/>
+			</break>
+			<subreport>
+				<reportElement uuid="9d58242c-9fb0-4bf7-acbd-753654334a12" x="0" y="148" width="555" height="39"/>
+				<subreportParameter name="contract_id">
+					<subreportParameterExpression><![CDATA[$F{contract_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="employee_name">
+					<subreportParameterExpression><![CDATA[$F{employee_name}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nosecu">
+					<subreportParameterExpression><![CDATA[$F{secu}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="employer_name">
+					<subreportParameterExpression><![CDATA[$F{employer_name}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="age">
+					<subreportParameterExpression><![CDATA[$F{age}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:attestation_pole_emploi_subreport3.jrxml"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="c183e5cf-7e87-4b25-aed8-0ad276221f44" x="435" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" sur"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="b9b0d6d3-b97d-4f2c-9b5a-b2c5b3a608e3" x="515" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="73">
+			<staticText>
+				<reportElement uuid="246235f1-d1c5-4ed2-a8c8-63d1a094a468" x="0" y="0" width="555" height="50"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Les données à caractère personnel collectées dans ce formulaire sont destinées à l'étude des droits des salariés à l'allocation d'aide au retour à l'emploi. Elles sont mises à disposition dans le dossier dématérialisé concernant le salarié, dénomé DUDE. Elles sont communiquées à d'autres organismes de protection sociale ou concourant à son reclassement.
+Conformément à la loi du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés, vous disposez d'un droit d'accès et de rectification des informations qui vous concernent.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0353f696-08eb-4907-b777-2da840bb5495" x="435" y="53" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" sur"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="6a44323d-d5fa-4337-a05c-d76f2194408b" x="515" y="53" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="20" splitType="Stretch"/>
+	</summary>
+</jasperReport>

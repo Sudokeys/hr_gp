@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <record model="ir.ui.view" id="payrun_form_view">
+        <field name="name">hrgp_payrun.form</field>
+        <field name="model">hr_gp.payrun</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Pay run form" version="7.0">
+                <header>
+<!--               <group col = "8" colspan= "8">-->
+                <button name="genpayslipdef" string="Include payslip from contracts" type="object" states="draft"/>
+                <button name="genaccmove" string="Generate account lines" type="object" states="draft,calc"/>
+                <field name="state" widget="statusbar" readonly="1"/>
+                </header>
+                <sheet>
+                    <div>
+                        <h1>Run de paie</h1>
+                    </div>
+                    <group>
+                <field name="name"/>
+                <field name="company" required="1"/>
+                <field name="activity" domain="[('type', '=', 'activity')]"  context="{'type':'activity'}"/>
+                <field name="date_begin" required="1"/>
+                <field name="date_end" required="1"/>
+                <field name="date_pay" required="0"/>
+                <field name="descr"/>
+                    </group>
+                <notebook colspan="4">
+                    <page string= "Payslip">
+                        <field name="payslips" colspan="4" nolabel="1" mode="tree">
+                            <tree string="Pay slips">
+                                <field name="employee_name"/>
+                                <field name="ctt_id"/>
+                                <field name="date_begin"/>
+                                <field name="date_end"/>
+                                <field name="state"/>
+                                <field name="date_compute"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="payrun_tree_view">
+        <field name="name">hrgp_payrun.tree</field>
+        <field name="model">hr_gp.payrun</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Pay run tree">
+                <field name="name"/>
+                <field name="company"/>
+                <field name="date_begin"/>
+                <field name="date_end"/>
+                <field name="date_compute"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+</data>
+</openerp>

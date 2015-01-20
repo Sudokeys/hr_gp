@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="livre_paie" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="1e66d6d7-5541-4e0e-9bde-064281742656">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="112"/>
+	<property name="ireport.y" value="79"/>
+	<subDataset name="EMPLOI_CTT" uuid="dcf29df6-d2e5-440d-bd85-e1840657e838">
+		<parameter name="EMPL_ID" class="java.lang.Integer"/>
+		<parameter name="DATE_DEBUT" class="java.lang.String"/>
+		<parameter name="DATE_FIN" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT hgpv.inp FROM  hr_gp_contractframe hgc
+JOIN hr_gp_params_val hgpv ON hgc.id=hgpv.contractframe_key
+JOIN hr_gp_params_dict hgpd ON hgpv.param_name=hgpd.id
+WHERE hgc.employee_id=$P{EMPL_ID} and hgpd.name='EMPLOI_CTT' and (hgpv.date_begin<=to_date($P{DATE_FIN}, 'YYYY-MM-DD')) and (hgpv.date_end2>= to_date($P{DATE_DEBUT}, 'YYYY-MM-DD'))]]>
+		</queryString>
+		<field name="inp" class="java.lang.String">
+			<fieldDescription><![CDATA[Input]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="dataset1" uuid="aa198eaf-b9be-483e-92ab-59f5b3ba8af0"/>
+	<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_EMPLOYEE_IDS" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_PARAM_MODEL" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_ETAB" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/yns/jasperreports-server-cp-5.0.0/samples/reports/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select hgpd.name,hgpd.title,hgpd.category,hgpd.group,sum(registee) registee,sum(register) register,sum(base) base,sum(res_ne) res_ne,sum(res_nr) res_nr,
+he.id he_id,he.name_related,he.prenom,he.matricule
+from hr_gp_payslip_line hgpl
+join hr_gp_payslip hgp on hgp.id=hgpl.pay_id
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN hr_gp_payrun hgpr ON hgp.pay_run=hgpr.id
+WHERE hgpd.group in ('BRUT','COT','NET','CUM') AND hgp.state!='draft'
+AND (hgpl.base IS NULL OR hgpl.base!=0)
+AND ((hgpl.rate IS NULL OR hgpl.rate!=0) OR (hgpl.ratr IS NULL OR hgpl.ratr!=0))
+AND ((hgpl.res_ne!=0 OR hgpl.res_ne IS NULL OR hgpl.res_nr!=0 OR hgpl.res_ne IS NULL)
+OR (hgpl.registee!=0 OR hgpl.registee IS NULL OR hgpl.register!=0 OR hgpl.register IS NULL))
+AND he.id = ANY (string_to_array(replace(btrim($P{CUSTOM_EMPLOYEE_IDS},'[]'),' ',''), ',')::int[])
+AND (hgpr.date_begin>=to_date($P{CUSTOM_DATE_DEBUT}, 'YYYY-MM-DD') and hgpr.date_begin<=to_date($P{CUSTOM_DATE_FIN}, 'YYYY-MM-DD'))
+and param_name = any(case when
+$P{CUSTOM_PARAM_MODEL} != 0
+then
+ARRAY[(select array_agg(params) from hr_gp_param_model hgpm
+join hr_gp_param_model_item hgpmi on hgpm.id=hgpmi.model_id
+where hgpm.id=$P{CUSTOM_PARAM_MODEL} )]
+else
+ARRAY[(select array_agg(params) from hr_gp_param_model hgpm
+join hr_gp_param_model_item hgpmi on hgpm.id=hgpmi.model_id)] end)
+group by hgpd.name,hgpd.title,hgpd.category,hgpd.group,he.id,he.prenom
+order by he.id,hgpd.group]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="category" class="java.lang.String"/>
+	<field name="he_id" class="java.lang.Integer"/>
+	<field name="base" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Base]]></fieldDescription>
+	</field>
+	<field name="group" class="java.lang.String">
+		<fieldDescription><![CDATA[Group]]></fieldDescription>
+	</field>
+	<field name="res_ne" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[ResultNe]]></fieldDescription>
+	</field>
+	<field name="res_nr" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[ResultNr]]></fieldDescription>
+	</field>
+	<field name="register" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Register]]></fieldDescription>
+	</field>
+	<field name="registee" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Registee]]></fieldDescription>
+	</field>
+	<field name="matricule" class="java.lang.String"/>
+	<field name="title" class="java.lang.String"/>
+	<field name="field1" class="java.lang.String"/>
+	<field name="name_related" class="java.lang.String"/>
+	<field name="prenom" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.String" calculation="Count"/>
+	<group name="employee" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{he_id}]]></groupExpression>
+	</group>
+	<group name="type">
+		<groupExpression><![CDATA[$F{group}]]></groupExpression>
+		<groupHeader>
+			<band height="11">
+				<rectangle>
+					<reportElement uuid="699138c1-06ee-4086-a567-4d6b547cecd6" x="0" y="0" width="555" height="10"/>
+					<graphicElement>
+						<pen lineWidth="0.25"/>
+					</graphicElement>
+				</rectangle>
+				<textField>
+					<reportElement uuid="f49e3f41-97b8-47a9-90ce-4b14962a1f40" x="0" y="1" width="97" height="10"/>
+					<textElement>
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="2" rightIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{group}=="BRUT" ? "Rubrique de brut" : ( $F{group}=="COT" ? "Rubrique de cotisation" : ( $F{group}=="CUM" ? "Rubrique de cumul" : ($F{group}=="NET" ? "Rubrique de net":" ") ) ) )]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="38">
+				<line>
+					<reportElement uuid="f3bb85ad-b0f5-4948-a154-da9ad1894b3c" x="0" y="0" width="555" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.25"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="23">
+			<staticText>
+				<reportElement uuid="05194dc4-2088-4b64-8035-270de87f4a7c" x="0" y="0" width="555" height="23"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[LIVRE DE PAIE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="115" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement uuid="f6bf3bd3-984e-42ae-8384-bcd5d8d5dd02" x="546" y="95" width="25" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="215948af-9dfe-4155-a25d-45a27d132199" x="407" y="31" width="64" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="false" isItalic="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Généré le :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0c360159-f19c-492a-8f88-6a0cd6ce78c6" x="0" y="31" width="347" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_ETAB}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement uuid="0ef2be2a-17cc-4478-9df3-1dfdb86357b3" x="185" y="1" width="234" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Période du : "+new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($P{CUSTOM_DATE_DEBUT}))+" au "+new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($P{CUSTOM_DATE_FIN}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9fecdeeb-95a2-48b7-a182-47efae3f7e91" x="485" y="95" width="62" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement uuid="41c85ad2-54ef-40d1-92a4-144e0bc55cad" x="474" y="31" width="92" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d161e1cc-7c3e-4f89-bef6-8a4ac5178913" x="1" y="95" width="201" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name_related}+ ' ' + ( $F{prenom} !=null ? $F{prenom}  : '' )+ "         " +$F{matricule}+"  "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0c360159-f19c-492a-8f88-6a0cd6ce78c6" x="-375" y="10" width="174" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_ETAB}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="717ffb60-eff1-4955-9046-98be568340a6" x="200" y="95" width="193" height="20"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="EMPLOI_CTT" uuid="a1723e69-01be-4f9d-a23d-47baff61f892">
+						<datasetParameter name="EMPL_ID">
+							<datasetParameterExpression><![CDATA[$F{he_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="20" width="193">
+						<textField>
+							<reportElement uuid="29b429af-17c4-40ac-b56b-c1bdbc725d7e" x="2" y="0" width="180" height="20"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$F{inp}!=null?$F{inp}:""]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="11e88fff-2e60-487a-b191-309ed1efafb2" x="0" y="0" width="97" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Libellé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="077f4c9e-ba75-49f7-b3a8-dfa4be8fc44f" x="242" y="0" width="73" height="20"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gain]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e0e9259f-1cce-48a8-8146-513b94de15c6" x="315" y="0" width="112" height="20"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant salarial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="23f79ea3-0cd6-4e38-90e8-27ba14b45c6a" x="427" y="0" width="128" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant patronal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8cbd13ea-b277-4536-a960-56078c43d874" x="97" y="0" width="145" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Titre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="10" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="57dd10f5-926f-41a8-a6cf-108aa17189b0" x="0" y="0" width="97" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4eac57dd-7693-46bb-a0a5-08e12305135c" x="242" y="0" width="73" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{res_ne} ? ($F{res_ne}.doubleValue()>0 ? $F{res_ne} : "") : ($F{registee}.doubleValue()>0 ? $F{registee} : "")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="19e1ce52-473b-4dbf-928b-a24baae5afe5" x="427" y="0" width="128" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{res_nr} ? $F{res_nr} : $F{register}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4b5ea033-9235-402f-a9c1-6ceb96596353" x="315" y="0" width="112" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{res_ne} ? ($F{res_ne}.doubleValue()<0 ? $F{res_ne} : "") : ($F{registee}.doubleValue()<0 ? $F{registee} : "")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="87772610-f723-4887-9541-77a1d17ec48e" x="97" y="0" width="145" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="141" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="177">
+			<subreport>
+				<reportElement uuid="83163c12-9915-438c-98d3-3ad365198ff2" stretchType="RelativeToTallestObject" x="0" y="96" width="555" height="81"/>
+				<subreportParameter name="CUSTOM_DATE_FIN">
+					<subreportParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CUSTOM_ETAB">
+					<subreportParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CUSTOM_DATE_DEBUT">
+					<subreportParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CUSTOM_PARAM_MODEL">
+					<subreportParameterExpression><![CDATA[$P{CUSTOM_PARAM_MODEL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CUSTOM_EMPLOYEE_IDS">
+					<subreportParameterExpression><![CDATA[$P{CUSTOM_EMPLOYEE_IDS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:livre_paie_sub.jrxml"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement uuid="9fecdeeb-95a2-48b7-a182-47efae3f7e91" x="472" y="97" width="62" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="f6bf3bd3-984e-42ae-8384-bcd5d8d5dd02" x="534" y="97" width="24" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement uuid="0ef2be2a-17cc-4478-9df3-1dfdb86357b3" x="185" y="4" width="234" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Période du : "+new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($P{CUSTOM_DATE_DEBUT}))+" au "+new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($P{CUSTOM_DATE_FIN}))]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement uuid="41c85ad2-54ef-40d1-92a4-144e0bc55cad" x="465" y="43" width="99" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="215948af-9dfe-4155-a25d-45a27d132199" x="395" y="43" width="67" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="10" isBold="false" isItalic="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Généré le :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0c360159-f19c-492a-8f88-6a0cd6ce78c6" x="-375" y="10" width="174" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_ETAB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b95a5836-04aa-4cb9-9644-18d297383739" x="19" y="43" width="224" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_ETAB}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

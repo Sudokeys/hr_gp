@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etat_paiement" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e129e2af-70bf-4411-8132-2cea8718d8d5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CUSTOM_ETAB_ID" class="java.lang.Integer"/>
+	<parameter name="CUSTOM_PAY_RUN" class="java.lang.Integer"/>
+	<parameter name="CUSTOM_PARAM_MODEL" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT hgpl.registee,hgem.matricule, hgem.name_related nom_empl,hgem.title2,hgem.prenom,hgem.iban,hgem.rib_code_banque,hgem.rib_code_guichet,
+hgem.rib_num_compte,hgem.rib_cle,hgem.rib_domiciliation,hgem.bic,hgmp.name mode_pay,hgrs.name nom_etbl, hgrs.rib_num_compte rib_etbl, hgrn.date_begin,hgrn.date_end,hgrn.name nom_run
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgsl ON hgpl.pay_id=hgsl.id
+JOIN hr_gp_payrun hgrn ON hgsl.pay_run=hgrn.id
+JOIN hr_gp_contractframe hgco ON hgsl.ctt_id=hgco.id
+JOIN hr_employee hgem ON hgco.employee_id=hgem.id
+JOIN hr_gp_activity hgac ON hgco.activity=hgac.id
+JOIN res_partner hgrs ON hgac.establishment=hgrs.id
+JOIN hr_gp_mode_paiement hgmp ON hgem.mode_reglement_p=hgmp.id
+WHERE hgrn.id=$P{CUSTOM_PAY_RUN} and hgpd.name='R_NETAPAYER'
+and hgrs.id=$P{CUSTOM_ETAB_ID}
+and (case when $P{CUSTOM_PARAM_MODEL} != 0 then hgco.payslip_model=$P{CUSTOM_PARAM_MODEL} else True end)
+ORDER BY mode_pay]]>
+	</queryString>
+	<field name="registee" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Input]]></fieldDescription>
+	</field>
+	<field name="nom_empl" class="java.lang.String"/>
+	<field name="mode_pay" class="java.lang.String"/>
+	<field name="matricule" class="java.lang.String"/>
+	<field name="prenom" class="java.lang.String"/>
+	<field name="title2" class="java.lang.String"/>
+	<field name="iban" class="java.lang.String"/>
+	<field name="rib_code_banque" class="java.lang.String"/>
+	<field name="rib_code_guichet" class="java.lang.String"/>
+	<field name="rib_num_compte" class="java.lang.String"/>
+	<field name="rib_cle" class="java.lang.String"/>
+	<field name="rib_domiciliation" class="java.lang.String"/>
+	<field name="bic" class="java.lang.String"/>
+	<field name="nom_etbl" class="java.lang.String"/>
+	<field name="rib_etbl" class="java.lang.String"/>
+	<field name="date_begin" class="java.lang.String"/>
+	<field name="date_end" class="java.lang.String"/>
+	<field name="nom_run" class="java.lang.String"/>
+	<variable name="total_net" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{registee}]]></variableExpression>
+	</variable>
+	<group name="mode_pay">
+		<groupExpression><![CDATA[$F{mode_pay}]]></groupExpression>
+		<groupHeader>
+			<band height="31">
+				<textField>
+					<reportElement uuid="deb52968-3aa0-4b52-98df-980be95998b1" x="0" y="0" width="555" height="30" printWhenGroupChanges="mode_pay"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["Mode de réglement : "+($F{mode_pay}?$F{mode_pay}:"Non précisé")]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9bf0c3ea-3fcb-41bf-931e-5d7123ef243b" x="212" y="7" width="161" height="24"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[ÉTAT DE PAIEMENT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="143" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement uuid="41c85ad2-54ef-40d1-92a4-144e0bc55cad" x="474" y="33" width="92" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="215948af-9dfe-4155-a25d-45a27d132199" x="407" y="33" width="64" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="false" isItalic="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Généré le :]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement uuid="f6bf3bd3-984e-42ae-8384-bcd5d8d5dd02" x="542" y="117" width="25" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9fecdeeb-95a2-48b7-a182-47efae3f7e91" x="481" y="117" width="62" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0ceecec1-ca6a-4580-b652-bd0ddee0f67c" x="0" y="33" width="332" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nom_etbl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0240bdd3-598d-4391-aab0-5bb6b6720934" x="2" y="52" width="330" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["RIB : "+($F{rib_etbl}?$F{rib_etbl}:"")]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement uuid="0ef2be2a-17cc-4478-9df3-1dfdb86357b3" x="195" y="3" width="234" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Période du : "+new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($F{date_begin}))+" au "+new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($F{date_end}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a589d81f-1c97-4008-b369-b003e5013ec8" x="2" y="118" width="330" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Run de paie : "+$F{nom_run}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="dc1b637c-7ada-4b07-b224-ae28bd9d8d88" x="183" y="1" width="65" height="25"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[IBAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="75c632a5-58b3-4de2-b9c8-fc94f3da20f4" x="247" y="1" width="95" height="25"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[RIB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="60be7df5-cfcb-4082-b6e6-334625be9855" x="342" y="1" width="85" height="25"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Domiciliation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4508b7f6-687f-4baa-9f81-f072182cbe31" x="-1" y="1" width="55" height="25"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Matricule]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d373af3-da2a-4d7a-8f8c-04f5f5543633" x="54" y="1" width="130" height="25"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Salarié]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5c75f15e-9979-4f52-aad0-e1d9c3997686" x="426" y="1" width="55" height="25"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[BIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="304ec6e4-d183-410b-b59a-5f9cc7ab3264" x="481" y="1" width="74" height="25"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Net à payer]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement uuid="df8fdb01-d3d3-4ada-93eb-bd751b57d8f5" x="481" y="1" width="74" height="34"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="48274a39-4248-42b1-88ab-be5d7cb69e1a" x="344" y="1" width="83" height="34"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rib_domiciliation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a232942b-b3aa-4716-ae6b-ffdf0571fdf8" x="426" y="1" width="55" height="34"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c88e44aa-612e-4519-9ea6-d7916c0939ee" x="54" y="1" width="130" height="34"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{title2} !=null ? $F{title2}  : '' ) + ' ' + $F{nom_empl} + ' ' + ( $F{prenom} !=null ? $F{prenom}  : '' )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="389ff8ca-1f6f-4c1b-8700-33025fa648ae" x="183" y="1" width="65" height="34"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{iban}?$F{iban}:""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="eb5c3843-b843-480e-84bd-cbfa2ffc503f" x="247" y="1" width="97" height="34"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{rib_code_banque}?$F{rib_code_banque}:"")+" "+($F{rib_code_guichet}?$F{rib_code_guichet}:"")+" "+($F{rib_num_compte}?$F{rib_num_compte}:"")+" "+($F{rib_cle}?$F{rib_cle}:"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="8f17cfdf-684f-4f25-bded-4f4cc5981a8f" x="0" y="1" width="54" height="34"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="80"/>
+	</pageFooter>
+	<summary>
+		<band height="30" splitType="Stretch">
+			<frame>
+				<reportElement uuid="b4c776a1-3d66-4f92-a845-3811c697b718" x="2" y="0" width="553" height="29"/>
+				<textField>
+					<reportElement uuid="523545b8-5721-4c3d-8cb9-d07c0361eb98" x="479" y="0" width="74" height="29"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph rightIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total_net}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="e12d164d-7c1c-47f2-880f-5ddbd1b2b63f" x="424" y="0" width="55" height="29"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</summary>
+</jasperReport>

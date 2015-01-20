@@ -1,0 +1,164 @@
+<openerp>
+<data>
+    <record id="paramsdict_search" model="ir.ui.view">
+            <field name="name">paramsdict.search</field>
+            <field name="model">hr_gp.params_dict</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="ParamsDict">
+                    <group col="10" colspan="4">
+                        <filter icon="terp-sale" string="TypePay" domain="[('entity_type','=','pay')]"/>
+                        <filter icon="terp-purchase" string="Origin BEL" domain="[('origin','like','BEL')]"/>
+                        <filter icon="terp-purchase" string="TypeCtt" domain="[('entity_type','=','ctt')]"/>
+                        <filter icon="terp-purchase" string="TypeEpe" domain="[('entity_type','=','emp')]"/>
+                        <filter icon="terp-purchase" string="TypeLeg" domain="[('entity_type','=','leg')]"/>
+                        <filter icon="terp-purchase" string="TypeCny" domain="[('entity_type','=','cny')]"/>
+                        <separator orientation="vertical"/>
+                        <field name="name"/>
+                        <field name="title"/>
+                        <field name="category"/>
+                        <field name="entity_type"/>
+                        <field name="origin"/>
+                    </group>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Origin" icon="terp-stock_symbol-selection" domain="" context="{'group_by':'origin'}"/>
+                        <filter string="Format" icon="terp-stock_symbol-selection" domain="" context="{'group_by':'format'}"/>
+                        <filter string="Organisme" icon="terp-stock_symbol-selection" domain="" context="{'group_by':'org_cotis'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        
+    <record model="ir.ui.view" id="paramsdict_form_view">
+        <field name="name">paramsdict.form</field>
+        <field name="model">hr_gp.params_dict</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Params dictionary form"  version="7.0">
+            <sheet>
+                <div>
+                    <h1>
+                        <label string="Dictionnaire du paramètre "/>
+                    </h1>
+                </div>
+                <group col="4">
+                    <field name="name"/>
+                    <field name="active"/>
+                    <field name="title"/>
+                </group>
+                <newline/>
+                <group col="6">
+                    <field name="entity_type" required = "1"/>
+                    <field name="category" required = "1"/>
+                    <field name="format" required = "1"/>
+                    <field name="org_cotis" />
+                    <field name="org_cotis_ducs" invisible="1"/>
+                    <!--<field name="ducs" domain="[('id','in', [id for id in org_cotis_ducs[0][2]])]" />-->
+                    <field name="ducs"/>
+                </group>
+                <notebook colspan="4">
+                    <page string="Informations">
+                        <group col="2" colspan="4">
+                            <field name="origin"/>
+                                                        <field name="group" />
+                            <field name="group_view" domain="[('category', '=', 'v')]"/>
+                            <field name="desc" height="36"/>
+                            <field name="validexp" colspan="2" attrs="{'invisible':[('category','!=','v')]}"/>
+                            <field name="optional"/>
+                                                        <field name="defwhenopt"/>
+                                                        <field name="seq"/>
+                            <field name="creation_date"/>
+                        </group>
+                    </page>
+                    <page string="Formula" attrs="{'invisible':[('category','!=','f')]}">
+                        <group col="6" colspan="6">
+                            <field name="a_"/>
+                            <field name="b_"/>
+                            <field name="c_"/>
+                            <field name="d_"/>
+                            <field name="e_"/>
+                            <field name="f_"/>
+                        </group>
+                        <group col="4" colspan="4">
+                            <field name="base_formula" colspan="4" height="36"/>
+                            <newline/>
+                            <field name="rate_formula"  height="36"/>
+                            <field name="ratr_formula"  height="36"/>
+                            <field name="qtye_formula"  height="36"/>
+                            <field name="qtyr_formula"  height="36"/>
+                        </group>                    
+                    </page>
+                    <page string="Register" attrs="{'invisible':[('category','!=','r')]}">
+                        <group col="4" colspan="4">
+                            <field name="cum_ctt"/>
+                            <field name="cum_epe"/>
+                            <field name="cum_act"/>
+                            <field name="cum_cpy"/>
+                        </group>
+                    </page>
+                    <page string="Comptabilité">
+                        <group col="4" colspan="4">
+                            <field name="account_e_d"/>
+                            <field name="account_r_d"/>
+                            <field name="account_e_c"/>
+                            <field name="account_r_c"/>
+                        </group>
+                    </page>
+                    <page string="Cumuls">
+                        <group>
+                            <separator string="Result employee to add to ..."/>
+                            <field name="epe_counter_add" colspan="4" domain="[('category', '=', 'r')]"/>
+                            <separator string="Result employer to add to ..."/>
+                            <field name="epr_counter_add" colspan="4" domain="[('category', '=', 'r')]" />
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>    
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="paramsdict_tree_view">
+        <field name="name">paramsdict.tree</field>
+        <field name="model">hr_gp.params_dict</field>
+        <field name="type">tree</field>
+        <field name="search_view_id" ref="paramsdict_search"/>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree string="Params dictionary form">
+                <field name="name" select="1"/>
+                <field name="entity_type" select="1"/>
+                <field name="category" select="1"/>
+                <field name="format" select="1"/>
+                <field name="title"/>
+                <field name="seq"/>
+                <field name="origin" select="1"/>
+                <field name="a_"/>
+                <field name="b_"/>
+                <field name="c_"/>
+                <field name="d_"/>
+                <field name="e_"/>
+                <field name="f_"/>
+                <field name="org_cotis" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="paramsdict_tree_view2">
+        <field name="name">paramsdict.tree2</field>
+        <field name="model">hr_gp.params_dict</field>
+        <field name="type">tree</field>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <tree string="Params dictionary form">
+                <field name="name" select="1"/>
+                <field name="title"/>
+                <field name="entity_type" select="1"/>
+                <field name="format" select="1"/>
+                <field name="origin" select="1"/>
+            </tree>
+        </field>
+    </record>
+
+</data>
+</openerp>

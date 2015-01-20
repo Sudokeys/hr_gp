@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="declaration_pole_emploi_subreport1" language="groovy" pageWidth="572" pageHeight="752" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a29ffd3b-f366-4092-98f3-b8d206cf3f1a">
+    <property name="ireport.zoom" value="2.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="927"/>
+    <style name="table">
+        <box>
+            <pen lineWidth="1.0" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <subDataset name="Table Dataset 1" uuid="d1311d25-3e55-4df8-b273-59ff14535b38"/>
+    <parameter name="custom_contract_id" class="java.lang.Integer" isForPrompting="false">
+        <defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+    </parameter>
+    <queryString>
+        <![CDATA[select
+    contract.establishment contract_establishment,
+    activity.establishment activity_establishment,
+    activity.name activity_name,
+    employer.name employer_name,
+    employer.street employer_street,
+    employer.street2 employer_street2,
+    employer.zip employer_zip,
+    substring(employer.zip,1,2) employer_dept,
+    employer.city employer_city,
+    employer.phone employer_phone,
+    employer.id employer_id,
+    substring(employer.siret_p,1,9) siret1,
+    substring(employer.siret_p,10,14) siret2,
+    employer.ape,
+    ursaf.n_affil,
+    (select count(distinct employee_id)
+        from hr_gp_contractframe
+        where date_begin < (select date_trunc('year',current_date)-interval '1 second')
+          and date_end > (select date_trunc('year',current_date)-interval '1 second')) nb_empl_fin_an,
+
+    contract.id contract_id,
+    contract.create_uid contract_create_uid,
+    contract.create_date contract_create_date,
+    contract.write_date contract_write_date,
+    contract.write_uid contract_write_uid,
+    contract.payslip_model contract_paylisp_model,
+    contract.date_begin contract_date_begin,
+    contract.name contract_name,
+    contract.date_end contract_date_end,
+    contract.convention contract_convention,
+    contract.employee_id contract_employee_id,
+    contract.activity contract_activity,
+    contract.establishment contract_establishment2,
+    contract.notes contract_note,
+
+    employee.title2 employee_title,
+    employee.name3 employee_name,
+    employee.name_related employee_name_related,
+    employee.name_fille employee_name_fille,
+    employee.prenom employee_prenom,
+    employee.street employee_street,
+    employee.street2 employee_street2,
+    employee.zip employee_zip,
+    employee.ville "employee_ville_id",
+    ville.name "employee_ville",
+    substring(employee.secu,1,13) employee_nosecu,
+    substring(employee.secu,14,15) employee_cle_nosecu,
+    employee.birthday employee_date_naissance,
+    qual_level.inp employee_qualification,
+
+    case when (position('CADRE'in qual_level.inp))=0 then 'non'
+        else 'oui' end employee_statut_cadre_on
+
+
+
+from
+    hr_gp_contractframe contract,
+    hr_gp_activity activity,
+    res_partner employer,
+    hr_gp_org_cotis ursaf,
+    hr_employee employee,
+    ville ville,
+    hr_gp_params_val qual_level
+
+where
+    contract.activity=activity.id and
+    activity.establishment=employer.id and
+    employer.org_cotis2=ursaf.id and
+
+    contract.id=$P{custom_contract_id} and
+    contract.employee_id=employee.id and
+    employee.ville = ville.id and
+    qual_level.contractframe_key=contract.id and
+    qual_level.param_name=88 -- STATUT SALARIE]]>
+    </queryString>
+    <field name="contract_establishment" class="java.lang.Integer"/>
+    <field name="activity_establishment" class="java.lang.Integer"/>
+    <field name="activity_name" class="java.lang.String"/>
+    <field name="employer_name" class="java.lang.String"/>
+    <field name="employer_street" class="java.lang.String"/>
+    <field name="employer_street2" class="java.lang.String"/>
+    <field name="employer_zip" class="java.lang.String"/>
+    <field name="employer_dept" class="java.lang.String"/>
+    <field name="employer_city" class="java.lang.String"/>
+    <field name="employer_phone" class="java.lang.String"/>
+    <field name="employer_id" class="java.lang.Integer"/>
+    <field name="siret1" class="java.lang.String"/>
+    <field name="siret2" class="java.lang.String"/>
+    <field name="ape" class="java.lang.String">
+        <fieldDescription><![CDATA[Code APE]]></fieldDescription>
+    </field>
+    <field name="n_affil" class="java.lang.String">
+        <fieldDescription><![CDATA[N° d'affiliation]]></fieldDescription>
+    </field>
+    <field name="nb_empl_fin_an" class="java.lang.Long"/>
+    <field name="contract_id" class="java.lang.Integer"/>
+    <field name="contract_create_uid" class="java.lang.Integer"/>
+    <field name="contract_create_date" class="java.sql.Timestamp"/>
+    <field name="contract_write_date" class="java.sql.Timestamp"/>
+    <field name="contract_write_uid" class="java.lang.Integer"/>
+    <field name="contract_paylisp_model" class="java.lang.Integer"/>
+    <field name="contract_date_begin" class="java.sql.Date"/>
+    <field name="contract_name" class="java.lang.String"/>
+    <field name="contract_date_end" class="java.sql.Date"/>
+    <field name="contract_convention" class="java.lang.Integer"/>
+    <field name="contract_employee_id" class="java.lang.Integer"/>
+    <field name="contract_activity" class="java.lang.Integer"/>
+    <field name="contract_establishment2" class="java.lang.Integer"/>
+    <field name="contract_note" class="java.lang.String"/>
+    <field name="employee_title" class="java.lang.String"/>
+    <field name="employee_name" class="java.lang.String">
+        <fieldDescription><![CDATA[Employee name]]></fieldDescription>
+    </field>
+    <field name="employee_name_related" class="java.lang.String"/>
+    <field name="employee_name_fille" class="java.lang.String"/>
+    <field name="employee_prenom" class="java.lang.String"/>
+    <field name="employee_street" class="java.lang.String"/>
+    <field name="employee_street2" class="java.lang.String"/>
+    <field name="employee_zip" class="java.lang.String"/>
+    <field name="employee_ville_id" class="java.lang.Integer"/>
+    <field name="employee_ville" class="java.lang.String"/>
+    <field name="employee_nosecu" class="java.lang.String"/>
+    <field name="employee_cle_nosecu" class="java.lang.String"/>
+    <field name="employee_date_naissance" class="java.sql.Date"/>
+    <field name="employee_qualification" class="java.lang.String"/>
+    <field name="employee_statut_cadre_on" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band splitType="Stretch"/>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band splitType="Stretch"/>
+    </columnHeader>
+    <detail>
+        <band height="720" splitType="Stretch">
+            <rectangle radius="10">
+                <reportElement uuid="92ea8b08-53a6-4ba8-b75a-fc8bb96ed4bd" x="0" y="10" width="572" height="173"/>
+            </rectangle>
+            <rectangle radius="10">
+                <reportElement uuid="92e1de7f-520f-47ae-8cda-df40a9c7b99a" x="17" y="0" width="316" height="20" backcolor="#EDECEB"/>
+            </rectangle>
+            <staticText>
+                <reportElement uuid="22066e28-b92a-45b5-a632-196b3bfb78ca" x="28" y="0" width="100" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[1. L'employeur]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="7019eef8-f768-4727-9c44-6b02ee8a421c" x="17" y="20" width="266" height="15"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{employer_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="9804ddec-e239-4bd5-9d8d-325564aef1bf" x="17" y="35" width="266" height="15"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employer_street}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="d38e5170-941f-4a78-9763-7a6c3020cce4" x="283" y="35" width="266" height="15"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employer_street2}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="3bc22c99-a5f4-48ad-84b1-f22d6c5fab76" x="17" y="50" width="67" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employer_zip}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="9f4635b4-a2d4-42df-a3fc-a99d7532929c" x="87" y="50" width="196" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employer_city}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="92ff4588-d599-4009-9816-db0bb7632b37" x="283" y="50" width="100" height="13"/>
+                <textElement/>
+                <text><![CDATA[Téléphone :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="cc6ea757-9807-457b-85d0-b43dded3a164" x="383" y="50" width="100" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employer_phone}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="88907e6b-9c73-4180-b450-4e7d4e6ed3ed" x="17" y="63" width="100" height="15"/>
+                <textElement/>
+                <text><![CDATA[Statut Juridique :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="12448074-5c52-4dca-b0d2-ab453a901a66" x="17" y="78" width="100" height="13"/>
+                <textElement/>
+                <text><![CDATA[N°SIRET]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="40c9e837-3fc3-4de9-87b2-e7fcecbe3bd8" x="117" y="78" width="100" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{siret1}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="4bc842af-31fe-4dda-b3fb-6669acca06ba" x="217" y="78" width="100" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{siret2}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="844cb144-3a9d-44b9-922c-d9716386bb60" x="317" y="78" width="100" height="13"/>
+                <textElement/>
+                <text><![CDATA[Code APE/NAF]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="4f51bec8-e1d6-42e3-8da3-99cf04e317b6" x="417" y="78" width="66" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{ape}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="17a4652d-0d0b-4820-ba0c-dbc6cfb7d6b7" x="17" y="91" width="543" height="12"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[N° d'affiliation à Pôle emploi (anc Assédic) ou à l'organisme ayant recouvré les cotisations d'assurance chômage :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="76bc74bb-d6e7-4b63-bfcc-11136b0cb57c" x="17" y="103" width="543" height="12"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[(En cas de paiement groupé des cotisations, indiquez le n° d'affiliation à l'ASSEDIC (ou pôle emploi) de recouvrement]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="9cc5e067-4ef2-4abd-a7a8-b0a8cc32115b" x="17" y="115" width="145" height="13"/>
+                <textElement/>
+                <text><![CDATA[Organisme de recouvrement]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="ea2559c5-6254-44f3-8fbc-64beef46ed0c" x="238" y="115" width="79" height="13"/>
+                <textElement/>
+                <text><![CDATA[N° d'affiliation]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="39a6f384-569d-43b8-801a-1932e85010a0" x="394" y="115" width="58" height="13"/>
+                <textElement/>
+                <text><![CDATA[N° URSAFF]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="eb9fb43e-5c06-44c1-9baa-a39f41114344" x="452" y="115" width="108" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{n_affil}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="aa5784fa-41ff-49e8-98aa-0f487483a605" x="17" y="128" width="543" height="11"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[(CMSA, URSAFF, CCVRP, organisme centralisateur des paies dans chaque port pour les dockers)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="76eae531-e0aa-446a-aece-025c12435243" x="17" y="139" width="317" height="13"/>
+                <textElement/>
+                <text><![CDATA[Nombre total de salariés dans l'établissement au 31/12 écoulé :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="78289181-b3ad-42e0-933a-977f529463bc" x="334" y="139" width="100" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{nb_empl_fin_an}]]></textFieldExpression>
+            </textField>
+            <rectangle radius="10">
+                <reportElement uuid="0d248495-f4a5-45d1-8d6a-bd3d3454773d" x="0" y="162" width="572" height="94"/>
+            </rectangle>
+            <staticText>
+                <reportElement uuid="dbb9eadb-9b4b-40df-8a29-da4e3a71791c" x="17" y="162" width="543" height="13"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Employeur du secteur public (Art. L5424-1 du code du travail)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="1bed72c1-4e25-4df0-a7aa-db7de0bb451b" x="38" y="175" width="124" height="13"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Employeur en auto-assurance]]></text>
+            </staticText>
+            <rectangle>
+                <reportElement uuid="577d2a8a-c3c6-4b30-999b-6b93d4d82f57" x="18" y="176" width="8" height="10"/>
+            </rectangle>
+            <staticText>
+                <reportElement uuid="c9a9bd60-b2dd-4fe6-aa42-eb3d7a89c782" x="38" y="188" width="200" height="13"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Employeur ayant conclu une convention de gestion]]></text>
+            </staticText>
+            <rectangle>
+                <reportElement uuid="42ebbf20-a08c-41f1-a69c-aa7190947102" x="18" y="189" width="8" height="10"/>
+            </rectangle>
+            <staticText>
+                <reportElement uuid="af1fe17b-1508-46aa-aa80-c5db8facf159" x="64" y="201" width="138" height="13"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Numéro de convention de gestion :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="1c648950-b1bf-4f18-94fa-71d4f62c0728" x="260" y="201" width="74" height="13"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Code analytique :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="ea25d15e-6d16-4957-9383-7606da6fe614" x="358" y="189" width="12" height="32"/>
+                <textElement>
+                    <font size="24"/>
+                </textElement>
+                <text><![CDATA[}]]></text>
+            </staticText>
+            <rectangle>
+                <reportElement uuid="de21af83-8246-48d8-8339-8384b553ced1" x="377" y="191" width="8" height="10"/>
+            </rectangle>
+            <staticText>
+                <reportElement uuid="ff4d8877-e8ac-4d90-bbf4-5ca22dffc849" x="394" y="191" width="166" height="23"/>
+                <textElement>
+                    <font size="6"/>
+                </textElement>
+                <text><![CDATA[Adhésion aux régime particuliers pour les emplois "aidés" (CES, Apprentis, emplois jeunes, etc...)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="e43d15d4-006d-4b56-8503-7495e779a26f" x="38" y="214" width="200" height="13"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Employeur ayant adhéré à titre révocable]]></text>
+            </staticText>
+            <rectangle>
+                <reportElement uuid="949399a3-aa8d-4fd9-8f3f-a9cca7833fea" x="18" y="215" width="8" height="10"/>
+            </rectangle>
+            <staticText>
+                <reportElement uuid="b00872bf-d0b0-41ea-b1e8-d1aa780c3422" x="260" y="215" width="74" height="13"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Date d'adhésion :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="3b1a9be6-8182-4e79-85bc-1b6c1ada6ef8" x="17" y="228" width="200" height="13"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Statut du salarié :]]></text>
+            </staticText>
+            <rectangle radius="10">
+                <reportElement uuid="62065759-8020-4aec-8dde-aa6bdc13f32c" x="0" y="269" width="572" height="85"/>
+            </rectangle>
+            <rectangle radius="10">
+                <reportElement uuid="59d1b4fd-c1cb-45ba-a207-2307397aa576" x="18" y="259" width="316" height="20" backcolor="#EDECEB"/>
+            </rectangle>
+            <staticText>
+                <reportElement uuid="384fd257-e8e1-4024-a787-1e7640e82121" x="38" y="259" width="100" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[2. Le salarié]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="235c0781-b9b1-45bb-9323-75b348471524" x="2" y="279" width="24" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_title}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="072b781b-b81e-415a-95d1-7a36ae0da4b5" x="28" y="279" width="100" height="13"/>
+                <textElement/>
+                <text><![CDATA[Nom de naissance :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="cfd9b633-aeee-4781-b1d0-6c0052e29c56" x="128" y="279" width="100" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[($F{employee_name_fille}.equals(null)? $F{employee_name}:$F{employee_name_fille})]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="faae4fe8-7cb4-4db5-8eb2-63f242d52a6d" x="2" y="292" width="48" height="13"/>
+                <textElement/>
+                <text><![CDATA[Adresse :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="9403d075-2153-4a4f-af94-9bb192d1b305" x="240" y="279" width="53" height="13"/>
+                <textElement/>
+                <text><![CDATA[Prénom :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="166d7978-aa59-4e87-a9c3-ac1dcca7b197" x="293" y="279" width="100" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_prenom}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="6488a351-bf7c-46de-9da8-e479f3e049a7" x="50" y="292" width="178" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_street}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="bf2d7cca-8213-49f4-b482-918d75029cb5" mode="Transparent" x="228" y="292" width="166" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_street2}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="4fefbbc1-5f8c-47ec-b6a1-a687d5575b5d" x="472" y="279" width="100" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[($F{employee_name_fille}.equals(null)? "":$F{employee_name})]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="5c61c115-ed4c-4b9a-99ad-5df0ec7e9adb" x="393" y="279" width="79" height="13"/>
+                <textElement/>
+                <text><![CDATA[Nom d'usage :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="ce8fa2c0-fb71-4cf9-9509-a15269bc0cf7" x="394" y="292" width="40" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_zip}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="7ee11fb1-472d-4d39-8f85-0f3005bb7d36" x="434" y="292" width="138" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_ville}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="19d07754-ae28-46eb-919b-86c4bd3a1bfd" x="2" y="305" width="115" height="13"/>
+                <textElement/>
+                <text><![CDATA[N° de sécurité sociale :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="fd799371-b06b-4834-b034-efd84fa04513" x="117" y="305" width="100" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_nosecu}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="a6f6cc1c-d5eb-4a48-b15c-6a2a27cdb2d0" x="217" y="305" width="23" height="13"/>
+                <textElement/>
+                <text><![CDATA[Clé :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="0791387e-0830-4021-9fba-80575553300a" x="240" y="305" width="20" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_cle_nosecu}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="9ef2b572-0316-4f50-8743-5ba42d9a022a" x="360" y="305" width="100" height="13"/>
+                <textElement/>
+                <text><![CDATA[Date de naissance :]]></text>
+            </staticText>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement uuid="b0fb7d31-0cb6-438b-bbbb-6c5b2223343e" x="460" y="305" width="100" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_date_naissance}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="ad963cc5-8955-488f-966b-7dd87afc9af2" x="260" y="305" width="100" height="13"/>
+                <textElement/>
+                <text><![CDATA[Matricule MSA]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="0bc50e75-2448-4873-98de-c778372b0ab9" x="2" y="318" width="258" height="13"/>
+                <textElement/>
+                <text><![CDATA[Lien de parenté ou alliance avec le chef d'entreprise :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="12c5da7f-455a-497e-8cff-41877207d916" x="302" y="318" width="68" height="13"/>
+                <textElement/>
+                <text><![CDATA[Si oui lequel ?]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="47ff94fd-3f03-4582-83cb-b44dd2e900b9" x="2" y="331" width="126" height="13"/>
+                <textElement/>
+                <text><![CDATA[Niveau de qualification :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="2f50778c-7ce6-4d00-9434-e6fc0bf16376" x="128" y="331" width="132" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_qualification}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="a50adb88-54c9-48f4-a0a4-78d52b0933ee" x="302" y="331" width="132" height="13"/>
+                <textElement/>
+                <text><![CDATA[Statut cadre ou assimilé :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="95bd275b-1d95-4ed8-88d2-0696018367c9" x="434" y="331" width="38" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_statut_cadre_on}]]></textFieldExpression>
+            </textField>
+            <rectangle radius="10">
+                <reportElement uuid="d03bfc61-9cda-4ac7-8923-ab26caf6d866" x="0" y="368" width="572" height="85"/>
+            </rectangle>
+            <rectangle radius="10">
+                <reportElement uuid="2d7ba026-d1d2-4b51-b751-b27503c6514b" x="18" y="358" width="316" height="20" backcolor="#EDECEB"/>
+            </rectangle>
+            <staticText>
+                <reportElement uuid="ce6ded44-2413-40c0-8dee-c1c149520785" x="38" y="358" width="279" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[3. Caisses de retraite complémentaire du salarié]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="530ee5f4-33b4-48ce-bd23-b4675b97ee1a" x="2" y="393" width="48" height="13"/>
+                <textElement/>
+                <text><![CDATA[ARRCO :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="d961f989-242c-4f20-8863-3a54fb6d3651" x="2" y="419" width="48" height="13"/>
+                <textElement/>
+                <text><![CDATA[Autres :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="916ce5b3-7833-460d-8df6-bff541145a8c" x="2" y="406" width="48" height="13"/>
+                <textElement/>
+                <text><![CDATA[AGIRC :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="5dae0fd0-5c50-4e6c-8b43-cef922214bab" x="84" y="380" width="249" height="13"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Sigle, nom et adresse des institutions de retraite]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="464da1ea-883b-4912-862e-feb02a39c759" x="68" y="440" width="437" height="13"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[(Pour les cadres ou assimilés affiliés à l'AGIRC et à l'ARRCO, les deux institutions doivent être renseignées).]]></text>
+            </staticText>
+            <rectangle radius="10">
+                <reportElement uuid="e04dbb8e-231c-4528-a690-a0a494b974bd" x="0" y="467" width="572" height="253"/>
+            </rectangle>
+            <rectangle radius="10">
+                <reportElement uuid="90ecbb34-f3a6-4cd0-ba92-b48427c648cc" x="17" y="457" width="316" height="20" backcolor="#EDECEB"/>
+            </rectangle>
+            <staticText>
+                <reportElement uuid="a3de1b2c-6ac7-4520-bc64-c79fec4b5289" x="38" y="457" width="279" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[4. Emploi]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="f89c16f1-99cd-4677-8484-9044ba36b4f2" x="2" y="477" width="136" height="13"/>
+                <textElement/>
+                <text><![CDATA[Durée d'emploi du salarié :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="9e69ae05-dca9-4c4f-a327-515d68726df1" x="311" y="477" width="22" height="13"/>
+                <textElement/>
+                <text><![CDATA[du :]]></text>
+            </staticText>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement uuid="8e1f5afb-649a-405b-a850-47d504451d66" x="333" y="477" width="92" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{contract_date_begin}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="bf8ef644-52c7-42d6-a901-006c47c273ac" x="434" y="477" width="26" height="13"/>
+                <textElement/>
+                <text><![CDATA[au :]]></text>
+            </staticText>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement uuid="fc9a398a-f37d-465d-9572-5640ce68a066" x="460" y="477" width="92" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{contract_date_end}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="02acb9af-44a1-439e-a7be-179b15de28ae" x="2" y="490" width="104" height="13"/>
+                <textElement/>
+                <text><![CDATA[Dernier emploi tenu :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="259fca49-fde5-4fb1-839c-337f471e674b" x="106" y="490" width="196" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employee_qualification}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="e72730aa-93a7-468e-8c3c-38a0643849c4" x="302" y="490" width="104" height="13"/>
+                <textElement/>
+                <text><![CDATA[Dernier lieu d'emploi :]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="d0b10a8d-b548-49b0-b925-506cc100100f" x="406" y="490" width="77" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employer_city}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="9512421e-0dce-47f5-b857-bd38afeddc44" x="483" y="490" width="32" height="13"/>
+                <textElement/>
+                <text><![CDATA[Dépt.:]]></text>
+            </staticText>
+            <textField>
+                <reportElement uuid="fb88a074-b884-42d8-adf9-faa6a93cce41" x="515" y="490" width="37" height="13"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{employer_dept}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="ea11fee0-e1ff-4eb7-8eb4-262c460b5d5e" x="2" y="503" width="550" height="28"/>
+                <textElement>
+                    <font size="10"/>
+                </textElement>
+                <text><![CDATA[Date d'engagement de la procédure de licenciement  ou de notification de la démission ou de signature d'une rupture conventionnelle:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="35228f23-185c-4b48-80de-b495a2924835" x="2" y="531" width="48" height="13"/>
+                <textElement/>
+                <text><![CDATA[Préavis :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="3b3e5287-b340-4a20-bda5-c6de9518dcc2" x="50" y="544" width="48" height="13"/>
+                <textElement/>
+                <text><![CDATA[Effectué]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="1474a03f-d2a7-4530-aa2e-34cee7691cba" x="50" y="557" width="66" height="13"/>
+                <textElement/>
+                <text><![CDATA[Non effectué]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="8b985e33-fc71-4343-a575-a5892203aa95" x="116" y="557" width="66" height="13"/>
+                <textElement/>
+                <text><![CDATA[Non Payé]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="e603733d-78dc-4ea4-8a61-701b95c2dda2" x="117" y="570" width="66" height="13"/>
+                <textElement/>
+                <text><![CDATA[Non payé]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="a8c038a7-d19d-4ddc-a602-aa3d40206cd0" x="206" y="544" width="22" height="13"/>
+                <textElement/>
+                <text><![CDATA[du :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="8c728fa5-7872-4d5e-a896-8a77784facf2" x="206" y="557" width="22" height="13"/>
+                <textElement/>
+                <text><![CDATA[du :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="be84198a-7cc6-46b6-940e-9dff8469041c" x="206" y="570" width="22" height="13"/>
+                <textElement/>
+                <text><![CDATA[du :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="fb65fc99-b353-4246-b61c-a4dfd8e35ef2" x="302" y="544" width="26" height="13"/>
+                <textElement/>
+                <text><![CDATA[au :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="12cb0c8f-3b9d-4221-a711-0e101015480c" x="302" y="557" width="26" height="13"/>
+                <textElement/>
+                <text><![CDATA[au :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="49dc019f-5dc4-4c51-a3e1-c09db10b06d4" x="302" y="570" width="26" height="13"/>
+                <textElement/>
+                <text><![CDATA[au :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="6da78534-6933-48da-9905-8e3beee6ab66" x="406" y="570" width="46" height="13"/>
+                <textElement/>
+                <text><![CDATA[Motif :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="958bd081-634f-48e0-b3f2-a58f3c2952c3" x="2" y="583" width="379" height="13"/>
+                <textElement/>
+                <text><![CDATA[En cas d'affiliation à un régime spécial de sécurité sociale, indiquez la caisse :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="03cd9a95-db89-48e1-894b-dc29efbef693" x="434" y="583" width="81" height="13"/>
+                <textElement/>
+                <text><![CDATA[N° d'affiliation :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="db0817aa-634b-4acd-972c-dca37402a9b7" x="2" y="596" width="206" height="13"/>
+                <textElement/>
+                <text><![CDATA[Assurance maladie Alsace-Moselle : Non]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="94d6afdb-bb82-45e3-b40e-e7c7ed20916e" x="2" y="609" width="206" height="13"/>
+                <textElement/>
+                <text><![CDATA[Catégorie d'emploi particulier :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="102994ae-2687-4112-9982-0afee1812fc9" x="328" y="609" width="206" height="13"/>
+                <textElement textAlignment="Center"/>
+                <text><![CDATA[Statut particulier :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="84c690b2-9100-4faa-8153-9ec3637b769c" x="2" y="622" width="96" height="13"/>
+                <textElement/>
+                <text><![CDATA[Horaires de travail :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="ecb12ff6-20fe-4a35-9e84-43ad53c21d8f" x="28" y="635" width="96" height="13"/>
+                <textElement/>
+                <text><![CDATA[Dans l'entreprise :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="cdad9c16-38e9-4c0e-bab8-b00be8e02478" x="28" y="648" width="96" height="13"/>
+                <textElement/>
+                <text><![CDATA[Du salarié :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="2fd075ac-fd0a-4eec-bf1f-51081c7bc47d" x="28" y="661" width="134" height="13"/>
+                <textElement/>
+                <text><![CDATA[Motif en cas de différence :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="ce598d6c-74d3-4616-8490-d1f1f0d85ff0" x="164" y="622" width="74" height="13"/>
+                <textElement/>
+                <text><![CDATA[hebdomadaire]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="98c6171c-5402-4e9a-9941-a0c2295ff9b9" x="240" y="622" width="74" height="13"/>
+                <textElement/>
+                <text><![CDATA[Annuel]]></text>
+            </staticText>
+            <line>
+                <reportElement uuid="8682ac46-4e78-479e-9833-6d871abc9fbc" style="table" x="334" y="637" width="200" height="1"/>
+            </line>
+            <line>
+                <reportElement uuid="25171da2-6f23-4792-95cd-c12c8bb57d70" style="table" x="334" y="648" width="200" height="1"/>
+            </line>
+            <line>
+                <reportElement uuid="65e86a6c-378d-4dba-acc9-e9f70084d219" style="table" x="334" y="660" width="200" height="1"/>
+            </line>
+            <line>
+                <reportElement uuid="a2e3c865-6a9a-4c06-aa20-4fd3216b254b" style="table" x="334" y="673" width="200" height="1"/>
+            </line>
+            <line>
+                <reportElement uuid="8546a4aa-5e07-47fb-b090-df4d3e9d5627" style="table" x="334" y="684" width="200" height="1"/>
+            </line>
+            <staticText>
+                <reportElement uuid="d5f6567a-bd44-490b-8f40-e1632d31e871" x="3" y="685" width="134" height="13"/>
+                <textElement/>
+                <text><![CDATA[Nature du contrat :]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="7e932a9c-c9eb-4fb0-a6cd-83e997971dcb" x="4" y="698" width="134" height="13"/>
+                <textElement/>
+                <text><![CDATA[Contrat de type particulier :]]></text>
+            </staticText>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="2" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="7" splitType="Stretch"/>
+    </summary>
+</jasperReport>

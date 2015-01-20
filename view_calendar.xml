@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>   
+    <record model="ir.ui.view" id="calendar_tree_view">
+        <field name="name">hrgp_calendar.tree</field>
+        <field name="model">hr_gp.calendar</field>
+        <field name="arch" type="xml">
+            <tree string="Calendar">
+                <field name="dat"/>
+                <field name="code"/>
+                <field name="qty"/>
+                <field name="employee_name"/>
+                <field name="contractframe"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="calendar_form_view">
+        <field name="name">hrgp_calendar.form</field>
+        <field name="model">hr_gp.calendar</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Calendar" version="7.0">
+                <sheet>
+                    <div>
+                        <h1>Calendrier</h1>
+                    </div>
+                <group>
+                <field name="dat"/>
+                <newline/>
+                <field name="contractframe"  />
+                <field name="employee_name" readonly="1"/>
+                <newline/>
+                <field name="code" domain="[('entity_type','=','pay'),('category','=','v')]"/>
+                <newline/>
+                <field name="qty"/>
+                <newline/>
+                <field name="name"/>
+                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="calendar_cal_view">
+        <field name="name">hrgp_calendar.cal</field>
+        <field name="model">hr_gp.calendar</field>
+        <field name="type">calendar</field>
+        <field name="arch" type="xml">
+            <calendar string="Calendar" date_start="dat" color="contractframe" date_delay="qty" >
+                <field name="code"/>
+                <field name="qty"/>
+            </calendar>
+        </field>
+    </record>
+   </data>
+</openerp>

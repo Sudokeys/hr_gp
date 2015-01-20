@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recap_paye" language="groovy" pageWidth="802" pageHeight="27" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="ce44a954-0a92-443f-b899-c86534f136d6">
+	<property name="ireport.zoom" value="0.9090909090909091"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="R_TOTCOTSAL" uuid="5c9285a1-2d75-49f6-9392-5873547266a6">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(abs(hgpl.registee)) registee
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('R_TOTCOTSAL')]]>
+		</queryString>
+		<field name="registee" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Registee]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="R_TOTCOTPAT" uuid="2e050c23-c69e-468b-9745-e17851d14455">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.register) register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('R_TOTCOTPAT')]]>
+		</queryString>
+		<field name="register" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Register]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="HRES_MOIS_CTT" uuid="f173e7b5-2c9c-4038-a7b3-1422bc43d1a6">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.res_ne) res_ne
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('HRES_MOIS_CTT')]]>
+		</queryString>
+		<field name="res_ne" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[ResultNe]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="R_TOTHREABS" uuid="a92f2161-9854-4ed4-9984-bcdbb4c560e2">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.registee) registee
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('R_TOTHREABS')]]>
+		</queryString>
+		<field name="registee" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Registee]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="R_TOTHRESUP" uuid="c592b5d3-9f7f-43aa-9db9-5d12b8e2ce14">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.registee) registee
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('R_TOTHRESUP')]]>
+		</queryString>
+		<field name="registee" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Registee]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="BRUT_MENS_BASE" uuid="078e599c-a796-4494-a2f8-558ccd13085c">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.res_ne) res_ne
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('BRUT_MENS_BASE')]]>
+		</queryString>
+		<field name="res_ne" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[ResultNe]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="BRUT_MOIS_TOT" uuid="ef2b0b14-3e01-4717-aca3-e73796696c78">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.registee) registee
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('BRUT_MOIS_TOT')]]>
+		</queryString>
+		<field name="registee" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Registee]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="R_NETIMPOS" uuid="5b31d955-0bac-4d98-8bee-4c643f9f0285">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.registee) registee
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('R_NETIMPOS')]]>
+		</queryString>
+		<field name="registee" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Registee]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="CSG_DED" uuid="7a0f1402-d140-440d-9f06-6c1878071c90">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.res_ne) res_ne
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('CSG_DED')]]>
+		</queryString>
+		<field name="res_ne" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[ResultNe]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="CSG_NON_DED+CRDS_DED" uuid="b9eb6a33-94cd-47cd-a870-15a725a34144">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.res_ne) total
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('CSG_NON_DED','CRDS_DED')]]>
+		</queryString>
+		<field name="total" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="R_NETAPAYER" uuid="00b44565-d68e-42ca-a7c0-c081040760cb">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.registee) registee
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('R_NETAPAYER')]]>
+		</queryString>
+		<field name="registee" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Registee]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="R_TOTCOTSAL+R_TOTCOTPAT" uuid="6bc7691e-7951-426b-bc68-531f47d25353">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(abs(hgpl.registee)+abs(hgpl.register)) total
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('R_TOTCOTSAL','R_TOTCOTPAT')]]>
+		</queryString>
+		<field name="total" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="HRES_MOIS_CTT+R_TOTHREABS+R_TOTHRESUP" uuid="ed424dbe-fdfe-4085-8248-73682537a454">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_ETAB_IDS" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select
+sum(hgpl.res_ne)+sum(hgpl.registee) total
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+where rp.id = any(string_to_array(replace(btrim($P{CUSTOM_ETAB_IDS},'[]'),' ',''), ',')::int[])
+and to_char(hgp.date_begin,'YYYY-MM')>=to_char($P{CUSTOM_DATE_DEBUT}::date,'YYYY-MM')
+and to_char(hgp.date_end,'YYYY-MM')<=to_char($P{CUSTOM_DATE_FIN}::date,'YYYY-MM')
+and hgpd.name in ('HRES_MOIS_CTT','R_TOTHREABS','R_TOTHRESUP')]]>
+		</queryString>
+		<field name="total" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="CUSTOM_ETAB" class="java.lang.String"/>
+	<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String"/>
+	<parameter name="CUSTOM_DATE_FIN" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select he.id,rr.name,he.matricule
+ FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+JOIN resource_resource rr on he.resource_id=rr.id
+group by he.id,rr.name,he.matricule
+order by he.matricule
+limit 1]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="matricule" class="java.lang.String">
+		<fieldDescription><![CDATA[Matricule]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="8232bb79-7584-416d-a08d-6d3d9cfcc4c6" x="100" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="HRES_MOIS_CTT" uuid="d78ad3ab-868d-4717-8172-7fb887f5ecb3">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="6f7f2bac-836c-4bd5-b6bb-680bdc275ca0" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="571e90b3-320f-45af-b32a-9807988ce0bf" x="154" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_TOTHREABS" uuid="8f0a8add-d917-4bb0-9170-8281048ea390">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="f4a8ecb4-d46b-4900-a24f-9e08a9e76518" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="7cc1abfc-8bab-451d-9e07-9206b267a3b8" x="208" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_TOTHRESUP" uuid="1ab131cc-5bbc-45e3-bc05-150628c4eba3">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="26a91601-d9f4-4a3e-8df5-cf320029b631" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[( $F{registee}==null ? $F{registee} : "coucou" )]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="f148a0a4-8a39-49f2-befa-e88d1670f37c" x="316" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="BRUT_MENS_BASE" uuid="3e9304a8-f046-4ed3-946a-589d39768f6f">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="8c59d75d-6588-4ec2-b30f-cac894236443" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="eb3aa893-b9e9-471f-bb34-6765add07c08" x="370" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="BRUT_MOIS_TOT" uuid="9416467d-db9b-43ce-8e4c-6b686fb14e4a">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="bb62c5a4-bcda-4047-8f0c-c5be0f86a1e6" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="419baddd-b77f-48e3-9871-6a667876a04f" x="424" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_TOTCOTSAL" uuid="e42e7f21-cf9d-441b-b907-43099eb509cd">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField pattern="" isBlankWhenNull="true">
+							<reportElement uuid="8abb016f-9bc6-439f-9b24-2c268ae879fe" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="3b7148fe-30e8-446f-ab0c-8fce4d0bb284" x="478" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_TOTCOTPAT" uuid="ef363d24-637d-4609-8009-6f3677514a1f">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="d5e27372-b5c1-48bc-a2b7-e65d2ef72654" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{register}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="8929ea7c-917a-44de-a03d-08c5a56aa684" x="586" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_NETIMPOS" uuid="c57d8a6a-b732-4da3-ac8a-da01b3c5700d">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="6680bb1d-2633-4ac9-9cb2-2bde0d481b41" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="74866792-82b0-4be7-abd7-096939fdcbb9" x="640" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="CSG_DED" uuid="761caea0-75e4-4d56-80a8-c04c871442b9">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="358b73a4-25cc-473b-9dd1-ca5d68332844" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="141c19e3-b997-4cfc-afb6-d1e12e600f64" x="694" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="CSG_NON_DED+CRDS_DED" uuid="0f63f65b-19fe-40e5-a61c-fb4902c7f007">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="86d18d4e-0d73-4405-9921-214e598440a8" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="3d48ec8a-17e9-48c9-962d-cbdbff28e813" x="748" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_NETAPAYER" uuid="7677b8b2-b362-4159-80c7-658ddf64c57f">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="721ba5a6-9a2d-4327-9fd0-9d2d20a69442" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="8aedb63c-b0a2-4cfc-b55f-727d26ae911a" x="532" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_TOTCOTSAL+R_TOTCOTPAT" uuid="22943465-8252-4866-95fe-6e4563638762">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="5fc38fc5-eaf7-49a1-997e-7b70ba1fbeff" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="f2749c88-c856-4307-83d7-f935c1064b15" x="262" y="0" width="54" height="27"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="HRES_MOIS_CTT+R_TOTHREABS+R_TOTHRESUP" uuid="113f0561-4df2-4f9d-a5ac-f5709477ef9f">
+						<datasetParameter name="CUSTOM_ETAB_IDS">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_DEBUT">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_DEBUT}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CUSTOM_DATE_FIN">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_DATE_FIN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="27" width="54">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="b8290b84-e134-4f7e-beaa-59d538b4df78" x="0" y="0" width="54" height="27"/>
+							<box>
+								<bottomPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="2" rightIndent="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<line>
+				<reportElement uuid="75e1eb9b-1d2a-44d5-a8a9-23e86a80b316" x="0" y="26" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="499a8230-32cb-4b5d-8245-5c9829ae9579" x="0" y="0" width="100" height="27"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAUX]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,55 @@
+<openerp>
+    <data>
+    
+    <record model="ir.ui.view" id="recap_paye_view">
+            <field name="name">Journal de paye récapitulatif</field>
+            <field name="model">hr_gp.recap_paye</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml" >
+                    <form string="Journal de paye récapitulatif" col="4" version="7.0">
+                        <group colspan="4" col="4">
+                            <separator string="Établissements" colspan="4"/>
+                            <field name="etab_ids" domain="[('org_cotis2','!=',False)]" colspan="4" nolabel="1"/>
+                            <separator string="Date" colspan="4"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                        <footer>
+                            <button type="object" name="launch" string="Launch" icon="gtk-ok" /> 
+                            or
+                            <button class="oe_link" special="cancel" string="cancel" /> 
+                        </footer>
+                    </form>
+            </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="recap_paye_action">
+            <field name="name">Journal de paye récapitulatif</field>
+            <field name="res_model">hr_gp.recap_paye</field>
+            <field name="view_id" ref="recap_paye_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <!--<field name="context">{'jasper': {''}}</field>-->
+            <field name="target">new</field>
+    </record>
+    
+   <menuitem id="recap_paye" icon="terp-hr" name="Journal de paye récapitulatif" parent = "menu_pay_report" action="recap_paye_action" sequence="30"/>
+
+      
+    
+    <record model="jasper.document" id="jasper_recap_paye">
+        <field name="name">Journal de paye récapitulatif</field>
+        <field name="depth">2</field>
+        <field name="jasper_file">recap_paye.jrxml</field>
+        <field name="format_choice">mono</field>
+        <field name="model_id" ref="hr_gp.model_hr_gp_recap_paye"/>
+        <field name="enabled" eval="1"/>
+        <field name="report_unit">recap_paye</field>
+        <field name="mode">sql</field>
+        <field name="service">recap_paye</field>
+        <field name="format">PDF</field>
+        <field name="toolbar" eval="0"/>
+    </record><!--
+    -->
+</data>
+</openerp>

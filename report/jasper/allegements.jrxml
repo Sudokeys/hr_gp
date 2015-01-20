@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="allegements" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5e7166ed-9edb-4951-a7b1-e0cf7660c062">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select ratr,he.id he_id,hgpd.name hgpd_name,sum(registee) registee from hr_gp_payslip_line hgpl
+join hr_gp_payslip hgp on hgp.id=hgpl.pay_id
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON he.id=hgc.employee_id
+where hgpd.name in ('BRUT_MOIS_TOT','BRUT_MENSFILLON','SMIC_FILLON','RED_FILLON')
+group by ratr,he.id,hgpd.name
+]]>
+	</queryString>
+	<field name="ratr" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Rate employer]]></fieldDescription>
+	</field>
+	<field name="he_id" class="java.lang.Integer"/>
+	<field name="hgpd_name" class="java.lang.String"/>
+	<field name="registee" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Registee]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

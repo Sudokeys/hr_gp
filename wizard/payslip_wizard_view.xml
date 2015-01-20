@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_gen_accmove_wizard" model="ir.ui.view">
+            <field name="name">Generate account moves</field>
+            <field name="model">gen.accmov.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Generate account moves" version="7.0">
+                    <separator colspan="4" string="Bulletins de paie" />
+                    <group>
+                        <field name="payslip_ids" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="launch" string="Launch" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_gen_accmove_wizard" model="ir.actions.act_window">
+            <field name="name">Generate account moves</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">gen.accmov.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_gen_accmove_wizard"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+        <record model="ir.values" id="gen_accmove_wizard">
+            <field name="model_id" ref="hr_gp.model_hr_gp_payslip" />
+            <field name="name">Generate account moves</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_gen_accmove_wizard'))" />
+            <field name="key">action</field>
+            <field name="model">hr_gp.payslip</field>
+        </record>
+
+        <record id="view_calc_wizard" model="ir.ui.view">
+            <field name="name">Calculate</field>
+            <field name="model">calc.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Calculate" version="7.0">
+                    <separator colspan="4" string="Bulletins de paie" />
+                    <group>
+                        <field name="payslip_ids" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="launch" string="Launch" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_calc_wizard" model="ir.actions.act_window">
+            <field name="name">Calculate</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">calc.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_calc_wizard"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+        <record model="ir.values" id="calc_wizard">
+            <field name="model_id" ref="hr_gp.model_hr_gp_payslip" />
+            <field name="name">Calculate</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_calc_wizard'))" />
+            <field name="key">action</field>
+            <field name="model">hr_gp.payslip</field>
+        </record>
+        
+        <record id="view_action_validate_wizard" model="ir.ui.view">
+            <field name="name">Validate</field>
+            <field name="model">action.validate.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Validate" version="7.0">
+                    <separator colspan="4" string="Bulletins de paie" />
+                    <group>
+                        <field name="payslip_ids" nolabel="1"/>
+                    </group>
+                    <footer>
+                        <button name="launch" string="Launch" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_action_validate_wizard" model="ir.actions.act_window">
+            <field name="name">Validate</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">action.validate.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_action_validate_wizard"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+        <record model="ir.values" id="action_validate_wizard">
+            <field name="model_id" ref="hr_gp.model_hr_gp_payslip" />
+            <field name="name">Validate</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_action_validate_wizard'))" />
+            <field name="key">action</field>
+            <field name="model">hr_gp.payslip</field>
+        </record>
+    </data>
+</openerp>

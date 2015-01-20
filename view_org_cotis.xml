@@ -1,0 +1,145 @@
+<openerp>
+<data>
+    
+    <record id="view_ducs_tree" model="ir.ui.view">
+        <field name="name">hrgp_ducs.tree</field>
+        <field name="model">hr_gp.ducs</field>
+        <field name="type">tree</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="DUCS">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_org_cotis_group_form" model="ir.ui.view">
+        <field name="name">hrgp_org_cotis_group.form</field>
+        <field name="model">hr_gp.org_cotis_group</field>
+        <field name="type">form</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <form string="Groupe Organismes de cotisations">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="org_cotis_ids"/>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_org_cotis_group_tree" model="ir.ui.view">
+        <field name="name">hrgp_org_cotis_group.tree</field>
+        <field name="model">hr_gp.org_cotis_group</field>
+        <field name="type">tree</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Groupe Organismes de cotisations">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_org_cotis_tree" model="ir.ui.view">
+        <field name="name">hrgp_org_cotis.tree</field>
+        <field name="model">hr_gp.org_cotis</field>
+        <field name="type">tree</field>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Organismes de cotisations">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="groupe" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_org_cotis_form" model="ir.ui.view">
+        <field name="name">hrgp_org_cotis.form</field>
+        <field name="model">hr_gp.org_cotis</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Organisme de cotisations">
+                <group col="6">
+                    <field name="code" colspan="2"/>
+                    <field name="name"/>
+                    <newline/>
+                    <field name="name_long" colspan="6"/>
+                    <field name="sous_titre" colspan="6"/>
+
+                    <field name="code_org" colspan="2"/>
+                    <field name="groupe" colspan="2"/>
+                    <newline/>
+                    <field name="n_affil" colspan="2"/>
+                    <field name="siret" colspan="2"/>
+                    <newline/>
+                    <separator string="Adresse" colspan="6"/>
+                    <field name="contact" colspan="2"/>
+                    <newline/>
+                    <field name="street" colspan="6"/>
+                    <field name="street2" colspan="6"/>
+                    <field name="zip" colspan="2"/>
+                    <field name="city" colspan="3"/>
+                    <newline/>
+                    <field name="phone" colspan="2"/>
+                    <field name="fax" colspan="2"/>
+                    <newline/>
+                    <field name="mobile" colspan="2"/>
+                    <field name="email" colspan="2"/>
+                    <newline/>
+                    <separator string="DUCS" colspan="6"/>
+                    <field name="ducs" nolabel="1" colspan="6">
+                        <tree>
+                            <field name="code"/>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                    <separator string="Références" colspan="2"/>
+                    <separator string="Dates" colspan="2"/>
+                    <separator string="Décalage" colspan="2"/>
+                    <newline/>
+                    <label string="Exigibilité" colspan="2"/>
+                    <field name="exi_date" colspan="2" nolabel="1"/>
+                    <field name="exi_deca" colspan="2" nolabel="1"/>
+                    <newline/>
+                    <label string="Limite de dépôt" colspan="2"/>
+                    <field name="depot_date" colspan="2" nolabel="1"/>
+                    <field name="depot_deca" colspan="2" nolabel="1"/>
+                    <newline/>
+                    <label string="Paiement" colspan="2"/>
+                    <field name="paie_date" colspan="2" nolabel="1"/>
+                    <field name="paie_deca" colspan="2" nolabel="1"/>
+                    <newline/>
+                    <label string="Versement" colspan="2"/>
+                    <field name="vers_date" colspan="2" nolabel="1"/>
+                    <field name="vers_deca" colspan="2" nolabel="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_org_cotis_filter" model="ir.ui.view">
+        <field name="name">hrgp_org_cotis.select</field>
+        <field name="model">hr_gp.org_cotis</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Organismes de cotisations">
+               <field name="code"/>
+               <field name="name"/>
+               <field name="groupe"/>
+               <field name="code_org"/>
+               <field name="ducs"/>
+               <newline/>
+               <group expand="1" string="Grouper par...">
+                   <filter string="Groupe" name="groupe_by" icon="STOCK_INDENT" domain="[]" context="{'group_by' : 'groupe'}" />
+               </group>
+           </search>
+        </field>
+    </record>
+    
+    
+    
+    
+</data>
+</openerp>

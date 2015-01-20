@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="declaration_pole_emploi_subreport3" language="groovy" pageWidth="572" pageHeight="752" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a29ffd3b-f366-4092-98f3-b8d206cf3f1a">
+	<property name="ireport.zoom" value="1.24184264611831"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="contract_id" class="java.lang.Integer"/>
+	<parameter name="employee_name" class="java.lang.String"/>
+	<parameter name="nosecu" class="java.lang.String"/>
+	<parameter name="employer_name" class="java.lang.String"/>
+	<parameter name="age" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/openerp/Bureau/adn/attestation_pole_emploi/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 1 as page]]>
+	</queryString>
+	<field name="page" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="304" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="3b2cfc8b-77f3-4b8b-9b47-331795e794cb" x="0" y="13" width="572" height="20" backcolor="#EDECEB"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement uuid="3d5df717-e35a-45ba-8050-75f7edef43f8" mode="Opaque" x="0" y="50" width="572" height="249"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement uuid="7d0c8e88-1633-4bd4-974d-687863af267a" x="27" y="39" width="400" height="20" backcolor="#EDECEB"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="81bcc727-960b-4d26-9a6c-0397b7ec24fd" x="49" y="39" width="394" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[7.3. Sommes versées à l'occasion de la rupture (solde de tout compte)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d8ff6e9d-9b15-4505-bf6c-0198e54a7f2f" x="12" y="59" width="331" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salaires (versé après le dernier mois civil mentionné au cadres 7.1)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="acd3df0e-fda4-44eb-a124-ee53dac1fbaa" x="12" y="85" width="182" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Indemnité compensatrice de préavis:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac035406-1b70-4a4a-ad9c-94c0e97140ba" x="295" y="85" width="198" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Indemnité compensatrice de congés payés :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="00f0212d-0404-4ac7-bccc-5e299731e040" x="170" y="13" width="233" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{employer_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="12eb8655-f065-4a0b-ad75-f2169977c49a" x="12" y="13" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{employee_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d554f527-b608-4bd9-b83e-eee9f40a66bf" x="427" y="13" width="128" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{nosecu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ba052500-8849-4ba8-a169-6f4d9a0049e2" x="194" y="85" width="66" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7cf8d882-23f7-4b18-84d0-cc2a844f3d3c" x="493" y="85" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cffde668-bb04-49e8-a5d0-61370cf760d4" x="295" y="98" width="198" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre de jours ouvrables :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="75f55595-0d52-4a5a-9534-f78abfb4266b" x="493" y="98" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="58ceedd3-65ad-4edd-8d26-42caf4ddddc6" x="295" y="111" width="198" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Indemnité due par une caisse professionelle :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="afe171d8-16df-49e9-bb74-9e45794cf377" x="493" y="111" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="11667b73-960c-43bb-bbf7-70edca6d1c8f" x="12" y="124" width="481" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total des sommes ou indemnités légales, conventionnelles ou transactionnelles inhérente à la rupture :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="47299909-0e9c-4184-bffc-af004ded03fc" x="493" y="124" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0389c64a-aba5-49d8-aed2-0cf66d8fdf35" x="12" y="137" width="209" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant correspondant aux indemnités légales :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="64d273d7-d1cf-4561-be67-d331bd840f17" x="221" y="137" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4bd9f131-ae57-451c-93f4-2d58642198ad" x="49" y="150" width="87" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dont indemnités :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="33fe8afd-9810-4478-9a8a-240175b112d5" x="295" y="163" width="185" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[spéciale de licenciement :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac851f3a-e017-459d-9b2a-d69404c04d4a" x="493" y="163" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d9e1c45c-4a6a-4a3b-a60b-ce37c8dd7eb2" x="295" y="176" width="185" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[spécifique de licenciement :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0ec8bcd8-fd2c-489b-8efc-d449c310b158" x="493" y="176" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2f6e2276-ce04-49d2-b7a6-cf64479982a3" x="12" y="176" width="168" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[légale de licenciement :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3cbb453c-94cf-4921-9235-6ec3a57abede" x="180" y="176" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d964db03-3059-4679-b68a-2f0a8a6998d6" x="12" y="189" width="168" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[minimale de rupture conventionnelle :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="375f3594-e663-49cf-9bcc-6ad0bbbc200b" x="180" y="189" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="735364fe-b80d-4dd1-a4e2-88f544f29a75" x="295" y="189" width="185" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Due aux journalistes :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="28452157-2cf0-4ed0-9980-cac7595c1384" x="295" y="203" width="185" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Légale de clientèle :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="69455052-220d-43e7-96e4-380775ac9d95" x="12" y="203" width="243" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(Montant correspondant à celui de l'indemnité légale de licenciement).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d9c6505-8740-45f6-a0ae-bd2c6ccdb229" x="295" y="216" width="185" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[légale due au personnel de l'aviation civile :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2f042c79-8cf4-4b03-95e7-e22dc6cb3aef" x="480" y="189" width="14" height="40"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[}]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9c1d9340-d3d6-46bf-92c2-28e12cb896a3" x="493" y="203" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="da3b6d24-84d4-46d8-afc1-843bc69a6491" x="12" y="216" width="168" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fin de contrat à durée déterminée :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="20bf6ba1-a9b5-4a62-be84-fe1046385984" x="12" y="229" width="168" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[de fin de mission :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="54a6befc-1373-45ff-b041-df12ecfa00ed" x="12" y="242" width="168" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[de départ à la retraite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc674938-33b6-4808-b0f4-99a74496922f" x="180" y="216" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6eadcade-a2c5-4c2e-9770-fc72a153fbb6" x="180" y="229" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8eea283c-c398-4beb-8141-fc3b800ad23f" x="180" y="242" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b0c55386-4174-412d-899f-d25c39293437" x="296" y="229" width="185" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Versée à l'apprenti en application art. L6225-5 al.2 du CT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="76e0eb2b-52a4-4cf4-a433-cf2f72d04bc4" x="494" y="229" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5782c003-f170-48e3-b8e8-58d60b036ce4" x="296" y="242" width="185" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[due en raison d'un sinistre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b4702967-3aac-4f18-b32a-7d880323be10" x="494" y="242" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a929eae-0a9d-4ef8-9c06-5f69f36ade3a" x="296" y="255" width="185" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[autres indemnités légales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="011ca833-e9d9-4f71-bdb8-df837121f230" x="494" y="255" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2828a33-7db9-4302-9fc4-b01f830ed841" x="12" y="268" width="262" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant correspondant aux indemnités conventionnelles (convention collective)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6f51aa34-2fad-47df-9c2b-f0baf78d9fd9" x="274" y="268" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b3223f03-fc1e-49cc-8eb2-94be668b1557" x="12" y="281" width="262" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant correspondant aux indemnités transactionnelles (transaction)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6555a061-08d8-4b0e-8a0a-d01d91844caf" x="274" y="281" width="75" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[0.00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eec2dcc4-cbb3-49b4-8491-4c137ce88235" x="349" y="281" width="132" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Une transaction est-elle en cours ?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5654a419-1c4d-4849-9976-7d769ca4cac5" x="494" y="281" width="24" height="13"/>
+				<textElement/>
+				<text><![CDATA[Non]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="334" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="32da013b-22b7-4212-a605-db32a2c15eff" stretchType="RelativeToTallestObject" x="0" y="109" width="572" height="214"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement uuid="4636aef4-3f29-4361-88d7-2d3b01a2042c" x="27" y="99" width="528" height="20" backcolor="#EDECEB"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="23976c2b-1aa9-4ef8-9729-29158b41f20b" x="49" y="99" width="495" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[9. Authentification par l'employeur]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement uuid="5ddde121-6354-41d5-84c7-3052fc1794ab" x="0" y="20" width="572" height="69"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement uuid="f55c1374-89f8-4e69-af33-d206eb4b0308" x="27" y="10" width="316" height="20" backcolor="#EDECEB"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="12833c32-a588-431a-b7c4-dc673d86f19b" x="49" y="10" width="279" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[8. Avance du fonds national de garantie des salaires]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d9a300c-cb4e-4a75-bede-1c901b10eda2" x="12" y="40" width="468" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[En cas de redressement ou de liquidation judiciaire, une avance de l'AGS :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4dc339e3-52f9-4b95-b813-5aa5694e3f26" x="136" y="53" width="24" height="13"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Non]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9022c5f5-40ce-44a4-83c5-74a5146a5860" x="12" y="53" width="124" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A-t-elle été percue ?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ca2bf33e-d573-4cf2-a033-5d21459e4dfc" x="160" y="53" width="100" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pour quelles créances ? ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bbd2033a-a29e-4f2b-b58e-2ea08659b043" x="274" y="53" width="294" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="de7448f5-e256-48d7-bf7b-bb2aa98180c3" x="12" y="66" width="124" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Est-elle à percevoir ?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f0da699c-d598-481a-820a-ee798a5e56cf" x="136" y="66" width="24" height="13"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Non]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a533b20-f36e-4854-9af8-8a75ce9e5b22" x="160" y="66" width="34" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Motif :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d069c656-12dd-4f10-ad61-b28e70174749" x="194" y="66" width="374" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[______________________________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="143f312e-71c5-4c05-9623-f61dd7a99812" x="12" y="129" width="75" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Je soussigné(e), (nom)  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ecc9f80b-16fe-4a54-b0fa-ec2dba39618f" x="296" y="129" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(prénom)  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e5a03e38-5e1b-4cfb-aa70-9c2e755c8d5b" x="87" y="129" width="197" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8756bc18-77c6-4f94-8fe9-b3da62ac363c" x="343" y="129" width="197" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d89d8c7c-d63d-440b-8318-82fbb91cad57" x="12" y="142" width="75" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Agissant en qualité de :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="088b51e0-aa94-419c-83ed-7d6b8b1dc3de" x="87" y="142" width="197" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f74c7f44-3b6d-4bb1-849a-c6a47a9dec5b" x="12" y="155" width="532" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Certifie que les renseignements indiqués sur la présente attestation sont exacts, notamment, le motif de la rupture du contrat de travail qui est je le rappelle, le suivant :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d9aa4260-602c-401b-ac91-1da35a7ca883" x="12" y="168" width="532" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(__)  _______________________________________________________________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d03673f1-9624-4861-b238-7725d60f5d12" x="12" y="181" width="532" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[En cas de rupture conventionnelle, atteste n'avoir pas reçu de refus d'homologation de la convention de la part de la DDTEFP ou, le cas échéant, de refus de l'inspection du travail.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22e2fba7-b327-4e69-a989-f87fd34258e9" x="12" y="203" width="37" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fait à  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4b5dd045-46df-4f8d-a9bb-760842cd849a" x="49" y="203" width="131" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="27995bb3-ea8a-4a10-9a9c-781d33cbc8f4" x="184" y="203" width="37" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[, le :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="913e132d-e6a4-4fe8-8bbb-0011227691c6" x="221" y="203" width="131" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fdf39182-def9-4bd8-b614-b6bd71dfe1aa" x="12" y="216" width="158" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Personne à joindre concernant cette attestation :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d58d4957-a310-47cc-b5c7-90c2339ef37e" x="170" y="216" width="374" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0b75f3db-e93e-4677-8f68-ad310e62754f" x="125" y="229" width="45" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Téléphone :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e9a1d8c3-70cc-4a80-bd2b-4a157cac2c8d" x="170" y="229" width="131" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9cc0d30d-c706-4ebc-9ba8-a4fa1873bccc" x="12" y="242" width="45" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6113885c-8e53-4b69-98f2-c460c03efbfc" x="427" y="242" width="117" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cachet de l'entreprise :]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

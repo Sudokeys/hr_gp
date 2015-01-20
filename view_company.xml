@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+ 	<record model="ir.ui.view" id="company_form_view">
+        <field name="name">hrgp_company.form</field>
+        <field name="model">hr_gp.company</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Company form" version="7.0">
+                <sheet>
+                    <div>
+                        <h1>Société</h1>
+                    </div>
+                <group>
+                <field name="name"/>
+                <newline/>
+                <field name="description"/>
+                <newline/>
+                <field name="active" />
+                </group>
+                <notebook colspan="4">
+                    <page string= "Payroll parameters">
+                        <field name="params" colspan="4" nolabel="1" >
+                            <tree string="parameters">
+                                <field name="param_name" domain="[('entity_type','=','cny')]"/>
+                                <field name="title"/>
+                                <field name="date_begin"/>
+                                <field name="date_end2"/>
+                                <field name="inp"/>
+                                <field name="res_n"/>
+                                <field name="res_d"/>
+                                <field name="format"/>
+                            </tree>
+                            <form string="parameters">
+                                <field name="param_name" domain="[('entity_type','=','cny')]"/>
+                                <field name="title"/>
+                                <field name="entity_type"/>
+                                <field name="format"/>
+                                <newline/>
+                                <separator colspan="4"/>
+                                <field name="inp"/>
+                                <newline/>
+                                <separator colspan="4"/>
+                                <field name="res_n"/>
+                                <newline/>
+                                <field name="res_d"/>
+                                <newline/>
+                                <field name="res_t2"/>
+                                <newline/>
+                                <separator colspan="4"/>
+                                <field name="date_begin"/>
+                                <field name="date_end2"/>
+                            <!--    <field name="employee_key"/> -->
+                            </form>
+                        </field>
+                    </page>
+                    <page string="Cumuls">
+                        <field name="cumuls" colspan="4" nolabel="1">
+                            <tree string="Cumuls val tree">
+                                <field name="param_name"/>
+                                <field name="title"/>
+                                <field name="year_cum"/>
+                                <field name="moan"/>
+                                <field name="mo1"/>
+                                <field name="mo2"/>
+                                <field name="mo3"/>
+                                <field name="mo4"/>
+                                <field name="mo5"/>
+                                <field name="mo6"/>
+                                <field name="mo7"/>
+                                <field name="mo8"/>
+                                <field name="mo9"/>
+                                <field name="mo10"/>
+                                <field name="mo11"/>
+                                <field name="mo12"/>
+                                <field name="last_update"/>
+                                <field name="company_key"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="company_tree_view">
+        <field name="name">hrgp_company.tree</field>
+        <field name="model">hr_gp.company</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Company tree form">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+</data>
+</openerp>

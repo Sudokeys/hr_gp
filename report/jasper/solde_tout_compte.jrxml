@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="solde_tout_compte" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="28b83914-c801-4424-a13e-18a495f557a4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="153"/>
+	<parameter name="CUSTOM_EMPL_ID" class="java.lang.Integer"/>
+	<parameter name="CUSTOM_SOMME" class="java.lang.Float"/>
+	<parameter name="CUSTOM_SOMME_LETTRE" class="java.lang.String"/>
+	<parameter name="CUSTOM_METHODE_PAYE" class="java.lang.String"/>
+	<parameter name="CUSTOM_LIEU_SIGNATURE" class="java.lang.String"/>
+	<parameter name="CUSTOM_DATE" class="java.lang.String"/>
+	<parameter name="CUSTOM_CONTRAT_ID" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/yns/jasperreports-server-cp-5.0.0/samples/reports/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select name_related,res_partner.street,res_partner.zip,city2 from hr_employee,res_partner  where hr_employee.id=$P{CUSTOM_EMPL_ID} and hr_employee.address_home_id = res_partner.id
+union
+select name_related,street,zip,city2 from hr_employee  where hr_employee.id=$P{CUSTOM_EMPL_ID}
+limit 1]]>
+	</queryString>
+	<field name="name_related" class="java.lang.String">
+		<fieldDescription><![CDATA[Name]]></fieldDescription>
+	</field>
+	<field name="street" class="java.lang.String">
+		<fieldDescription><![CDATA[Street]]></fieldDescription>
+	</field>
+	<field name="zip" class="java.lang.String"/>
+	<field name="city2" class="java.lang.String">
+		<fieldDescription><![CDATA[city]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="2" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="105" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="cbc8fd96-2967-4188-9bb3-c50a34bb3ba5" x="3" y="3" width="200" height="100"/>
+				<subreportParameter name="CUSTOM_CONTRAT_ID">
+					<subreportParameterExpression><![CDATA[$P{CUSTOM_CONTRAT_ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:solde_tout_compte_etbl.jrxml"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="27bdd400-b973-46ac-9596-3334da3e63b8" mode="Opaque" x="178" y="0" width="213" height="20" backcolor="#00FFDB"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REÇU POUR SOLDE DE TOUT COMPTE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="463" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ffbb9a16-feb7-40d1-9b1c-2a48b7cc9188" x="19" y="9" width="65" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<text><![CDATA[Je soussigne ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a74e7333-0c6e-4881-b202-8521a714841a" x="19" y="29" width="50" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<text><![CDATA[demeura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2948fc8d-ddbf-4d8e-8f1a-81e93fe4c4e6" x="19" y="83" width="241" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<text><![CDATA[Reconnais avoir reçu de mon employeur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cb3f8fca-8ae0-42eb-8491-5de1bb2e2be8" x="19" y="103" width="75" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<text><![CDATA[la somme de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="21ed79ab-427c-4c8d-b159-cc0df3e3e83c" x="143" y="103" width="13" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<text><![CDATA[€,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b12f6881-af17-4059-8e2b-3a964ccaefbb" x="19" y="146" width="514" height="40" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<text><![CDATA[Cette solde m'est versée, pour solde de tout compte, en paiement des salaires, accessoires du salaires, remboursements de toute nature dus au titre de l'exécution et de la cessation de mon contrat de travail.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="848a3608-f107-4a9d-b2ce-7fa70bd5324d" x="19" y="186" width="514" height="29" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<text><![CDATA[Avant déduction des charges sociales, cette somme que j'ai perçue correspond à un montant se décomposant comme suit:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4ef62f60-c8b4-42be-adfc-0c9e521d6e5b" x="19" y="246" width="514" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<text><![CDATA[Le présent reçu pour solde de tout compte a été établi en double exemplaire, dont un m'a été remis.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="92802a91-d885-4791-94a9-48742b4b423a" x="19" y="281" width="514" height="29" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<text><![CDATA[Je suis informé(e) que ce reçu peut être dénoncé dans les 6 mois à compter de la date indiquée ci-après et que, passe ce délai, je ne serai plus  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ccc8793a-7e5a-4a0f-bfd0-2e729ed80ff8" x="297" y="349" width="32" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fait à:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="25d97e11-001e-4f55-a1dd-b652a609af33" x="439" y="349" width="21" height="20"/>
+				<textElement/>
+				<text><![CDATA[,le]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6d29216c-afbd-48f6-9b79-6af6f08019b9" x="335" y="379" width="104" height="47" isPrintInFirstWholeBand="true"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Mention manuscrite pour solde de tout compte et signature du salarié]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="589d1aaf-c84a-429e-b656-c1ca11721159" x="84" y="9" width="389" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name_related}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="348105bf-49e4-47f7-b7cb-2ab2a50a15cb" x="68" y="29" width="405" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{street}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5f6e0f89-19bd-479f-b3c4-718b791a123a" x="68" y="49" width="65" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{zip}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7a7dd1ea-747c-4d61-adea-b367f1290493" x="133" y="49" width="196" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{city2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="10060c06-c533-4bd2-a9f7-f5e081784dba" x="94" y="103" width="49" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_SOMME}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7446b96f-937f-43f5-b85d-54019caf41f7" x="156" y="103" width="377" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_SOMME_LETTRE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a2d5bf80-08ee-4c4e-a4f7-d32286d1c160" x="19" y="126" width="514" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_METHODE_PAYE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="68200787-e175-466d-b407-064584aa7881" x="329" y="349" width="110" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_LIEU_SIGNATURE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="163677cb-4610-4cf4-a1bf-e6874c1d0006" x="460" y="349" width="73" height="20" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{CUSTOM_DATE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

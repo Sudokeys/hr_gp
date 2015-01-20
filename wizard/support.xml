@@ -1,0 +1,80 @@
+<openerp>
+    <data>
+    
+        <!--  =========== VIEWS =========== -->    
+        <record model="ir.ui.view" id="view_paye_support">
+            <field name="name">hr_gp.support_export</field>
+            <field name="model">hr_gp.support_export</field>
+            <field name="type">form</field>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <form col="2" string="Custom Report">
+                    <group col="2" states="choose">
+                        <separator string="Exporter vos données" colspan="2"/>
+                        <field name="dictionary"/>
+                        <field name="model" />
+                        <field name="ducs" />
+                        <field name="org_cotis" />
+                        <separator colspan="2"/>
+                        <button special="cancel" icon="gtk-cancel" string="Cancel"/>
+                        <button type="object" name="create_export" icon="gtk-go-forward" string="Create"/>
+                        <field invisible="1" name="state"/>
+                   </group>
+                    <group col="2" fill="0" states="get">
+                        <separator colspan="2" string="Export terminé"/>
+                        <field name="name" invisible="1" width="100"/>
+                       <field name="data" nolabel="1" readonly="1" width="100" filename="name"/>
+                   </group>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_paye_support_import">
+            <field name="name">hr_gp.support_import</field>
+            <field name="model">hr_gp.support_import</field>
+            <field name="type">form</field>
+            <field name="priority">16</field>
+            <field name="arch" type="xml">
+                <form col="2" string="Importation">
+                    <group>
+                        <field name="data" colspan="4" />
+                        <button special="cancel" icon="gtk-cancel" string="Cancel" colspan="2"/>
+                        <button type="object" name="create_import" icon="gtk-go-forward" string="Importer" colspan="2" />
+                   </group>
+                </form>
+            </field>
+        </record>
+
+        <!--  =========== ACTIONS =========== -->    
+        
+        <record model="ir.actions.act_window" id="action_support_export">
+            <field name="name">hr_gp.support_export</field>
+            <field name="res_model">hr_gp.support_export</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_support_import">
+            <field name="name">hr_gp.support_import</field>
+            <field name="res_model">hr_gp.support_import</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <!--  =========== MENU ITEMS =========== -->
+        <menuitem id="menu_support" name="Support paie"
+                    parent="menu_config" 
+                    sequence="80" />
+        <menuitem id="menu_support_export" name="Exporter vos paramètres"
+                    action="action_support_export"
+                    parent="menu_support" 
+                    sequence="10" />
+        <menuitem id="menu_support_import" name="Importer des paramètres de paie"
+                    action="action_support_import"
+                    parent="menu_support" 
+                    sequence="10" />
+        
+        
+    </data>
+</openerp>

@@ -1,0 +1,2544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="anomalies" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bbf9d132-1e2d-42a6-bbf4-7d1621a39a9d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 13">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 13_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 13_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 13_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 14">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 14_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 14_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 14_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 15">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 15_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 15_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 15_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 16">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 16_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 16_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 16_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 21">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 21_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 21_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 21_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 22">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 22_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 22_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 22_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 23">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 23_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 23_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 23_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 24">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 24_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 24_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 24_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 25">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 25_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 25_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 25_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 26">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 26_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 26_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 26_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 27">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 27_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 27_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 27_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 28">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 28_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 28_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 28_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 29">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 29_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 29_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 29_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 30">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 30_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 30_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 30_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 31">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 31_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 31_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 31_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 32">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 32_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 32_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 32_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="name_fille" uuid="a6bb064c-5f0f-41a6-be44-6be64a5a21c6">
+		<queryString>
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and gender='female' and name_fille is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="date_entree" uuid="7964a51f-a7a1-4a60-b331-e50b29dd0a4d">
+		<queryString>
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and date_entree is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="birthday" uuid="579b1164-54ac-46ec-a34d-fcc8fce8ad58">
+		<queryString>
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and birthday is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="birthplace" uuid="1da48a45-1425-4366-90bc-bdef2f0c004e">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and birthplace is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="departement" uuid="c9bac53c-fc1d-47c4-b64f-2349a8a9db2d">
+		<queryString>
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and departement is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="birthcountry" uuid="622108d8-006e-4168-9843-25ca04f0199e">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and birthcountry is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="nationalite" uuid="e579a21c-d2ee-4b9c-9012-4653ad4ac1ba">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and nationalite is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="street" uuid="2b7528fa-949a-4347-94da-9974ad7e4ce6">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and street is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="ville" uuid="0b1ce860-70cb-4a36-aeab-90abfe5789ee">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and ville is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="zone_habitat" uuid="50ea761b-d667-42be-b69c-79b567c54e9d">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and zone_habitat is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="niveau" uuid="9615aaf3-70c0-4a40-9196-df43454cd375">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and niveau is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="rsa_allocation" uuid="2f36bb99-ce82-4ab6-9324-34dc220abbd4">
+		<queryString>
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and pole_emploi=True and rsa_allocation is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="rsa_dte_debut" uuid="e7d51808-6acb-40bb-82ba-ceb42a23d8ad">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and rsa=True and rsa_dte_debut is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="debut_aah" uuid="3171645e-e30b-473d-883f-5dc3318aacf4">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and aah=True and debut_aah is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="last_job" uuid="d77f0c8d-547d-4889-bc4c-cb4a764727b7">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and last_job is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="sans_emploi" uuid="1af33b01-8053-43a9-bae1-2d07e7b53c40">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and sans_emploi is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="first_mad_date" uuid="6dd386ac-6bc4-4059-a50d-e35e7f233dd5">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and first_mad_date is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="first_mad_date_ent" uuid="f3be77f9-eef8-43aa-b3ee-52ab81b7142e">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and first_mad_date_ent is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="rome_mad" uuid="f3405b60-8ba3-49da-9463-3c44d4fac4e3">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and rome_mad is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="rib" uuid="1d7d269c-d288-4040-9604-349528112cba">
+		<queryString>
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and (rib_code_banque is null or rib_code_guichet  is null or rib_num_compte is null or rib_cle is null)]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="canton" uuid="0c85f4a0-6787-4ad1-bcb5-3edf02e223e4">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and canton is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="prescripteur" uuid="6f4ee712-35aa-47dc-b6ee-6de942f5c0fd">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and prescripteur is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="sortie_situation" uuid="23258717-5c93-4606-8653-a650f5ebf4db">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_sortie
+join hr_employee on employee_id=hr_employee.id
+where state in ('actif','archive') and situation is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="sortie_type_emploi_id" uuid="549a8593-f692-48f5-aa28-2074a853f8a5">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_sortie
+join hr_employee on employee_id=hr_employee.id
+where state in ('actif','archive') and type_emploi_id is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="sortie_type_entreprise" uuid="06e9505d-4a29-4489-a9b6-bacefbe56cd6">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_sortie
+join hr_employee on employee_id=hr_employee.id
+where state in ('actif','archive') and type_entreprise is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="sortie_secteur_activite" uuid="b14f70ce-89f4-4a7f-88a7-4ce686bbbc71">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_sortie
+join hr_employee on employee_id=hr_employee.id
+where state in ('actif','archive') and secteur_activite is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="sortie_lieu" uuid="fec251ba-30d9-415d-8bf7-f4ea869ead97">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_sortie
+join hr_employee on employee_id=hr_employee.id
+where state in ('actif','archive') and lieu is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="debut_rqth" uuid="9f58c45c-6346-42c6-9173-caeec1bf0b3a">
+		<queryString language="SQL">
+			<![CDATA[select code,name3,prenom from hr_employee where state in ('actif','archive') and rqth=True and debut_rqth is null]]>
+		</queryString>
+		<field name="code" class="java.lang.String">
+			<fieldDescription><![CDATA[Code]]></fieldDescription>
+		</field>
+		<field name="name3" class="java.lang.String">
+			<fieldDescription><![CDATA[name3]]></fieldDescription>
+		</field>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="type_formation" uuid="5fc99d69-9f0f-4e39-9662-d2289aa5f058">
+		<queryString language="SQL">
+			<![CDATA[select name from event_event where type='3' and type_formation is null]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="client_pro_ape" uuid="3bc24b3f-379c-4be5-9dca-d2461f815aff">
+		<queryString>
+			<![CDATA[select ref,name,prenom from res_partner where typologie='pro' and ape is null]]>
+		</queryString>
+		<field name="ref" class="java.lang.String">
+			<fieldDescription><![CDATA[Ref.]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String"/>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="client_pro_siret" uuid="4071ebf9-ce1c-4ef6-9a47-7cb13992136c">
+		<queryString>
+			<![CDATA[select ref,name,prenom from res_partner where typologie='pro' and siret is null]]>
+		</queryString>
+		<field name="ref" class="java.lang.String">
+			<fieldDescription><![CDATA[Ref.]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String"/>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="client_pro_effectif" uuid="51f5315f-cb44-4b57-bee2-3bdda94fd9b2">
+		<queryString>
+			<![CDATA[select ref,name,prenom from res_partner where typologie='pro' and effectif is null]]>
+		</queryString>
+		<field name="ref" class="java.lang.String">
+			<fieldDescription><![CDATA[Ref.]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String"/>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="client_mode_reglement" uuid="346d3d29-938f-4623-aca2-bfc0351ffc09">
+		<queryString>
+			<![CDATA[select ref,name,prenom from res_partner where mode_reglement is null]]>
+		</queryString>
+		<field name="ref" class="java.lang.String">
+			<fieldDescription><![CDATA[Ref.]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String"/>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[select code,name3,prenom from hr_employee]]>
+	</queryString>
+	<field name="name3" class="java.lang.String">
+		<fieldDescription><![CDATA[name3]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f0d2ea90-8ab6-4e63-9065-a9946d0b3c4b" x="0" y="3" width="555" height="59"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[ANOMALIES]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="15a599b9-4ff8-4b48-a771-c1a359d01be1" key="table" style="table" positionType="Float" x="0" y="62" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="name_fille" uuid="b1b4023d-f8a1-4df7-a540-2d230512e295">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="57d7bf3c-7232-4092-83e0-53b488c14462">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="0674b79a-9109-438a-878d-6d07ae151049" x="0" y="0" width="554" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Genre féminin mais nom de jeune fille vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="60c28562-b99c-4380-b499-f3d5edd917af" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="de85dcd1-3405-4114-a8fb-13a132cbc9e7" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="2125984a-732c-4270-a0e1-5d8ead4a97f3" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="3a29eb92-6c52-4cf2-ad78-5d67046b0fa9" key="table 1" style="table 1" positionType="Float" x="0" y="82" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="date_entree" uuid="8282781b-c1a0-423f-b5af-e271130a015c">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="20cebb6e-75d2-4297-8c61-df86443507cb">
+						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="2adc2acb-d4eb-46e3-b619-c22e052133c2" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Date d'inscription vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="46fec838-bedf-40a0-99e0-00c5cb1b8875" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="badbf589-1629-4881-aef8-a0b5f62f7a48" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="c16487b8-5bde-486a-b9be-967b93133f50" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="1f1c6e1c-647b-4329-9790-be12ca0f47e9" key="table 2" style="table 2" positionType="Float" x="0" y="102" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="birthday" uuid="dacd871c-ce40-4c4b-aacc-9b368066c058">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="f48859cb-310c-4833-9a87-a287ce2b9e3d">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="a03ce902-9082-4039-a78a-8e57483fbc17" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Date de naissance vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="790d2f9a-bd74-4426-8892-7c5960f39a6c" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="944c2598-2289-4646-a4fe-f8ed230b27c5" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="7162fd26-16db-4945-aac8-bf0f406b8c3e" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="28a9202d-915f-4e7e-a2b0-5ac04fc4fa8e" key="table 3" style="table 3" positionType="Float" x="0" y="122" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="birthplace" uuid="b933da81-790b-4a4c-bc62-4897d21ac11a">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="333e9bbe-13d0-4f00-a73b-7d4b3a95fc3c">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="597dcad4-86f7-4385-81b1-9a577f15589b" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Lieu de naissance vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="c4d85e95-623b-4c7a-a2c2-a0351e2064fe" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="660f1219-6af8-41e5-9f07-13d81bd6c51f" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="ce8625bc-886a-4ff5-b06c-b28a16a918a5" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="6db4ae48-2700-4738-8094-98ed2ad33c03" key="table 3" style="table 3" positionType="Float" x="0" y="142" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="birthplace" uuid="67a14a9a-2d71-4b0e-a858-5d752f7f72e6">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="c7bf71fd-bf99-4b24-a27f-bce1bfcfbb03">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="62010f8e-df9f-445e-b39c-b6aaac41a50d" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Département de naissance vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="394efa02-e05f-4288-ba79-74b2c71d69e3" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="f8ec331a-76ac-45c2-ac9a-a0aa09761dcc" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="8b9c2a52-fb45-47b7-9d73-dfd050bbfc95" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="b9bba727-ca9a-40ec-a59b-9653158f65da" key="table 4" style="table 4" positionType="Float" x="0" y="162" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="birthcountry" uuid="ee52c0d7-b7e1-4653-bff6-8c5cc3b33622">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="6f7ffdcf-6b71-42f9-a1b8-af5c713a26f4">
+						<jr:tableHeader style="table 4_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="1bfff536-5307-4bcc-a3e9-709f6a45c50c" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Pays de naissance vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 4_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="d141b0e9-e285-43ff-a256-258e4fed838a" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="650afa21-c5d6-4bce-8280-150eb2dd7527" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="568a0db1-0233-4b9b-83c6-2ffbef1fe9f3" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="0e234a0c-3450-40f3-a9c9-fa50b209d4e2" key="table 5" style="table 5" positionType="Float" x="0" y="182" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="nationalite" uuid="d065eda7-9993-471f-a20e-b456e829b244">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="bd7fc588-9ff3-4b84-beeb-e02564cba9e8">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="fd2be698-98ac-4a68-85b2-d35451ff9ae4" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Nationalité est vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="86fe9a42-fa6a-444c-91c3-98a7f64a04bf" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="d04e1264-a1cb-43eb-a21d-95ec7ebccf92" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="044fe315-5411-4a8e-ab9c-b64cc09cb048" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="2a9a97c6-0b87-49f3-b4cc-63aa99ac2b5b" key="table 6" style="table 6" positionType="Float" x="0" y="202" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="street" uuid="bad1a213-1459-4a26-814c-e1448d7382c0">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="13a44a60-d873-438f-919b-e2be0eaf1eda">
+						<jr:tableHeader style="table 6_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="d9d1dc3a-6c08-487a-89ed-baab8ea2928a" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[La rue est vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 6_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="bb105b9d-c146-4093-b728-1ab1b8b6d90d" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="baafe4f9-df3a-4000-a5ad-fff5e1f9b42f" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="d63f2896-94d2-4d84-a7b3-c467736ffe22" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="059a40d2-0ccf-4bbe-940a-b254efa1cc8d" key="table 7" style="table 7" positionType="Float" x="0" y="222" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="ville" uuid="d4e8888d-ee9b-49b7-8afa-dd58abfc938c">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="c18ad4c2-b758-4395-a866-beee096aa3d8">
+						<jr:tableHeader style="table 7_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="6910e27d-f3a5-4860-b4eb-5261183ec61f" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[La ville est vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 7_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="34ba44b5-dc7c-4b3a-9bce-ad46eb8310cb" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="51f043cf-e1c0-4de3-977d-aa07fae2bdb1" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="e6b27375-97ce-49c1-b5a8-e0b7e8f77f03" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="a65f8ae9-1b94-48f8-8353-e8ec5859ceb6" key="table 8" style="table 8" positionType="Float" x="0" y="242" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="zone_habitat" uuid="ffc5ed4a-749d-48f2-81e0-232e2d4a5830">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="6a66c2cb-1a74-4053-9880-ccd65b38375f">
+						<jr:tableHeader style="table 8_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="c17b42b6-439f-471b-a1fc-3657f1367807" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[La zone d'habitation est vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 8_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="c715564c-995a-412e-97be-ab2d6e74e9f9" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="f1c89eff-65d2-41be-9e39-2bbd82770aa1" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="5a048715-1743-42d8-8bb4-7e15a229ca93" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="e0a4d272-4e85-4839-a0d5-2d70a685eecd" key="table 9" style="table 9" positionType="Float" x="0" y="262" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="niveau" uuid="de660885-18d4-486e-aeee-abbd4bafe74e">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="8d6d32a1-110f-4827-b5d9-a3d4c2419985">
+						<jr:tableHeader style="table 9_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="65ff002a-27ae-46ce-8d5f-a52d312c077c" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Le niveau d'étude est vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 9_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="82276dc3-cd5c-40f8-b237-d73e8afdab5a" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="46e1e99f-aa95-437e-a441-50be3e0212e6" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="8e4caf0f-48f8-4170-b71a-e09ac38ef64d" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="c3f18370-b0e2-481b-9b4c-301914c05163" key="table 11" style="table 11" positionType="Float" x="0" y="282" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="rsa_allocation" uuid="915d063b-0c55-4087-a327-65605d295f3f">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="7be3731c-6eae-4938-b2c3-b3cd7caa7d49">
+						<jr:tableHeader style="table 11_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="02da165a-9477-4d2c-a0f7-28abf2c474c2" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Pôle emploi coché mais type d'allocation vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 11_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="c15ab0be-ca26-4f81-b3de-3be130a23320" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="dba59720-ac66-4393-be11-0f376338a4a3" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="95140ff0-a801-4d7d-9ed2-3f5b78b97335" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="449ea2b9-630c-483d-886c-81d36d365ec2" key="table 12" style="table 12" positionType="Float" x="0" y="302" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="rsa_dte_debut" uuid="2c0e00df-eea8-451f-bd3e-5feb9a48c73b">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="3581cbd5-0f0b-4fb6-9f1b-58a20157f694">
+						<jr:tableHeader style="table 12_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="38f437c8-3fd0-4a22-b4a6-1adcb26a4d1c" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[RSA coché mais date de début vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 12_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="6d8a0502-d67b-4a13-950d-b0e7a9897865" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="ae92deb7-cd7f-4689-baff-7512b2333efb" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="2e81968b-72c9-4e33-a6d0-2d1fcabaff30" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="d0dd6bf7-efd4-45a0-9954-0ded3aa008cd" key="table 13" style="table 13" positionType="Float" x="0" y="322" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="debut_aah" uuid="3e4a8b23-5074-4596-bd41-9ae8134dee65">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="c79e6a6a-7f79-41ae-b221-fbd3d92dce8c">
+						<jr:tableHeader style="table 13_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="686b53cd-ead2-4e5e-9961-0152512f8a64" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[AAH coché mais date de début vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 13_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="81c7c4c5-3c10-4d43-9880-537ae8330561" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="53e87a3d-a495-4de3-afbf-238e68f46f09" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="80197c5a-1fd1-4569-841e-c53453e86777" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="318c8961-fdb1-4e95-b16f-9f4883b81433" key="table 14" style="table 14" positionType="Float" x="0" y="342" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="last_job" uuid="d285f809-2c6e-4ee3-b17e-aa8d6b692219">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="4e679af8-d300-4c90-93d6-787388d2f5b1">
+						<jr:tableHeader style="table 14_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="b829388d-23ee-4b54-a403-edc13b92e8c4" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Dernier emploi vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 14_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="e4f9550e-67d0-459a-84ba-1645ff99d3d3" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="6a67f4a9-1b0b-47a9-b949-2ce4a9c40ca4" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="61a53faf-8a8f-4f89-b26e-ccd201c1fc0d" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="19f1c565-6586-427d-9918-bfedf6496dad" key="table 15" style="table 15" positionType="Float" x="0" y="362" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="sans_emploi" uuid="06745f9f-dc07-4215-a368-09cc12da4dd6">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="f483a783-4904-4159-ae1c-6a0f232bb551">
+						<jr:tableHeader style="table 15_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="39f33d37-fd99-4265-9fe4-6087a2631c16" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Date dernier emploi est vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 15_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="a4ffa716-be3e-4972-af55-25be2e06ed56" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="f5d19407-79a7-4ab6-9093-daa2e8b1a166" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="312a941f-613d-4c44-8e56-776872b8fd3e" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="a8dfc79f-56f0-4b22-b71a-9cafc471d2b1" key="table 16" style="table 16" positionType="Float" x="0" y="382" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="first_mad_date" uuid="0daf6f18-67db-4412-8fd7-99759ecb50c5">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="43c8ef59-b118-4a33-879e-bba7bf0544a7">
+						<jr:tableHeader style="table 16_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="69e200ed-f26d-48ea-b4c0-f7fa4aa93086" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Date de première MAD vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 16_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="883ec17c-9009-4144-bfd9-ecb40af2a7e1" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="bbe6839c-cd8b-4840-91f7-bad42690f4dc" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="b37788a5-9ede-4e15-924a-8842df4e5b7a" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="488cb2b6-58ea-42b1-8a15-5c60f143aaa2" key="table 17" style="table 17" positionType="Float" x="0" y="402" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="first_mad_date_ent" uuid="fcd50a12-4094-46b3-9d7f-89d21854da70">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="08ff380e-3b25-4053-8b93-4ba172bc5a04">
+						<jr:tableHeader style="table 17_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="680fde4b-d8f2-443a-9dd4-286c67eac7d9" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Date première MAD entreprise vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 17_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="606fd90c-0e55-46d4-b33a-d8d7722279ea" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="477821a9-caa9-4d3b-bcbe-8112bff20d00" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="2ca0afca-0b92-4ccd-a0d9-37497782f6d0" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="1c7d7830-077d-48e3-ba17-d8279e271836" key="table 18" style="table 18" positionType="Float" x="0" y="422" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="rome_mad" uuid="ef6bdcfd-b9d9-4c66-b840-47d48b1b9dad">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="504c6063-1e0d-43bd-a2ea-ab4c7de70621">
+						<jr:tableHeader style="table 18_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="a039c25e-56f6-4f79-803f-8fe9c2cd4697" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Code ROME première MAD vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 18_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="9e619df8-8d66-45e0-9c57-ea2d031bbe14" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="e6f4f1ad-93f3-4df2-bed1-3ad984a5aa1f" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="82e6d2bb-c398-48d1-8fb7-2ef87063f833" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="e1102e7e-2069-4cf1-b209-30899ffd06fc" key="table 19" style="table 19" positionType="Float" x="0" y="442" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="rib" uuid="fa848329-c336-411e-a06c-9b8605375a7c">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="3997ce09-3176-4453-b3f4-d95d3e81c9ab">
+						<jr:tableHeader style="table 19_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="4d21b690-dd00-4eea-aaa5-6ae0381fa07b" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[RIB incomplet]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 19_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="44700b52-ef17-4f7a-9b20-a86adb262957" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="70d896ab-d95e-4b30-9bfd-fb3c15ab4829" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="ac7240d8-8bd6-433d-943a-07dcf46505f5" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="62a3e55d-15b4-4d34-a280-525a3a6bb7ae" key="table 20" style="table 20" positionType="Float" x="0" y="462" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="canton" uuid="864641cf-396d-41f8-b5fc-a136a2756673">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="f0c9f3c7-21fa-42a7-85da-ae21bdb86dff">
+						<jr:tableHeader style="table 20_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="a469cdb0-7b65-4e1f-8d55-dc1ce02e645b" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Canton vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 20_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="067a2e7e-e67b-4485-a060-04a982c99ee7" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="ca0af300-9ea9-43c8-a596-e2b24b847b79" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="9469909d-b10d-4fb1-8c7f-921395e7f166" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="85dcfff6-3cff-48af-aac9-4e85cefe840e" key="table 21" style="table 21" positionType="Float" x="0" y="482" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="prescripteur" uuid="5c8e60b1-e9df-423e-9f0c-d9451a979119">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="9397b351-520b-43a9-8376-685ddfbc03ab">
+						<jr:tableHeader style="table 21_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="f77dd4b1-356e-4ceb-b85c-a14eb0ce15f4" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Organisme prescripteur vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 21_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="eecd9e58-a77e-46b4-926e-bac6c1114933" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="35f7cfd7-072c-4722-a169-94e94da5ab12" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="b0d139d6-c4dc-49d0-9036-9a28087de6ba" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="a707da04-e23a-43eb-ab72-06bd57988681" key="table 22" style="table 22" positionType="Float" x="0" y="502" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="sortie_situation" uuid="d62d2fd2-8d73-4b06-9836-ce8bafd459f6">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="d2aac87f-4cd0-49d2-b522-9943dd0579a7">
+						<jr:tableHeader style="table 22_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="61c82da1-452e-447d-8ff4-e50291cb83c4" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Sortie: situation vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 22_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="7974d4ca-7576-49e8-976a-eb19a638c6da" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="f407826c-57c7-4827-bba1-542f1016f065" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="adb5875e-9a0e-4cde-8ec1-6fb9c2198e1b" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="726426a1-cd21-4ef1-bafd-9a204d1ba1e4" key="table 23" style="table 23" positionType="Float" x="0" y="522" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="sortie_type_emploi_id" uuid="c4f64f7c-8c98-4692-89ab-cdeab63d0ca5">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="de759bfb-3f6a-4da4-a7bf-55a2e8e16af3">
+						<jr:tableHeader style="table 23_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="8ee2212e-9567-4b4c-8c68-492f1918c43e" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Sortie: type d'emploi vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 23_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="4c0b86fd-e131-4389-9ac1-68fbf91076f7" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="4f866676-6fce-4ef4-9e18-d79c8fa57e13" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="2cf33da3-fdb3-48cb-bd45-e82073a3a3f0" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="e50c3b5c-feb4-41fc-963d-12aa5f393809" key="table 24" style="table 24" positionType="Float" x="0" y="542" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="sortie_type_entreprise" uuid="48bdfb92-ed97-47f0-ac7c-531436d7c3ac">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="f89ed302-7004-427e-97f7-3a10dea847d8">
+						<jr:tableHeader style="table 24_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="410e0792-2f2d-4628-a82c-9d891cd2ff7e" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Sortie: type d'entreprise vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 24_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="04686fb1-7d2d-48e8-b21b-78691f59b16a" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="8f24374f-01f6-4265-bbea-e568dbb73b5f" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="51f0be72-0d53-48e4-be84-40bea0d6492e" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="732194ec-1fe6-4d7d-934f-c96707a69bbd" key="table 25" style="table 25" positionType="Float" x="0" y="562" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="sortie_secteur_activite" uuid="459756a6-dcd1-4317-aebc-7ff6ad67d4a5">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="c05a4e91-51a9-465f-831a-ba9a8f1e6eba">
+						<jr:tableHeader style="table 25_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="b80df36e-a58c-4fb9-92e4-9c92ded6723c" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Sortie: secteur d'activité vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 25_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="de4027e0-0a1f-47dd-8522-b9ec26dc4e82" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="991435df-f292-443b-ac5f-9237e89a5040" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="084a5cda-4d13-47b2-a405-4a43b98dd8f2" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="fecfc745-0ad5-4b64-a5cc-1e6da6237ab2" key="table 26" style="table 26" positionType="Float" x="0" y="582" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="sortie_lieu" uuid="259b8861-de5e-4ac2-a166-8d5140da22f5">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="98fdbeb8-7d03-4dfe-a3f7-3ac38d51bdd5">
+						<jr:tableHeader style="table 26_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="b6f82fff-c9df-48dc-8f98-2a056020357f" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Sortie: lieu vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 26_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="a6cbd497-1f21-4a9a-95ec-2ac1f6e95b52" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="c8a44ffa-531a-48cb-961b-b0e30697cedb" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="d66807a8-6ab4-45bb-8592-0adf21c2f891" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="3d23363d-6057-4fdd-97ea-715e8f92835c" key="table 27" style="table 27" positionType="Float" x="0" y="602" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="debut_rqth" uuid="823c038d-da78-4c76-83e6-6189eefda69b">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="5629c9f0-f4d9-4530-a6d9-55d9349d27ba">
+						<jr:tableHeader style="table 27_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="e78b7be8-82d1-40f2-a3d4-f37a0af3fc8e" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[RQTH coché mais date de début vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 27_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="4fa6a3ee-c55e-4662-8cab-95a880df783b" x="87" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="80a91f6a-4ced-4e6d-9f8f-def82a1689d7" x="0" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="5d10eae8-53dd-423a-b355-c4e240d06859" x="174" y="0" width="87" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="3518b6ef-a47d-4ae4-a3bb-5a71d56b870b" key="table 28" style="table 28" positionType="Float" x="0" y="622" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="type_formation" uuid="c0e179c3-7c9d-4f6a-a5e7-14e3703402f9">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="65e3bdfb-e058-4a67-9ddf-aebad01ff554">
+						<jr:tableHeader style="table 28_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="e8135ebb-b9c4-4d86-87c2-74ba274a6141" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Formation sans type de formation]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 28_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="67ced1f5-b86a-4375-b42c-6ce2cb3bae42" x="0" y="0" width="555" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="894063e9-f2b5-48d7-a1b9-fd442d81e284" key="table 29" style="table 29" positionType="Float" x="0" y="642" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="client_pro_ape" uuid="ef94ebfd-5683-47e0-8f45-8021a257842a">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="c3ed3ec2-69f0-4ee2-b079-5e3521a86096">
+						<jr:tableHeader style="table 29_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="9fd19055-b76c-4f0c-b8c7-42d96a600328" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Client pro: ape vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 29_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="79baaa45-4fd5-4ff1-8371-e5f286edc803" x="0" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ref}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="02ea7f88-c654-4d84-b703-c9a6711b3953" x="120" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="4c4f8055-9f45-4f96-9252-3c6acf5a03fa" x="240" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="837761f6-53b2-4e28-b73f-31df1b61bebf" key="table 30" style="table 30" positionType="Float" x="0" y="662" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="client_pro_siret" uuid="3ae97017-d23c-4840-afec-af473ab00f98">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="503d1fe6-c661-404f-ae49-800e467b22f4">
+						<jr:tableHeader style="table 30_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="f7e2d9c1-dc53-4e0a-82ac-0377e277e44a" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Client pro: siret vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 30_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="0fadab64-b557-401a-847f-1d56bbafb4c1" x="0" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ref}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="72252d7d-0615-4261-bd68-74a92b01afad" x="120" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="3aebe28e-93ef-465b-b0ef-8294dcabd9ad" x="240" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="ba8f3900-e2f7-4ae2-967a-b753939537a0" key="table 31" style="table 31" positionType="Float" x="0" y="682" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="client_pro_effectif" uuid="43ab9b10-7dd2-4b34-81d2-6a7a9266e7ae">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="58ecac7f-0c1f-470b-96f1-18e3d800104c">
+						<jr:tableHeader style="table 31_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="d81efc5a-ad85-4ecd-bf08-b96d364350b3" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Client pro: effectif vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 31_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="825d11d9-c94f-4f86-a430-6587f8b70005" x="0" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ref}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="431d0d89-c0ae-4eb1-91ea-540e269dfbf6" x="120" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="2ce08221-9665-49db-acd5-ac4190d7e185" x="240" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="39b03725-41ec-47c4-b419-e55d4c852a23" key="table 32" style="table 32" positionType="Float" x="0" y="702" width="555" height="20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="client_mode_reglement" uuid="9b23480f-d3bd-41dd-89f4-b66247ab1f53">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="555" uuid="04f8868b-9036-4024-926e-c074ee4b36fc">
+						<jr:tableHeader style="table 32_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="1a61dcb5-fdfe-4180-aef2-7e4562c68dd2" x="0" y="0" width="555" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Client: mode de règlement vide]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 32_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="f8ec7a9e-d773-4db6-b266-77a544f57f76" x="0" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ref}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="23d1efab-29c8-4c94-bc00-35c87f095c6f" x="120" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="5ca13bf5-b672-48e4-8224-e5f5573f3215" x="240" y="0" width="120" height="20"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+									<paragraph leftIndent="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</title>
+</jasperReport>

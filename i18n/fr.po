@@ -1,0 +1,2601 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* hr_gp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130304-002107\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-19 16:04+0000\n"
+"PO-Revision-Date: 2013-03-19 17:41+0100\n"
+"Last-Translator: ADN <david@adn-france.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,title:0
+#: field:hr_gp.params_dict,title:0
+#: field:hr_gp.payslip_line,title:0
+msgid "Title"
+msgstr "Titre"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_table
+msgid "Rates tables"
+msgstr "Table des taux"
+
+#. module: hr_gp
+#: field:hr_gp.payslip,pay_run:0
+msgid "Payrun_id"
+msgstr "Run de paye"
+
+#. module: hr_gp
+#: field:en.construction,name:0
+#: field:hr_gp.ducs,name:0
+msgid "Nom"
+msgstr "Nom"
+
+#. module: hr_gp
+#: field:hr_gp.getantecdesc.wizard,par_desc:0
+msgid "Descendants"
+msgstr "Descendants"
+
+#. module: hr_gp
+#: view:hr_gp.params_val:0
+msgid "Type Cny"
+msgstr "Type soc"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,company_key:0
+#: field:hr_gp.payrun,company:0
+msgid "company_id"
+msgstr "Société"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_pay_report
+msgid "États paye"
+msgstr "États paye"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,cum_epe:0
+msgid "Cum employee"
+msgstr "Cum salarié"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,pay_id:0
+msgid "payslip_id"
+msgstr "Bulletin"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.action_support_export
+msgid "hr_gp.support_export"
+msgstr "Exporter"
+
+#. module: hr_gp
+#: field:hr_gp.payrun,date_compute:0
+msgid "Date computation"
+msgstr "Date calcul"
+
+#. module: hr_gp
+#: field:hr_gp.payrun,date_compute:0
+msgid "Date payment"
+msgstr "Date paiement"
+
+#. module: hr_gp
+#: field:hr_gp.inversepay.wizard,payid:0
+msgid "Payid"
+msgstr "Payid"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+#: view:hr_gp.params_val:0
+msgid "TypePay"
+msgstr "Type de paie"
+
+#. module: hr_gp
+#: view:hr_gp.payrun:0
+msgid "Generate account lines"
+msgstr "Generate account lines"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,company_key:0
+msgid "Company_id"
+msgstr "Société"
+
+#. module: hr_gp
+#: view:hr_gp.activity:0
+msgid "Activity form"
+msgstr "Ecran Activité"
+
+#. module: hr_gp
+#: selection:hr_gp.payslip,viewline:0
+msgid "Lignes imprimées"
+msgstr "Lignes imprimées"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+#: field:hr_gp.params_dict,origin:0
+msgid "Origin"
+msgstr "Origine"
+
+#. module: hr_gp
+#: field:hr_gp.inversepay.wizard,net_line:0
+msgid "Net line target"
+msgstr "Net line target"
+
+#. module: hr_gp
+#: field:hr_gp.analytic_split,analytic_acc:0
+msgid "acc name"
+msgstr "Compte comptable"
+
+#. module: hr_gp
+#: view:hr_gp.seqparams.wizard:0
+msgid "Done - Quit"
+msgstr "Done - Quit"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_seqparams_wizard
+msgid "hr_gp.seqparams.wizard"
+msgstr "hr_gp.seqparams.wizard"
+
+#. module: hr_gp
+#: field:hr_gp.param_model,entity_type:0
+msgid "Entity"
+msgstr "Entité"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Compte analytique"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_res_partner
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "Get qty from calendar"
+msgstr "Obtenir du calendrier"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,val_sim_e:0
+msgid "Val simul"
+msgstr "Val simul"
+
+#. module: hr_gp
+#: view:hr_gp.wizard.gencumann:0
+msgid "Generate annual cumuls "
+msgstr "Générer les cumuls annuels "
+
+#. module: hr_gp
+#: field:hr_gp.accline,state:0
+#: field:hr_gp.inversepay.wizard,state:0
+#: field:hr_gp.payslip_line,state:0
+#: field:hr_gp.seqparams.wizard,state:0
+msgid "State"
+msgstr "Etat"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,baseprint:0
+msgid "Base print"
+msgstr "Base impression"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.action_ducs_form
+#: model:ir.ui.menu,name:hr_gp.ducs_list
+msgid "Liste DUCS"
+msgstr "Liste DUCS"
+
+#. module: hr_gp
+#: field:hr_gp.accline,anal_acc_id:0
+msgid "Analytic acc"
+msgstr "Compte analytique"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.establishment_frame
+msgid "Establishments frames"
+msgstr "Cadres établissements"
+
+#. module: hr_gp
+#: view:hr.employee:0
+#: view:hr_gp.activity:0
+#: view:hr_gp.company:0
+#: view:hr_gp.contractframe:0
+#: field:hr_gp.cumann,cum_an:0
+#: view:hr_gp.params_dict:0
+#: selection:hr_gp.payslip_line,group:0
+msgid "Cumuls"
+msgstr "Cumuls"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "TypeEpe"
+msgstr "Type employeur"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.payrun
+msgid "Pay runs"
+msgstr "Runs de paie"
+
+#. module: hr_gp
+#: view:hr_gp.etat_ducs:0
+#: view:hr_gp.org_cotis:0
+#: view:hr_gp.resume_cotis:0
+msgid "Dates"
+msgstr "Dates"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_wizard_gencumann
+msgid "hr_gp.wizard.gencumann"
+msgstr "hr_gp.wizard.gencumann"
+
+#. module: hr_gp
+#: selection:hr_gp.payslip,viewline:0
+msgid "Saisie groupe 3"
+msgstr "Saisie groupe 3"
+
+#. module: hr_gp
+#: selection:hr_gp.payslip,viewline:0
+msgid "Saisie groupe 2"
+msgstr "Saisie groupe 2"
+
+#. module: hr_gp
+#: selection:hr_gp.payslip,viewline:0
+msgid "Saisie groupe 1"
+msgstr "Saisie groupe 1"
+
+#. module: hr_gp
+#: view:hr_gp.activity:0
+msgid "Cadre"
+msgstr "Cadre"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,contact:0
+msgid "Contact"
+msgstr "Contact"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,n_affil:0
+#: field:res.partner,n_affil:0
+msgid "N° d'affiliation"
+msgstr "N° d'affiliation"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,ducs:0
+msgid "Code DUCS"
+msgstr "Code DUCS"
+
+#. module: hr_gp
+#: field:hr_gp.param_model,active:0
+msgid "active"
+msgstr "actif"
+
+#. module: hr_gp
+#: view:hr_gp.resume_cotis:0
+msgid "Résumé des cotisations"
+msgstr "Résumé des cotisations"
+
+#. module: hr_gp
+#: field:hr_gp.payrun,selection:0
+msgid "Selection"
+msgstr "Sélection"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,param_name:0
+msgid "Parameter name"
+msgstr "Nom du paramètre"
+
+#. module: hr_gp
+#: field:hr_gp.company,name:0
+msgid "Cny Name"
+msgstr "Nom société"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+msgid "Décalage"
+msgstr "Décalage"
+
+#. module: hr_gp
+#: field:hr_gp.analytic_split,date_end:0
+#: field:hr_gp.params_val,date_end2:0
+#: field:hr_gp.table,date_end:0
+msgid "Validity end"
+msgstr "Fin validité"
+
+#. module: hr_gp
+#: field:hr_gp.import.model.wizard,models_list:0
+msgid "Models list"
+msgstr "Liste modèles"
+
+#. module: hr_gp
+#: field:hr_gp.functions_gp,payid:0
+msgid "pay id"
+msgstr "Paye"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "Slip line form"
+msgstr "Ecran ligne paie"
+
+#. module: hr_gp
+#: field:hr_gp.param_model_item,category:0
+#: field:hr_gp.params_dict,category:0
+#: field:hr_gp.payslip_line,category:0
+msgid "Category"
+msgstr "Categorie"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,group:0
+#: field:hr_gp.payslip_line,group:0
+msgid "Group"
+msgstr "Groupe"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,c_:0
+msgid "Op c_"
+msgstr "Op c_"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_param_model
+msgid "Params model"
+msgstr "Modèle paramètres"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,res_d:0
+msgid "Value Date"
+msgstr "Valeur date"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_param
+msgid "Parametrization"
+msgstr "Paramétrage"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_etat_ducs
+msgid "ducs"
+msgstr "ducs"
+
+#. module: hr_gp
+#: field:hr_gp.param_model_item,input:0
+#: field:hr_gp.params_val,inp:0
+#: field:hr_gp.payslip_line,inp:0
+msgid "Input"
+msgstr "Input"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,res_ne:0
+msgid "ResultNe"
+msgstr "Resultat num salarié"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,defwhenopt:0
+msgid "Default value when optional"
+msgstr "Default value when optional"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,printable:0
+msgid "Print?"
+msgstr "Imprimer ?"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,email:0
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#. module: hr_gp
+#: field:hr_gp.inversepay.wizard,net_target:0
+msgid "Net target"
+msgstr "Net target"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,res_nr:0
+msgid "ResultNr"
+msgstr "Resultat num. employeur"
+
+#. module: hr_gp
+#: field:hr_gp.payrun,date_end:0
+#: field:hr_gp.payslip,date_end:0
+msgid "Date end"
+msgstr "Date fin"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,creation_date:0
+msgid "Creation date"
+msgstr "Date création"
+
+#. module: hr_gp
+#: selection:hr_gp.payslip,viewline:0
+msgid "Toutes les lignes de paye"
+msgstr "Toutes les lignes de paye"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.action_support_import
+msgid "hr_gp.support_import"
+msgstr "Importation"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_support_export
+msgid "Exporter vos paramètres"
+msgstr "Exporter vos paramètres"
+
+#. module: hr_gp
+#: view:hr_gp.param_model:0
+msgid "Params model form"
+msgstr "Ecran modèle paramètres"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+#: field:hr_gp.params_dict,org_cotis:0
+msgid "Organisme de cotisations"
+msgstr "Organisme de cotisations"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+#: view:hr_gp.payslip_line:0
+msgid "Informations"
+msgstr "Informations"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "account"
+msgstr "account"
+
+#. module: hr_gp
+#: view:hr_gp.contractframe:0
+#: model:ir.actions.act_window,name:hr_gp.analyticsplit_action_tree
+#: model:ir.ui.menu,name:hr_gp.analyticsplit
+msgid "Analytic split"
+msgstr "Analytic split"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.logpay_action
+msgid "Log calc pay"
+msgstr "Log calc paie"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_org_cotis_group
+msgid "hr_gp.org_cotis_group"
+msgstr "hr_gp.org_cotis_group"
+
+#. module: hr_gp
+#: field:hr_gp.etat_ducs,date_end:0
+#: field:hr_gp.payslip_line,dfin:0
+#: field:hr_gp.resume_cotis,date_end:0
+msgid "Date fin"
+msgstr "Date fin"
+
+#. module: hr_gp
+#: constraint:hr_gp.params_val:0
+#: constraint:hr_gp.payslip_line:0
+msgid "Incorrect value referring to params dict validation expression "
+msgstr "Valeur incorrecte en référence à l'expression de validation dans le dictionnaire"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.paramsdict_action_tree
+#: model:ir.ui.menu,name:hr_gp.params_dictionary
+msgid "Params dictionary"
+msgstr "Dictionnaire paramètres"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,basr:0
+msgid "Base employer"
+msgstr "Base employeur"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_support_import
+msgid "Importer des paramètres de paie"
+msgstr "Importer des paramètres de paie"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "TypeLeg"
+msgstr "Légal"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,activityframe_key:0
+msgid "activityframe_id"
+msgstr "Id cadre activité"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.import_model_action
+msgid "hr_gp.import.model_payslip"
+msgstr "hr_gp.import.model_payslip"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+#: field:hr_gp.params_dict,format:0
+#: field:hr_gp.payslip_line,format:0
+msgid "Format"
+msgstr "Format"
+
+#. module: hr_gp
+#: field:hr_gp.inversepay.wizard,nbstep:0
+msgid "Nb step"
+msgstr "Nb étapes"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "Ligne de paie"
+msgstr "Ligne de paie"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.param_model_action_tree
+msgid "Param model"
+msgstr "Modèle paramètre"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,group_view:0
+msgid "Groupe de saisie"
+msgstr "Groupe de saisie"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis_group,org_cotis_ids:0
+msgid "Organismes de cotisation"
+msgstr "Organismes de cotisation"
+
+#. module: hr_gp
+#: selection:hr_gp.activity,type:0
+msgid "establishment"
+msgstr "Etablissement"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,ratr_formula:0
+msgid "Rate employer formula"
+msgstr "Formule taux employeur"
+
+#. module: hr_gp
+#: view:hr_gp.payrun:0
+msgid "Pay run tree"
+msgstr "Liste de runs de paie"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,actframe_name:0
+#: model:ir.model,name:hr_gp.model_hr_gp_activity
+msgid "Activity frame"
+msgstr "Cadre d'activité"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Bulletin de paie"
+msgstr "Bulletin de paie"
+
+#. module: hr_gp
+#: selection:hr_gp.org_cotis,depot_date:0
+#: selection:hr_gp.org_cotis,exi_date:0
+#: selection:hr_gp.org_cotis,paie_date:0
+#: selection:hr_gp.org_cotis,vers_date:0
+msgid "Mois suivant"
+msgstr "Mois suivant"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+msgid "Limite de dépôt"
+msgstr "Limite de dépôt"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+msgid "S A L A R I E"
+msgstr "S A L A R I E"
+
+#. module: hr_gp
+#: view:hr_gp.params_val:0
+#: view:hr_gp.payslip:0
+msgid "DateBegin"
+msgstr "Date début"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "lines"
+msgstr "lignes"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,f_:0
+msgid "f_"
+msgstr "f_"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Calculer"
+msgstr "Calculer"
+
+#. module: hr_gp
+#: field:hr_gp.support_export,data:0
+#: field:hr_gp.support_import,data:0
+msgid "File"
+msgstr "Fichier"
+
+#. module: hr_gp
+#: view:hr_gp.params_val:0
+msgid "Type Leg"
+msgstr "Type Leg"
+
+#. module: hr_gp
+#: field:hr_gp.table,textable:0
+msgid "TextContent"
+msgstr "Contenu texte"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "TypeCtt"
+msgstr "Contrat"
+
+#. module: hr_gp
+#: view:hr_gp.contractframe:0
+msgid "Cadre contractuel"
+msgstr "Cadre contractuel"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_resume_cotis
+msgid "cotisations"
+msgstr "cotisations"
+
+#. module: hr_gp
+#: field:hr_gp.payrun,date_begin:0
+#: field:hr_gp.payslip,date_begin:0
+msgid "Date begin"
+msgstr "Date début"
+
+#. module: hr_gp
+#: view:hr_gp.support_import:0
+msgid "Importer"
+msgstr "Importer"
+
+#. module: hr_gp
+#: view:hr_gp.analytic_split:0
+msgid "Analytic split form"
+msgstr "Analytic split form"
+
+#. module: hr_gp
+#: field:hr_gp.table,formated_tab:0
+msgid "Formatted table"
+msgstr "Table formatée"
+
+#. module: hr_gp
+#: field:hr_gp.contractframe,payslip_model:0
+msgid "Payslip model"
+msgstr "Payslip model"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,qtye:0
+msgid "Qty employee"
+msgstr "Nb salarié"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_payslip_line
+msgid "Payslip line"
+msgstr "Ligne paie"
+
+#. module: hr_gp
+#: selection:hr_gp.support_export,state:0
+msgid "choose"
+msgstr "choose"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,optional:0
+msgid "Optional"
+msgstr "Optional"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.gen_cumann_action
+msgid "Gen cumann"
+msgstr "Gen cumuls"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,qtyr:0
+msgid "Qty employer"
+msgstr "Nb employeur"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.inversepay_action
+msgid "hr_gp.inversepay.action"
+msgstr "hr_gp.inversepay.action"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Slip lines"
+msgstr "Lignes de paie"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+#: field:hr_gp.payslip_line,register:0
+msgid "Register"
+msgstr "Registre"
+
+#. module: hr_gp
+#: view:hr_gp.table:0
+msgid "Table form"
+msgstr "Ecran table"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "Introduire une valeur"
+msgstr "Introduire une valeur"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,cum_ctt:0
+msgid "Cum contrat"
+msgstr "Cum contrat"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.payslipline_action_tree
+#: model:ir.ui.menu,name:hr_gp.pay_slip_line
+msgid "Pay slip lines"
+msgstr "Lignes de paie"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,registee:0
+msgid "Registee"
+msgstr "Registre sal"
+
+#. module: hr_gp
+#: view:hr_gp.cumann:0
+msgid "Annual cumuls val tree"
+msgstr "Liste des cumuls annuels"
+
+#. module: hr_gp
+#: field:hr_gp.param_model_item,params:0
+#: field:hr_gp.params_val,param_name:0
+msgid "name"
+msgstr "nom"
+
+#. module: hr_gp
+#: view:hr_gp.params_val:0
+msgid "ParamsVal"
+msgstr "Val. param."
+
+#. module: hr_gp
+#: field:hr_gp.payslip,legal_frame_name:0
+msgid "legalframe"
+msgstr "cadre légal"
+
+#. module: hr_gp
+#: view:hr_gp.contractframe:0
+msgid "Contractual frames form"
+msgstr "Ecran cadre contractuel"
+
+#. module: hr_gp
+#: field:hr_gp.analytic_split,name:0
+msgid "Split name"
+msgstr "Split name"
+
+#. module: hr_gp
+#: selection:hr_gp.payslip,viewline:0
+msgid "Lignes à saisir"
+msgstr "Lignes à saisir"
+
+#. module: hr_gp
+#: field:hr_gp.accline,acc_cod:0
+msgid "Account code"
+msgstr "Account code"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.model_to_activity
+#: model:ir.actions.act_window,name:hr_gp.model_to_contractframe
+#: model:ir.actions.act_window,name:hr_gp.model_to_employee
+#: model:ir.actions.act_window,name:hr_gp.model_to_legal_frame
+#: model:ir.actions.act_window,name:hr_gp.model_to_payslip
+msgid "Importer un model"
+msgstr "Importer un modèle"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,vers_deca:0
+msgid "Décalage versement"
+msgstr "Décalage versement"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+msgid "Versement"
+msgstr "Versement"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,year_cum:0
+msgid "year"
+msgstr "année"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,entity_type:0
+#: field:hr_gp.params_val,entity_type:0
+#: field:hr_gp.payslip_line,entity_type:0
+msgid "Type"
+msgstr "Type"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,val_e:0
+msgid "Value num_e"
+msgstr "Valeur num salarié"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_logpay
+msgid "Logging calc payslip"
+msgstr "Trace du calcul"
+
+#. module: hr_gp
+#: view:hr_gp.inversepay.wizard:0
+msgid "Erase result"
+msgstr "Erase result"
+
+#. module: hr_gp
+#: field:hr_gp.wizard.gencumann,name:0
+msgid "wiz name"
+msgstr "nom wizard"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.log
+msgid "Log for payslip"
+msgstr "Trace calcul paie"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Detect cycle"
+msgstr "Detection cycle"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,e_:0
+msgid "e_"
+msgstr "e_"
+
+#. module: hr_gp
+#: constraint:hr_gp.contractframe:0
+msgid "Error! contract begin-date must be lower then contract end-date."
+msgstr "Error! contract begin-date must be lower then contract end-date."
+
+#. module: hr_gp
+#: field:hr_gp.cumann,name:0
+#: field:hr_gp.params_val,name:0
+msgid "Name bidon"
+msgstr "Nom bidon"
+
+#. module: hr_gp
+#: field:hr_gp.payslip,viewline:0
+msgid "Afficher"
+msgstr "Afficher"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,vers_date:0
+msgid "Date versement"
+msgstr "Date versement"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.resume_cotis_action
+msgid "Resume des cotisations"
+msgstr "Resume des cotisations"
+
+#. module: hr_gp
+#: view:hr_gp.logpay:0
+msgid "Log pay tree"
+msgstr "liste des traces calcul"
+
+#. module: hr_gp
+#: view:hr_gp.payrun:0
+msgid "Pay slips"
+msgstr "Bulletins de paie"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,res_t:0
+msgid "ResultTe"
+msgstr "Resultat Texte Salarié"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,f_:0
+msgid "Op f_"
+msgstr "Op f_"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,moan:0
+msgid "Tot. year"
+msgstr "Tot. année"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,val_r:0
+msgid "Value num_r"
+msgstr "Valeur num employeur"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Generate account moves"
+msgstr "Generate account moves"
+
+#. module: hr_gp
+#: field:hr_gp.etat_ducs,etab_de:0
+#: field:hr_gp.resume_cotis,etab_de:0
+msgid "etab_de"
+msgstr "etab_de"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.legal_frame
+msgid "Legal frames"
+msgstr "Cadres légaux"
+
+#. module: hr_gp
+#: field:hr_gp.table,date_begin:0
+msgid "Validity date begin"
+msgstr "Date début validité"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,rate:0
+msgid "Rate employee"
+msgstr "Taux salarié"
+
+#. module: hr_gp
+#: help:hr_gp.params_dict,defwhenopt:0
+msgid "Defaut value when parameter optional"
+msgstr "Defaut value when parameter optional"
+
+#. module: hr_gp
+#: view:hr_gp.params_val:0
+msgid "Type Emp"
+msgstr "Type Emp"
+
+#. module: hr_gp
+#: field:res.partner,conv_coll:0
+msgid "Convention collective"
+msgstr "Convention collective"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,ratr:0
+msgid "Rate employer"
+msgstr "Taux employeur"
+
+#. module: hr_gp
+#: field:hr.employee,matricule:0
+msgid "Matricule"
+msgstr "Matricule"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+#: field:hr_gp.org_cotis,street:0
+msgid "Adresse"
+msgstr "Adresse"
+
+#. module: hr_gp
+#: help:hr_gp.params_dict,base_formula:0
+#: help:hr_gp.params_dict,qtye_formula:0
+#: help:hr_gp.params_dict,qtyr_formula:0
+#: help:hr_gp.params_dict,rate_formula:0
+#: help:hr_gp.params_dict,ratr_formula:0
+msgid ""
+"Formula using operands a_, b_, c_, d_, e_ or f_ referring to params \n"
+" Result always = base * rate *qty"
+msgstr ""
+"Formule utilisant  a_, b_, c_, d_, e_ or f_en référence aux paramètres \n"
+" Resultat toujours = base * taux * nb"
+
+#. module: hr_gp
+#: view:hr_gp.cumann:0
+#: view:hr_gp.wizard.gencumann:0
+msgid "Annual cumuls form"
+msgstr "Ecran cumuls annuels"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,paie_date:0
+msgid "Date paiement"
+msgstr "Date paiement"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+#: view:res.partner:0
+msgid "Organismes de cotisations"
+msgstr "Organismes de cotisations"
+
+#. module: hr_gp
+#: field:hr.employee,contract_ids:0
+msgid "Contracts"
+msgstr "Contrats"
+
+#. module: hr_gp
+#: field:account.analytic.account,hr_contract_split:0
+#: field:hr.employee,cumuls:0
+#: field:hr.employee,params:0
+#: field:hr_gp.activity,cumuls:0
+#: field:hr_gp.activity,params:0
+#: field:hr_gp.company,cumuls:0
+#: field:hr_gp.company,params:0
+#: field:hr_gp.contractframe,analytic_acc_split:0
+#: field:hr_gp.contractframe,cumuls:0
+#: field:hr_gp.contractframe,params:0
+#: field:hr_gp.legal_frame,params:0
+#: field:hr_gp.param_model,params:0
+#: field:hr_gp.param_model_item,model_id:0
+#: field:hr_gp.params_dict,epe_counter_add:0
+#: field:hr_gp.params_dict,epr_counter_add:0
+#: field:hr_gp.payrun,payslips:0
+#: field:hr_gp.payslip,ligacc:0
+#: field:hr_gp.payslip,logrec:0
+#: field:hr_gp.payslip,payslip_lines:0
+#: field:hr_gp.support_export,state:0
+msgid "unknown"
+msgstr "inconnu"
+
+#. module: hr_gp
+#: view:hr_gp.etat_ducs:0
+#: view:hr_gp.resume_cotis:0
+msgid "à"
+msgstr "à"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,code_org:0
+msgid "Code organisme"
+msgstr "Code organisme"
+
+#. module: hr_gp
+#: selection:hr_gp.org_cotis,depot_date:0
+#: selection:hr_gp.org_cotis,exi_date:0
+#: selection:hr_gp.org_cotis,paie_date:0
+#: selection:hr_gp.org_cotis,vers_date:0
+msgid "Fin de mois"
+msgstr "Fin de mois"
+
+#. module: hr_gp
+#: field:hr_gp.calendar,dat:0
+#: field:hr_gp.logpay,dat:0
+msgid "Date"
+msgstr "Date"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,name:0
+#: field:hr_gp.org_cotis_group,name:0
+msgid "Intitulé"
+msgstr "Intitulé"
+
+#. module: hr_gp
+#: view:hr_gp.legal_frame:0
+msgid "Legal frame form"
+msgstr "Ecran cadre légal"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,paie_deca:0
+msgid "Décalage paiement"
+msgstr "Décalage paiement"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "^ jours calendriers ^"
+msgstr "^ jours calendriers ^"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+msgid "Grouper par..."
+msgstr "Grouper par..."
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.company
+msgid "Companies frames"
+msgstr "Cadres sociétés"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo11:0
+msgid "11"
+msgstr "11"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo10:0
+msgid "10"
+msgstr "10"
+
+#. module: hr_gp
+#: field:hr_gp.ducs,code:0
+#: field:hr_gp.org_cotis,code:0
+#: field:hr_gp.org_cotis_group,code:0
+#: field:hr_gp.params_dict,name:0
+msgid "Code"
+msgstr "Code"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,seq:0
+#: field:hr_gp.payslip_line,sequence:0
+msgid "Seq"
+msgstr "Seq"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,cum_act:0
+msgid "Cum activity"
+msgstr "Cum activité"
+
+#. module: hr_gp
+#: field:hr_gp.calendar,qty:0
+msgid "Qty"
+msgstr "Nombre"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.cotis_status
+msgid "État résumé des cotisations"
+msgstr "État résumé des cotisations"
+
+#. module: hr_gp
+#: view:hr_gp.etat_ducs:0
+#: view:hr_gp.resume_cotis:0
+#: model:ir.actions.act_window,name:hr_gp.action_org_cotis_form
+#: model:ir.model,name:hr_gp.model_hr_gp_org_cotis
+#: model:ir.ui.menu,name:hr_gp.org_cotis
+msgid "Organismes"
+msgstr "Organismes"
+
+#. module: hr_gp
+#: selection:hr_gp.org_cotis,depot_date:0
+#: selection:hr_gp.org_cotis,exi_date:0
+#: selection:hr_gp.org_cotis,paie_date:0
+#: selection:hr_gp.org_cotis,vers_date:0
+msgid "Non imprimable"
+msgstr "Non imprimable"
+
+#. module: hr_gp
+#: view:hr_gp.etat_ducs:0
+#: view:hr_gp.getantecdesc.wizard:0
+#: view:hr_gp.resume_cotis:0
+#: view:hr_gp.seqparams.wizard:0
+#: view:hr_gp.support_export:0
+#: view:hr_gp.support_import:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: hr_gp
+#: field:hr_gp.inversepay.wizard,line2adjust:0
+msgid "Gross line to adjust"
+msgstr "Gross line to adjust"
+
+#. module: hr_gp
+#: field:hr_gp.inversepay.wizard,gross_line:0
+msgid "Line of gross reference"
+msgstr "Line of gross reference"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,exi_date:0
+msgid "Date exigibilité"
+msgstr "Date exigibilité"
+
+#. module: hr_gp
+#: view:hr_gp.inversepay.wizard:0
+msgid "Inverse pay "
+msgstr "Paie inverse "
+
+#. module: hr_gp
+#: selection:hr_gp.payslip_line,group:0
+msgid "Brut"
+msgstr "Brut"
+
+#. module: hr_gp
+#: view:hr_gp.ducs:0
+#: view:hr_gp.org_cotis:0
+#: field:hr_gp.params_dict,org_cotis_ducs:0
+msgid "DUCS"
+msgstr "DUCS"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "Organisme"
+msgstr "Organisme"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "Formula"
+msgstr "Formule"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,e_:0
+msgid "Op e_"
+msgstr "Op e_"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,city:0
+msgid "Commune"
+msgstr "Commune"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+#: view:hr_gp.payslip_line:0
+msgid "Salarié"
+msgstr "Salarié"
+
+#. module: hr_gp
+#: view:hr_gp.support_export:0
+msgid "Exporter vos donnees"
+msgstr "Exporter vos donnees"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,res_t2:0
+msgid "Value Text"
+msgstr "Valeur texte"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_accline
+msgid "Account move line for payslip"
+msgstr "Account move line for payslip"
+
+#. module: hr_gp
+#: view:hr_gp.etat_ducs:0
+#: view:hr_gp.resume_cotis:0
+msgid "De"
+msgstr "De"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "^ jours ouvrables ^"
+msgstr "^ jours ouvrables ^"
+
+#. module: hr_gp
+#: view:hr.employee:0
+msgid "Employee tree"
+msgstr "Liste salariés"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,ratr_formula:0
+msgid "ratr formula"
+msgstr "formule taux employeur"
+
+#. module: hr_gp
+#: field:hr_gp.activity,name:0
+#: field:hr_gp.inversepay.wizard,name:0
+#: field:hr_gp.legal_frame,name:0
+#: field:hr_gp.seqparams.wizard,name:0
+#: field:hr_gp.table,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.cumann_action_tree
+msgid "Annual cumuls val"
+msgstr "Valeurs des cumuls annuels"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,b_:0
+msgid "Op b_"
+msgstr "Op b_"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,qtye_formula:0
+msgid "Qty employee formula"
+msgstr "Formule Nb salarié"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_getantecdesc_wizard
+msgid "hr_gp.getantecdesc.wizard"
+msgstr "hr_gp.getantecdesc.wizard"
+
+#. module: hr_gp
+#: view:hr_gp.legal_frame:0
+msgid "Cadre légal "
+msgstr "Cadre légal "
+
+#. module: hr_gp
+#: view:hr_gp.cumann:0
+msgid "Cumuls annuels"
+msgstr "Cumuls annuels"
+
+#. module: hr_gp
+#: view:hr_gp.wizard.gencumann:0
+msgid "Generate annual cumuls"
+msgstr "Générer les cumuls annuels"
+
+#. module: hr_gp
+#: field:hr.employee,place_of_birth:0
+msgid "Place of Birth"
+msgstr "Lieu naissance"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+#: view:hr_gp.payslip_line:0
+msgid "Employeur"
+msgstr "Employeur"
+
+#. module: hr_gp
+#: view:hr_gp.table:0
+msgid "Test formule"
+msgstr "Test formule"
+
+#. module: hr_gp
+#: view:hr_gp.inversepay.wizard:0
+#: model:ir.actions.act_window,name:hr_gp.inversepay_act_win
+msgid "Inverse pay"
+msgstr "Paie inverse"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_create_model_wizard
+msgid "hr_gp.create.model.wizard"
+msgstr "hr_gp.create.model.wizard"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+#: view:hr_gp.params_val:0
+#: view:hr_gp.payslip:0
+msgid "Group By..."
+msgstr "Groupé Par ..."
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_afsipay_root
+msgid "AFSI Paie"
+msgstr "AFSI Paie"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.seq_params_action
+msgid "hr_gp.seqparams.action"
+msgstr "hr_gp.seqparams.action"
+
+#. module: hr_gp
+#: view:hr_gp.import.model.wizard:0
+msgid "Selectionner un model"
+msgstr "Selectionner un model"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_en_construction
+msgid "en.construction"
+msgstr "en.construction"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "ou Obtenir du calendrier"
+msgstr "ou Obtenir du calendrier"
+
+#. module: hr_gp
+#: view:hr.employee:0
+#: view:hr_gp.activity:0
+#: view:hr_gp.company:0
+#: view:hr_gp.contractframe:0
+#: view:hr_gp.legal_frame:0
+msgid "parameters"
+msgstr "paramètres"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,title:0
+msgid "title"
+msgstr "titre"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_import_model_wizard
+msgid "hr_gp.import.model.wizard"
+msgstr "hr_gp.import.model.wizard"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.payrun_action_tree
+msgid "Pay run"
+msgstr "Cycle de paie"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,param_name:0
+msgid "Param name"
+msgstr "Nom paramètre"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+#: field:hr_gp.payslip_line,base:0
+msgid "Base"
+msgstr "Base"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.contract
+msgid "Contractual frames"
+msgstr "Cadres contractuels"
+
+#. module: hr_gp
+#: field:hr_gp.accline,acc_id:0
+#: view:hr_gp.payslip:0
+msgid "Account"
+msgstr "Compte"
+
+#. module: hr_gp
+#: selection:hr_gp.support_export,state:0
+msgid "get"
+msgstr "get"
+
+#. module: hr_gp
+#: field:hr_gp.contractframe,notes:0
+msgid "Notes"
+msgstr "Notes"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo12:0
+msgid "12"
+msgstr "12"
+
+#. module: hr_gp
+#: view:hr_gp.inversepay.wizard:0
+msgid "Hold result - Quit"
+msgstr "Hold result - Quit"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "Result employer to add to ..."
+msgstr "Resultat employeur à ajouter à ..."
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,base_formula:0
+msgid "base formula"
+msgstr "formule base"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+msgid "N° de paie"
+msgstr "N° de paie"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,d_:0
+msgid "d_"
+msgstr "d_"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,cum_cpy:0
+msgid "Cum company"
+msgstr "Cum société"
+
+#. module: hr_gp
+#: selection:hr_gp.activity,type:0
+msgid "activity"
+msgstr "Activité"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,contractframe_key:0
+msgid "contractframe_id"
+msgstr "Cadre contractuel"
+
+#. module: hr_gp
+#: view:hr_gp.company:0
+msgid "Company tree form"
+msgstr "Liste sociétés"
+
+#. module: hr_gp
+#: view:hr_gp.support_export:0
+msgid "Create"
+msgstr "Create"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "TypeCny"
+msgstr "Type soc."
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,a_:0
+msgid "Op a_"
+msgstr "Op a_"
+
+#. module: hr_gp
+#: field:hr_gp.param_model_item,name:0
+msgid "Dictionnary"
+msgstr "Dictionnaire"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,ducs:0
+#: model:ir.ui.menu,name:hr_gp.ducs
+msgid "Ducs"
+msgstr "Ducs"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.payslip_action_tree
+#: model:ir.model,name:hr_gp.model_hr_gp_payslip
+#: model:ir.ui.menu,name:hr_gp.pay_slip
+msgid "Pay slip"
+msgstr "Bulletin paie"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.param_model
+msgid "Param models"
+msgstr "Modèles param"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo2:0
+msgid "02"
+msgstr "02"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo3:0
+msgid "03"
+msgstr "03"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo1:0
+msgid "01"
+msgstr "01"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo6:0
+msgid "06"
+msgstr "06"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo7:0
+msgid "07"
+msgstr "07"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo4:0
+msgid "04"
+msgstr "04"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo5:0
+msgid "05"
+msgstr "05"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo8:0
+msgid "08"
+msgstr "08"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,mo9:0
+msgid "09"
+msgstr "09"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_util
+msgid "Utilities"
+msgstr "Utilities"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,ddeb:0
+msgid "Date debut"
+msgstr "Date début"
+
+#. module: hr_gp
+#: field:hr_gp.payrun,state:0
+#: field:hr_gp.payslip,state:0
+#: field:hr_gp.wizard.gencumann,state:0
+msgid "state"
+msgstr "état"
+
+#. module: hr_gp
+#: field:hr_gp.param_model,date_effet:0
+msgid "Date d'effet"
+msgstr "Date d'effet"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.params_val_action_tree
+msgid "Params val"
+msgstr "Valeur param"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.getAntecDesc_act_win
+msgid "getAntecDesc"
+msgstr "getAntecDesc"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_ducs
+msgid "hr_gp.ducs"
+msgstr "hr_gp.ducs"
+
+#. module: hr_gp
+#: view:hr_gp.contractframe:0
+msgid "Contractual frames tree"
+msgstr "Liste cadres contractuels"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Pay slip tree"
+msgstr "Liste bulletins"
+
+#. module: hr_gp
+#: field:hr_gp.getantecdesc.wizard,name:0
+msgid "param name"
+msgstr "param name"
+
+#. module: hr_gp
+#: view:hr_gp.company:0
+msgid "Company form"
+msgstr "Ecran société"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "Result"
+msgstr "Result"
+
+#. module: hr_gp
+#: field:hr_gp.contractframe,date_begin:0
+msgid "Start Date"
+msgstr "Date début"
+
+#. module: hr_gp
+#: field:hr_gp.inversepay.wizard,log:0
+#: field:hr_gp.logpay,log:0
+#: field:hr_gp.payslip,log:0
+msgid "Log"
+msgstr "Trace"
+
+#. module: hr_gp
+#: help:hr_gp.params_dict,validexp:0
+msgid "Expression logique Python en utilisant $x pour l'input à tester"
+msgstr "Expression logique Python en utilisant $x pour l'input à tester"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_support_export
+msgid "Exporter vos paramètres de paye"
+msgstr "Exporter vos paramètres de paye"
+
+#. module: hr_gp
+#: view:hr_gp.params_val:0
+msgid "Valeurs des paramètres"
+msgstr "Valeurs des paramètres"
+
+#. module: hr_gp
+#: view:hr_gp.create.model.wizard:0
+#: view:hr_gp.import.model.wizard:0
+#: view:hr_gp.inversepay.wizard:0
+#: view:hr_gp.wizard.gencumann:0
+msgid "cancel"
+msgstr "cancel"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+msgid "Références"
+msgstr "Références"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+#: field:hr_gp.org_cotis,groupe:0
+msgid "Groupe"
+msgstr "Groupe"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.action_establishement_form
+#: model:ir.ui.menu,name:hr_gp.menu_establishement_form
+msgid "Establishments"
+msgstr "Établissements"
+
+#. module: hr_gp
+#: field:hr_gp.payslip,date_compute:0
+msgid "Date compute"
+msgstr "Date calcul"
+
+#. module: hr_gp
+#: view:hr_gp.etat_ducs:0
+#: view:hr_gp.resume_cotis:0
+msgid "Etablissements"
+msgstr "Etablissements"
+
+#. module: hr_gp
+#: view:hr_gp.import.model.wizard:0
+msgid "Import model"
+msgstr "Importation d'un modèle"
+
+#. module: hr_gp
+#: view:hr_gp.payrun:0
+msgid "Include payslip from contracts"
+msgstr "Générer bulletin pour contrats en-cours"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,c_:0
+msgid "c_"
+msgstr "c_"
+
+#. module: hr_gp
+#: field:hr_gp.activity,active:0
+#: field:hr_gp.company,active:0
+#: field:hr_gp.legal_frame,active:0
+#: field:hr_gp.params_dict,active:0
+#: field:hr_gp.table,active:0
+msgid "Active"
+msgstr "Actif"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,exi_deca:0
+msgid "Décalage exigibilité"
+msgstr "Décalage exigibilité"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,qtyr_formula:0
+msgid "qtyr formula"
+msgstr "formule nombre"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,account_e_c:0
+msgid "Acc credit employee"
+msgstr "Compte crédit employée"
+
+#. module: hr_gp
+#: view:hr_gp.calendar:0
+msgid "Calendrier"
+msgstr "Calendrier"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.seq_params_act_win
+msgid "Sequence params for export/import"
+msgstr "Sequence params pour export/import"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,depot_deca:0
+msgid "Décalage limite de dépôt"
+msgstr "Décalage limite de dépôt"
+
+#. module: hr_gp
+#: field:hr_gp.accline,amount_c:0
+msgid "Credit"
+msgstr "Credit"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,account_r_c:0
+msgid "Acc credit employer"
+msgstr "Compte crédit employeur"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,update_date:0
+msgid "Update date"
+msgstr "Date mise-à-jour"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,siret:0
+#: field:res.partner,siret:0
+msgid "SIRET"
+msgstr "SIRET"
+
+#. module: hr_gp
+#: view:hr_gp.support_import:0
+msgid "Importation"
+msgstr "Importation"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_payrun
+msgid "Pay run for several"
+msgstr "Run de paie"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_param_model_item
+msgid "Params model items"
+msgstr "Ligne de modèle param"
+
+#. module: hr_gp
+#: view:hr_gp.payrun:0
+msgid "Pay run form"
+msgstr "Ecran run de paie"
+
+#. module: hr_gp
+#: constraint:hr_gp.params_dict:0
+msgid "Cum only on param of type register"
+msgstr "Cumul seulement pour paramètres de type Registre"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,date_end:0
+msgid "Validity end old"
+msgstr "Validity end old"
+
+#. module: hr_gp
+#: field:hr_gp.table,test_formule:0
+msgid "Formule test"
+msgstr "Formule test"
+
+#. module: hr_gp
+#: field:hr_gp.calendar,code:0
+msgid "Param code"
+msgstr "Code paramètre"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,qtye_formula:0
+msgid "qtye formula"
+msgstr "Formule nb salarié"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,payslip_id:0
+msgid "Pay slip Id"
+msgstr "Id bulletin paie"
+
+#. module: hr_gp
+#: view:hr_gp.params_val:0
+msgid "Params val tree"
+msgstr "Liste des valeurs de paramètres"
+
+#. module: hr_gp
+#: field:hr_gp.activity,legal_frame:0
+#: field:hr_gp.payslip_line,legframe_name:0
+#: model:ir.actions.act_window,name:hr_gp.legal_frame_action_tree
+#: model:ir.model,name:hr_gp.model_hr_gp_legal_frame
+msgid "Legal frame"
+msgstr "Cadre légal"
+
+#. module: hr_gp
+#: view:hr_gp.params_val:0
+msgid "Params val form"
+msgstr "Ecran valeur paramètres"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,zip:0
+msgid "Code postal"
+msgstr "Code postal"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,phone:0
+msgid "Téléphone"
+msgstr "Téléphone"
+
+#. module: hr_gp
+#: field:hr_gp.inversepay.wizard,gross_result:0
+msgid "Gross result"
+msgstr "Gross result"
+
+#. module: hr_gp
+#: view:hr_gp.analytic_split:0
+msgid "Analytic split tree"
+msgstr "Analytic split tree"
+
+#. module: hr_gp
+#: field:hr_gp.create.model.wizard,name:0
+#: field:hr_gp.param_model,name:0
+msgid "Model name"
+msgstr "Nom modèle"
+
+#. module: hr_gp
+#: field:hr_gp.contractframe,convention:0
+msgid "Convention"
+msgstr "Convention"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+msgid "Paiement"
+msgstr "Paiement"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.cumann
+msgid "Annual cumuls"
+msgstr "Cumuls annuels"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,employee_key:0
+msgid "employee_id"
+msgstr "Salarié"
+
+#. module: hr_gp
+#: view:hr_gp.payrun:0
+msgid "Run de paie"
+msgstr "Run de paie"
+
+#. module: hr_gp
+#: field:hr_gp.param_model_item,printable:0
+msgid "Printable"
+msgstr "Imprimable"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.create_model_action
+msgid "hr_gp.create.model.form"
+msgstr "hr_gp.create.model.form"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,format:0
+msgid "format"
+msgstr "format"
+
+#. module: hr_gp
+#: view:hr_gp.logpay:0
+msgid "Log pay form"
+msgstr "Ecran trace calcul"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+msgid "Qté"
+msgstr "Qté"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,cumul:0
+msgid "Cum?"
+msgstr "Cum?"
+
+#. module: hr_gp
+#: field:hr_gp.calendar,contractframe:0
+msgid "Contractframe Id"
+msgstr "Cadre contractuel"
+
+#. module: hr_gp
+#: field:hr_gp.wizard.gencumann,year2cum:0
+msgid "year2cum"
+msgstr "année à cumuler"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.antecdesc_action
+msgid "hr_gp.getantecdesc.action"
+msgstr "hr_gp.getantecdesc.action"
+
+#. module: hr_gp
+#: constraint:hr_gp.params_dict:0
+msgid "Incorrect validation expression "
+msgstr "Expression de validation incorrecte"
+
+#. module: hr_gp
+#: field:hr_gp.contractframe,date_end:0
+msgid "End Date"
+msgstr "Date fin"
+
+#. module: hr_gp
+#: field:hr_gp.contractframe,name:0
+msgid "Contract Reference"
+msgstr "Référence contrat"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "Result employee to add to ..."
+msgstr "Résultat salarié à ajouter à ..."
+
+#. module: hr_gp
+#: field:hr_gp.contractframe,activity:0
+#: model:ir.actions.act_window,name:hr_gp.activity_action_tree
+#: model:ir.actions.act_window,name:hr_gp.activity_convention_action_tree
+#: model:ir.actions.act_window,name:hr_gp.activity_establishment_action_tree
+msgid "Activity"
+msgstr "Activité"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+msgid "Taux"
+msgstr "Taux"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,mobile:0
+msgid "Téléphone portable"
+msgstr "Téléphone portable"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.collective_convention
+msgid "Conventions frames"
+msgstr "Cadres de conventions"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "formule"
+msgstr "formule"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_support_import
+msgid "Importer des paramètres de paye"
+msgstr "Importer des paramètres de paye"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,res_n:0
+msgid "Value Num"
+msgstr "Valeur numérique"
+
+#. module: hr_gp
+#: sql_constraint:hr_gp.params_dict:0
+msgid "Name must be unique."
+msgstr "Name must be unique."
+
+#. module: hr_gp
+#: view:hr_gp.contractframe:0
+msgid "Analytic_split"
+msgstr "Analytic_split"
+
+#. module: hr_gp
+#: view:hr_gp.params_val:0
+msgid "Type Ctt"
+msgstr "Type Ctt"
+
+#. module: hr_gp
+#: view:hr_gp.wizard.gencumann:0
+msgid "Regenerate annual cumuls"
+msgstr "Regénérer les cumuls annuels"
+
+#. module: hr_gp
+#: field:hr_gp.payslip,ctt_id:0
+msgid "Contrat"
+msgstr "Contrat"
+
+#. module: hr_gp
+#: field:hr_gp.accline,pay_id:0
+#: field:hr_gp.logpay,pay_id:0
+msgid "Ref payslip"
+msgstr "Ref bulletin"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,cttframe_name:0
+#: model:ir.model,name:hr_gp.model_hr_gp_contractframe
+msgid "Contract frame"
+msgstr "Cadre contractuel"
+
+#. module: hr_gp
+#: field:res.partner,naf:0
+msgid "NAF"
+msgstr "NAF"
+
+#. module: hr_gp
+#: selection:hr_gp.activity,type:0
+msgid "Collective convention"
+msgstr "Collective convention"
+
+#. module: hr_gp
+#: view:hr_gp.getantecdesc.wizard:0
+msgid "get Antec Desc for param "
+msgstr "get Antec Desc for param "
+
+#. module: hr_gp
+#: field:hr_gp.support_export,name:0
+msgid "Filename"
+msgstr "Filename"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.parameters
+msgid "All parameters"
+msgstr "Tous les paramètres"
+
+#. module: hr_gp
+#: view:hr_gp.seqparams.wizard:0
+msgid "Sequence for params export "
+msgstr "Sequence for params export "
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_functions_gp
+msgid "hr_gp.functions_gp"
+msgstr "hr_gp.functions_gp"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,fax:0
+msgid "Fax"
+msgstr "Fax"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "Saisie"
+msgstr "Saisie"
+
+#. module: hr_gp
+#: field:hr_gp.activity,company:0
+#: field:hr_gp.payslip_line,company_name:0
+#: model:ir.actions.act_window,name:hr_gp.company_action_tree
+#: model:ir.model,name:hr_gp.model_hr_gp_company
+msgid "Company"
+msgstr "Société"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Pay slip form"
+msgstr "Ecran bulletin"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.activity
+msgid "Activity frames"
+msgstr "Cadre d'activité"
+
+#. module: hr_gp
+#: view:hr_gp.create.model.wizard:0
+msgid "Nouveau model "
+msgstr "Nouveau modèle"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "Slip line tree"
+msgstr "Liste lignes paie"
+
+#. module: hr_gp
+#: view:hr_gp.etat_ducs:0
+#: view:hr_gp.resume_cotis:0
+msgid "Launch"
+msgstr "Launch"
+
+#. module: hr_gp
+#: view:hr_gp.param_model:0
+msgid "Dictionnarys"
+msgstr "Dictionnaires"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,depot_date:0
+msgid "Date limite de dépôt"
+msgstr "Date limite de dépôt"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,d_:0
+msgid "Op d_"
+msgstr "Op d_"
+
+#. module: hr_gp
+#: field:hr_gp.table,res_test:0
+msgid "Résultat"
+msgstr "Résultat"
+
+#. module: hr_gp
+#: field:hr_gp.analytic_split,date_begin:0
+#: field:hr_gp.params_val,date_begin:0
+msgid "Validity begin"
+msgstr "Début validité"
+
+#. module: hr_gp
+#: field:res.partner,org_cotis:0
+msgid "Organisme de cotisation"
+msgstr "Organisme de cotisation"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,street2:0
+msgid "Adresse (suite)"
+msgstr "Adresse (suite)"
+
+#. module: hr_gp
+#: field:hr_gp.analytic_split,contract_frame:0
+msgid "ctt name"
+msgstr "ctt name"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+msgid "E M P L O Y E U R"
+msgstr "E M P L O Y E U R"
+
+#. module: hr_gp
+#: view:hr.employee:0
+msgid "Contract Frames"
+msgstr "Cadres contractuels"
+
+#. module: hr_gp
+#: field:hr_gp.calendar,employee_name:0
+#: field:hr_gp.payslip,employee_name:0
+#: field:hr_gp.payslip_line,employee_name:0
+msgid "Employee name"
+msgstr "Nom salarié"
+
+#. module: hr_gp
+#: field:hr_gp.activity,type:0
+msgid "grouping"
+msgstr "grouping"
+
+#. module: hr_gp
+#: view:hr_gp.wizard.gencumann:0
+msgid "Quit"
+msgstr "Quitter"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,sous_titre:0
+msgid "Sous-titre"
+msgstr "Sous-titre"
+
+#. module: hr_gp
+#: view:hr_gp.activity:0
+#: view:hr_gp.contractframe:0
+#: view:hr_gp.legal_frame:0
+msgid "Parameters"
+msgstr "Paramètres"
+
+#. module: hr_gp
+#: selection:hr_gp.org_cotis,depot_date:0
+#: selection:hr_gp.org_cotis,exi_date:0
+#: selection:hr_gp.org_cotis,paie_date:0
+#: selection:hr_gp.org_cotis,vers_date:0
+msgid "Début de mois"
+msgstr "Début de mois"
+
+#. module: hr_gp
+#: field:hr_gp.analytic_split,split_percent:0
+msgid "Split %"
+msgstr "Split %"
+
+#. module: hr_gp
+#: field:hr_gp.accline,amount_d:0
+msgid "Debit"
+msgstr "Debit"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.employee_action_tree
+#: model:ir.model,name:hr_gp.model_hr_employee
+msgid "Employee"
+msgstr "Salarié"
+
+#. module: hr_gp
+#: selection:hr_gp.payslip_line,group:0
+msgid "Net"
+msgstr "Net"
+
+#. module: hr_gp
+#: view:hr_gp.inversepay.wizard:0
+msgid "Payslip restored - Quit"
+msgstr "Payslip restored - Quit"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.activity_to_model
+#: model:ir.actions.act_window,name:hr_gp.contractframe_to_model
+#: model:ir.actions.act_window,name:hr_gp.employee_to_model
+#: model:ir.actions.act_window,name:hr_gp.legal_frame_to_model
+#: model:ir.actions.act_window,name:hr_gp.payslip_to_
+msgid "Exporter comme model"
+msgstr "Exporter comme modèle"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.gen_cumann
+msgid "Annual cumuls generation"
+msgstr "Génération cumuls annuels"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,qtyr_formula:0
+msgid "Qty employer formula"
+msgstr "Formule nb employeur"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,res_d:0
+msgid "ResultDe"
+msgstr "Resultat date salarié"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_config
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: hr_gp
+#: field:hr_gp.contractframe,employee_id:0
+#: field:hr_gp.cumann,employee_key:0
+msgid "Employee_id"
+msgstr "Salarié"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,base_formula:0
+msgid "Base formula"
+msgstr "Formule base"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_calendar
+msgid "Calendar for contract"
+msgstr "Calendrier pour le contrat"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "Origin BEL"
+msgstr "Origin BEL"
+
+#. module: hr_gp
+#: view:hr_gp.payrun:0
+#: view:hr_gp.payslip:0
+msgid "Payslip"
+msgstr "Bulletin paie"
+
+#. module: hr_gp
+#: field:hr_gp.payslip,origin:0
+msgid "Origine"
+msgstr "Origine"
+
+#. module: hr_gp
+#: field:hr_gp.support_export,dictionary:0
+msgid "Dictionnaire"
+msgstr "Dictionnaire"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_params_dict
+msgid "Params Dictionary"
+msgstr "Dictionnaire paramètres"
+
+#. module: hr_gp
+#: field:hr_gp.etat_ducs,date_start:0
+#: field:hr_gp.resume_cotis,date_start:0
+msgid "Date début"
+msgstr "Date début"
+
+#. module: hr_gp
+#: selection:hr_gp.payslip_line,group:0
+msgid "Cotisations"
+msgstr "Cotisations"
+
+#. module: hr_gp
+#: field:hr_gp.params_val,legalframe_key:0
+msgid "legalframe_id"
+msgstr "Cadre légal"
+
+#. module: hr_gp
+#: view:hr_gp.calendar:0
+#: model:ir.actions.act_window,name:hr_gp.calendar_action_tree
+#: model:ir.ui.menu,name:hr_gp.calendar
+msgid "Calendar"
+msgstr "Calendrier"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,b_:0
+msgid "b_"
+msgstr "b_"
+
+#. module: hr_gp
+#: field:hr_gp.etat_ducs,etab_a:0
+#: field:hr_gp.resume_cotis,etab_a:0
+msgid "etab_a"
+msgstr "etab_a"
+
+#. module: hr_gp
+#: field:hr_gp.etat_ducs,org_cotis_de:0
+#: field:hr_gp.resume_cotis,org_cotis_de:0
+msgid "org_cotis_de"
+msgstr "org_cotis_de"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Cloturer"
+msgstr "Cloturer"
+
+#. module: hr_gp
+#: view:hr.employee:0
+#: view:hr_gp.company:0
+msgid "Payroll parameters"
+msgstr "Paramètres paie"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "Dictionnaire du paramètre "
+msgstr "Dictionnaire du paramètre "
+
+#. module: hr_gp
+#: view:hr_gp.activity:0
+#: view:hr_gp.legal_frame:0
+#: view:hr_gp.param_model:0
+#: view:hr_gp.params_dict:0
+msgid "Params dictionary form"
+msgstr "Ecran dictionnaire paramètres"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,seqcalc:0
+msgid "Seq calc"
+msgstr "Seq calc"
+
+#. module: hr_gp
+#: view:hr_gp.create.model.wizard:0
+msgid "Add"
+msgstr "Ajouter"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Draft"
+msgstr "Draft"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+msgid "Valeur"
+msgstr "Valeur"
+
+#. module: hr_gp
+#: report:hr_gp.payslip.report2:0
+msgid "........."
+msgstr "........."
+
+#. module: hr_gp
+#: constraint:hr_gp.contractframe:0
+msgid "Error! Total split percentages not = 100%"
+msgstr "Error! Total split percentages not = 100%"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_analytic_split
+msgid "Contract analytic split"
+msgstr "Contract analytic split"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,last_update:0
+msgid "Last update"
+msgstr "Dernière mise-à-jour"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,contractframe_key:0
+msgid "Contractframe_id"
+msgstr "Cadre contractuel"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "ParamsDict"
+msgstr "ParamsDict"
+
+#. module: hr_gp
+#: view:hr_gp.support_export:0
+msgid "Export termine"
+msgstr "Export termine"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis_group:0
+msgid "Groupe Organismes de cotisations"
+msgstr "Groupe Organismes de cotisations"
+
+#. module: hr_gp
+#: field:hr_gp.getantecdesc.wizard,par_asc:0
+msgid "Ascendants"
+msgstr "Ascendants"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "Valider"
+msgstr "Valider"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,account_r_d:0
+msgid "Acc debit employer"
+msgstr "Compte débit employeur"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.contract_action_tree
+msgid "Contract"
+msgstr "Contrat"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,validexp:0
+msgid "Validation expression"
+msgstr "Expression de validation"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,account_e_d:0
+msgid "Acc debit employee"
+msgstr "Compte débit employé"
+
+#. module: hr_gp
+#: view:hr_gp.payslip:0
+msgid "AnnulValid"
+msgstr "AnnulValid"
+
+#. module: hr_gp
+#: view:hr_gp.company:0
+msgid "Société"
+msgstr "Société"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "ou Nombre de jours entre 2 dates"
+msgstr "ou Nombre de jours entre 2 dates"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_cumann
+msgid "Register annual cumuls for entities"
+msgstr "Enregistrer cumuls annuels pour entités"
+
+#. module: hr_gp
+#: field:hr_gp.org_cotis,name_long:0
+msgid "Intitulé complet"
+msgstr "Intitulé complet"
+
+#. module: hr_gp
+#: field:hr_gp.support_export,model:0
+msgid "Modèles"
+msgstr "Modèles"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "-->"
+msgstr "-->"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,rate_formula:0
+msgid "rate formula"
+msgstr "formule taux salarié"
+
+#. module: hr_gp
+#: field:hr_gp.functions_gp,func_name:0
+msgid "Func name"
+msgstr "Nom fonction"
+
+#. module: hr_gp
+#: view:hr_gp.support_export:0
+msgid "Custom Report"
+msgstr "Custom Report"
+
+#. module: hr_gp
+#: view:hr_gp.org_cotis:0
+msgid "Exigibilité"
+msgstr "Exigibilité"
+
+#. module: hr_gp
+#: selection:hr_gp.payslip_line,group:0
+msgid "Jour / Heure"
+msgstr "Jour / Heure"
+
+#. module: hr_gp
+#: view:hr_gp.payslip_line:0
+msgid "calculez"
+msgstr "calculez"
+
+#. module: hr_gp
+#: field:hr_gp.etat_ducs,org_cotis_a:0
+#: field:hr_gp.resume_cotis,org_cotis_a:0
+msgid "org_cotis_a"
+msgstr "org_cotis_a"
+
+#. module: hr_gp
+#: field:hr_gp.activity,establishment:0
+#: field:hr_gp.contractframe,establishment:0
+msgid "Establishment"
+msgstr "Etablissement"
+
+#. module: hr_gp
+#: view:hr_gp.getantecdesc.wizard:0
+msgid "Get Antec and Desc"
+msgstr "Get Antec and Desc"
+
+#. module: hr_gp
+#: field:hr_gp.payslip,payid:0
+msgid "PayId"
+msgstr "Paie"
+
+#. module: hr_gp
+#: field:hr_gp.accline,name:0
+#: field:hr_gp.activity,description:0
+#: field:hr_gp.calendar,name:0
+#: field:hr_gp.company,description:0
+#: field:hr_gp.create.model.wizard,description:0
+#: field:hr_gp.functions_gp,description:0
+#: field:hr_gp.legal_frame,description:0
+#: field:hr_gp.logpay,name:0
+#: field:hr_gp.param_model,descr:0
+#: field:hr_gp.params_dict,desc:0
+#: field:hr_gp.payrun,descr:0
+#: field:hr_gp.payslip,name:0
+#: field:hr_gp.table,description:0
+msgid "Description"
+msgstr "Description"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_inversepay_wizard
+msgid "hr_gp.inversepay.wizard"
+msgstr "hr_gp.inversepay.wizard"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_pay
+msgid "Payroll"
+msgstr "Paie"
+
+#. module: hr_gp
+#: model:ir.actions.act_window,name:hr_gp.gen_cumann_action2
+msgid "hr_gp.gencumann.action"
+msgstr "hr_gp.gencumann.action"
+
+#. module: hr_gp
+#: field:hr_gp.functions_gp,param_chain:0
+msgid "Param_chain"
+msgstr "Param_chain"
+
+#. module: hr_gp
+#: view:hr_gp.table:0
+msgid "Table tree form"
+msgstr "Ecran des tables"
+
+#. module: hr_gp
+#: field:hr_gp.cumann,activityframe_key:0
+msgid "Activityframe_id"
+msgstr "Cadre d'activité"
+
+#. module: hr_gp
+#: field:hr_gp.payrun,name:0
+msgid "Run name"
+msgstr "Nom du run"
+
+#. module: hr_gp
+#: field:hr_gp.payslip_line,a_:0
+msgid "a_"
+msgstr "a_"
+
+#. module: hr_gp
+#: model:ir.model,name:hr_gp.model_hr_gp_params_val
+msgid "Params values for entities"
+msgstr "Valeur des paramètres pour entités"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.employee
+msgid "Employees"
+msgstr "Employés"
+
+#. module: hr_gp
+#: view:hr_gp.params_dict:0
+msgid "Comptabilité"
+msgstr "Comptabilité"
+
+#. module: hr_gp
+#: field:hr_gp.params_dict,rate_formula:0
+msgid "Rate employee formula"
+msgstr "Formule taux salarié"
+
+#. module: hr_gp
+#: view:hr.employee:0
+#: view:hr_gp.activity:0
+#: view:hr_gp.company:0
+#: view:hr_gp.contractframe:0
+msgid "Cumuls val tree"
+msgstr "Liste des cumuls"
+
+#. module: hr_gp
+#: model:ir.actions.report.xml,name:hr_gp.payslip_report2
+msgid "Imprimer"
+msgstr "Imprimer"
+
+#. module: hr_gp
+#: constraint:hr_gp.params_dict:0
+msgid "Formula not defined or incorrect "
+msgstr "Formule non définie ou incorrecte "
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_support
+msgid "Support paie"
+msgstr "Support paie"
+
+#. module: hr_gp
+#: model:ir.ui.menu,name:hr_gp.menu_admin_report
+msgid "États administratifs : gestion par salariés"
+msgstr "États administratifs : gestion par salariés"
+
+#. module: hr_gp
+#: field:hr_gp.param_model_item,sequence:0
+#: view:hr_gp.seqparams.wizard:0
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: hr_gp
+#: view:hr_gp.etat_ducs:0
+#: model:ir.actions.act_window,name:hr_gp.etat_ducs_action
+msgid "Etat DUCS"
+msgstr "Etat DUCS"
+

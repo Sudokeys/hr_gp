@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificat_travail_sub" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2871b4ef-0559-4fd1-aff4-2328d904e1ff">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="31"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CUSTOM_EMPL_ID" class="java.lang.Integer"/>
+	<parameter name="CUSTOM_ETAB" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT hgc.id,hgc.date_begin,hgc.date_end,hgpv.inp emploi FROM hr_gp_contractframe hgc
+FULL JOIN hr_gp_params_val hgpv ON hgc.id=hgpv.contractframe_key
+FULL JOIN hr_gp_params_dict hgpd ON hgpv.param_name=hgpd.id
+FULL JOIN hr_gp_activity hgac ON hgc.activity=hgac.id
+WHERE hgc.employee_id=$P{CUSTOM_EMPL_ID} and hgpd.name='EMPLOI_CTT' and hgac.establishment=$P{CUSTOM_ETAB} and hgc.date_end<to_date('2099-12-30', 'YYYY-MM-DD')]]>
+	</queryString>
+	<field name="emploi" class="java.lang.String">
+		<fieldDescription><![CDATA[Input]]></fieldDescription>
+	</field>
+	<field name="date_begin" class="java.lang.String">
+		<fieldDescription><![CDATA[Validity begin]]></fieldDescription>
+	</field>
+	<field name="date_end" class="java.lang.String">
+		<fieldDescription><![CDATA[Validity end]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<frame>
+				<reportElement uuid="75a27899-1295-4758-a214-4f7c31f3fb9b" mode="Opaque" x="173" y="1" width="270" height="36" backcolor="#69B798"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+			</frame>
+			<frame>
+				<reportElement uuid="57ca0eec-8bae-4d95-896d-f0b2d295f750" mode="Opaque" x="6" y="1" width="167" height="36" backcolor="#69B798"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement uuid="6a18f820-f343-417b-85c9-a96098f60a9b" x="246" y="3" width="123" height="29"/>
+				<textElement textAlignment="Center">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Emplois successivement occupé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="89b0def8-4d70-415d-b5af-09db812774bc" x="97" y="18" width="67" height="20" backcolor="#69B798"/>
+				<textElement textAlignment="Center">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Au]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b5d37219-101e-4c56-966b-eb4a320d0d0b" x="9" y="17" width="74" height="20"/>
+				<textElement textAlignment="Center">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Du]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="caac003b-c4e8-419a-9cc4-0776f894cd28" x="39" y="4" width="100" height="24"/>
+				<textElement textAlignment="Center">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Périodes]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a81c88db-0f59-4cff-9cd8-991ace922457" x="6" y="0" width="83" height="34"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($F{date_begin}))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="550ad907-034f-4c95-bfa7-473e60d8bc6e" x="89" y="0" width="84" height="34"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($F{date_end}))]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b67f70a8-4e0d-4884-a04a-1a7df6cf78af" x="173" y="0" width="270" height="34"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emploi}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

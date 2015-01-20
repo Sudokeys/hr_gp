@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cotis_summary_sub" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isFloatColumnFooter="true" uuid="f6e58262-8967-41c8-9560-3bc5ba5273b2">
+	<property name="ireport.zoom" value="1.2100000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="0.0"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.0"/>
+			<rightPen lineWidth="0.0"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF" fill="Solid">
+		<pen lineWidth="0.0"/>
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+			<leftPen lineWidth="0.0"/>
+			<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+			<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<subDataset name="etab" uuid="53dda391-97d8-4535-89d3-d6cc0fb26537">
+		<parameter name="custom_etab_de" class="java.lang.Integer" isForPrompting="false"/>
+		<parameter name="custom_etab_a" class="java.lang.Integer" isForPrompting="false"/>
+		<queryString>
+			<![CDATA[select rp.name from res_partner rp
+join hr_gp_activity hga on hga.establishment=rp.id
+where (rp.id between symmetric $P{custom_etab_de} and $P{custom_etab_a})]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/quentin/Projets/jasper_report/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_ORG_COTIS_DE" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_ORG_COTIS_A" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_ETAB_DE" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_ETAB_A" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_DATE_DEBUT" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_DATE_FIN" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_PARAM_MODEL" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CUSTOM_ACTIVITY" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT row_number() over(),
+       param_name,
+       hgpd.name,
+       hgpd.title,
+       CASE
+           WHEN sum(hgpl.base)=0 THEN 0
+           WHEN count(distinct hgoc.id)=0 THEN sum(hgpl.base)
+	   ELSE sum(hgpl.base)/count(distinct hgoc.id)
+       END "base",
+
+       CASE
+           WHEN min(rate)=max(rate) THEN max(rate)::text
+           ELSE 'Calculé'
+       END "rate",
+       CASE
+           WHEN min(ratr)=max(ratr) THEN max(ratr)::text
+           ELSE 'Calculé'
+       END "ratr",
+       CASE
+           WHEN sum(res_ne)=0 THEN 0
+           WHEN count(distinct hgoc.id)=0 THEN sum(res_ne)
+	   ELSE sum(res_ne)/count(distinct hgoc.id)
+       END "res_ne",
+       CASE
+           WHEN sum(res_nr)=0 THEN 0
+           WHEN count(distinct hgoc.id)=0 THEN sum(res_nr)
+	   ELSE sum(res_nr)/count(distinct hgoc.id)
+       END "res_nr",
+       CASE
+           WHEN (sum(res_nr)-sum(res_ne))=0 THEN 0
+           WHEN count(distinct hgoc.id)=0 THEN (sum(res_nr)-sum(res_ne))
+	   ELSE (sum(res_nr)-sum(res_ne))/count(distinct hgoc.id)
+       END "global",
+       sum(1),
+       hgocg.id "org_group",
+       hgocg.name "org_group_name",
+       count(DISTINCT CASE WHEN he.gender='male' THEN he.id ELSE NULL END) AS H,
+       count(DISTINCT CASE WHEN he.gender='female' THEN he.id ELSE NULL END) AS F,
+       count(DISTINCT he.id) "nbr_empl",rp.name rp_name
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpd.id=hgpl.param_name
+FULL JOIN hr_gp_org_cotis_group hgocg ON hgpd.org_cotis=hgocg.id
+FULL JOIN hr_gp_org_cotis hgoc ON hgocg.id=hgoc.groupe
+JOIN hr_gp_payslip hgp ON hgpl.pay_id=hgp.id
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee he ON hgc.employee_id=he.id
+JOIN hr_gp_activity hga ON hga.id=hgc.activity
+JOIN res_partner rp ON rp.id=hga.establishment
+JOIN hr_gp_payrun hgpr ON hgp.pay_run=hgpr.id
+--JOIN hr_gp_org_cotis_res_partner_rel hgocrpr ON hgocrpr.hr_gp_org_cotis_id=hgoc.id and hgocrpr.res_partner_id=rp.id
+WHERE hgpd.group='COT'
+and ((hgoc.id>=$P{CUSTOM_ORG_COTIS_DE} and hgoc.id<=$P{CUSTOM_ORG_COTIS_A}) or hgoc is null)
+and (rp.id between symmetric $P{CUSTOM_ETAB_DE} and $P{CUSTOM_ETAB_A})
+AND (hgpr.date_begin>=to_date($P{CUSTOM_DATE_DEBUT}, 'YYYY-MM-DD') and hgpr.date_begin<=to_date($P{CUSTOM_DATE_FIN}, 'YYYY-MM-DD'))
+and (case when 0 != 0
+then param_name = any(ARRAY[(select array_agg(params) from hr_gp_param_model hgpm
+join hr_gp_param_model_item hgpmi on hgpm.id=hgpmi.model_id
+where hgpm.id=0 )] ) else True end)
+and (case when $P{CUSTOM_PARAM_MODEL} != 0 then hgc.payslip_model=$P{CUSTOM_PARAM_MODEL} else True end)
+and (case when $P{CUSTOM_ACTIVITY} != 0 then hgc.activity=$P{CUSTOM_ACTIVITY} else True end)
+GROUP BY param_name,
+         hgpd.name,
+         hgpd.title,
+
+         hgocg.id,
+         hgocg.name,rp.name
+ORDER BY
+         rp.name,
+hgocg.id,
+         hgpd.name]]>
+	</queryString>
+	<field name="row_number" class="java.lang.Long"/>
+	<field name="param_name" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Param name]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String"/>
+	<field name="title" class="java.lang.String">
+		<fieldDescription><![CDATA[Title]]></fieldDescription>
+	</field>
+	<field name="base" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Base]]></fieldDescription>
+	</field>
+	<field name="rate" class="java.lang.String">
+		<fieldDescription><![CDATA[Rate employee]]></fieldDescription>
+	</field>
+	<field name="ratr" class="java.lang.String">
+		<fieldDescription><![CDATA[Rate employer]]></fieldDescription>
+	</field>
+	<field name="res_ne" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[ResultNe]]></fieldDescription>
+	</field>
+	<field name="res_nr" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[ResultNr]]></fieldDescription>
+	</field>
+	<field name="global" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[Global]]></fieldDescription>
+	</field>
+	<field name="sum" class="java.lang.Long"/>
+	<field name="org_group" class="java.lang.Integer"/>
+	<field name="org_group_name" class="java.lang.String"/>
+	<field name="h" class="java.lang.Long"/>
+	<field name="f" class="java.lang.Long"/>
+	<field name="nbr_empl" class="java.lang.Long"/>
+	<variable name="subtotal_res_ne" class="java.lang.Float" resetType="Group" resetGroup="org" calculation="Sum">
+		<variableExpression><![CDATA[$F{res_ne}]]></variableExpression>
+	</variable>
+	<variable name="subtotal_res_nr" class="java.lang.Float" resetType="Group" resetGroup="org" calculation="Sum">
+		<variableExpression><![CDATA[$F{res_nr}]]></variableExpression>
+	</variable>
+	<variable name="subtotal_global" class="java.lang.Float" resetType="Group" resetGroup="org" calculation="Sum">
+		<variableExpression><![CDATA[$F{global}]]></variableExpression>
+	</variable>
+	<variable name="total_res_nr" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{res_nr}]]></variableExpression>
+	</variable>
+	<variable name="total_res_ne" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{res_ne}]]></variableExpression>
+	</variable>
+	<variable name="total_global" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{global}]]></variableExpression>
+	</variable>
+	<group name="org">
+		<groupExpression><![CDATA[$F{org_group}]]></groupExpression>
+		<groupFooter>
+			<band height="20">
+				<rectangle>
+					<reportElement uuid="c116d03d-3461-4631-b414-95c0adcdf042" x="0" y="0" width="555" height="20"/>
+					<graphicElement>
+						<pen lineWidth="0.25"/>
+					</graphicElement>
+				</rectangle>
+				<textField>
+					<reportElement uuid="9f4e4b80-508c-4020-bc09-8f08c94e5881" x="0" y="5" width="100" height="10" forecolor="#E60101"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="1" rightIndent="1"/>
+					</textElement>
+					<textFieldExpression><![CDATA["TOTAL " + ( $F{org_group_name}!=null ? $F{org_group_name} : "org. indéfini" )]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00" isBlankWhenNull="true">
+					<reportElement uuid="b2394b17-877f-49bc-b8b7-74da2cd9c078" x="385" y="5" width="60" height="10"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="1" rightIndent="1"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{subtotal_res_nr}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00" isBlankWhenNull="true">
+					<reportElement uuid="c755d523-980e-469c-bb85-ac7c68c073e4" x="325" y="5" width="60" height="10"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="1" rightIndent="1"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{subtotal_res_ne}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00" isBlankWhenNull="true">
+					<reportElement uuid="9a81ef4e-5182-40d7-b777-83099774246c" x="445" y="5" width="60" height="10"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="1" rightIndent="1"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{subtotal_global}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="70">
+			<staticText>
+				<reportElement uuid="7d60594d-8d56-40cc-8769-569626d476c4" x="0" y="0" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESUME DES COTISATIONS]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="47721ff9-3632-440b-a55a-d8c7b0b0bd69" key="table" style="table" x="0" y="40" width="355" height="29" forecolor="#FFFFFF"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="etab" uuid="8aff013d-d8fa-4bc4-8180-66c479ea8f36">
+						<datasetParameter name="custom_etab_de">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB_DE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="custom_etab_a">
+							<datasetParameterExpression><![CDATA[$P{CUSTOM_ETAB_A}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="355" uuid="47a0e353-1bfd-4688-b60c-d0d786da0dcb">
+						<jr:detailCell style="table_TD" height="18" rowSpan="1">
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textField>
+								<reportElement uuid="b1fe7a77-21d3-4b22-881b-d2ad7307fbb2" x="0" y="0" width="355" height="18" forecolor="#010101"/>
+								<textElement verticalAlignment="Middle">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="a19981be-5b61-477f-90c1-b38cca32776d" x="193" y="20" width="209" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Période du : " + new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($P{CUSTOM_DATE_DEBUT}))+" au " + new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.text.SimpleDateFormat("yyyy-MM-dd").parse($P{CUSTOM_DATE_FIN}))]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement uuid="dd15ce0d-22a4-4b54-a597-b9a494b43743" x="474" y="43" width="90" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fe46d42b-3a67-419a-8dd2-7408a3f66125" x="413" y="43" width="66" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false" isItalic="false"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Générée le :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d6547cb2-9e3f-4f97-8b98-5392d582c34a" x="0" y="0" width="165" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Rubriques de cotisations]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f489ba56-f2d5-41ed-8c83-7806fb0cbee9" x="165" y="0" width="50" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Taux
+salarial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bf9d9e06-d1eb-496a-9e21-b855b8e00e37" x="215" y="0" width="50" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Taux
+patronal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d243dfff-9fa0-4ea4-8770-2ce0f8adf121" x="325" y="0" width="60" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Montant salarial ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6b13946-b1e2-46e4-94e1-4e08404b3257" x="385" y="0" width="60" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Montant patronal ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15e2ad03-f956-4594-ae22-ce4a0c598ec9" x="445" y="0" width="60" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Montant global ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f497f08-e705-407b-9440-868b84b60690" x="505" y="0" width="50" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Effectifs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8468b778-65e5-4d01-b33d-5e23438905dc" x="505" y="10" width="25" height="10"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[H]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="722a0a9c-65a0-441a-a676-cc374f552a2f" x="530" y="10" width="25" height="10"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[F]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dbc416c7-008a-4550-b039-273397328c2b" x="265" y="0" width="60" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<text><![CDATA[Base]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="10" splitType="Stretch">
+			<textField>
+				<reportElement uuid="5ef64262-d00d-4178-8efa-f64989a0e71f" x="0" y="0" width="165" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="2deb96ef-e2c2-4dfd-8659-c78d186ef167" x="445" y="0" width="60" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{global}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="be2e5496-7434-4981-a49f-a48011925cbd" x="165" y="0" width="50" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="300e05ec-34f3-41cf-85af-9d045a0eed8b" x="325" y="0" width="60" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="0add3e88-1b77-4c9d-b037-758faa1712f7" x="385" y="0" width="60" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{res_nr}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b157f53f-0257-4df1-93e7-851875f02ed4" x="215" y="0" width="50" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ratr}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9ddc447d-485a-4dab-8012-78041fb6a7e9" x="505" y="0" width="25" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e82a02d8-b1b1-4154-a100-b52d42aea407" x="530" y="0" width="25" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{f}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="4f43371d-1b96-4e33-ae50-c35ef12160d8" x="265" y="0" width="60" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{base}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10">
+			<frame>
+				<reportElement uuid="1329c69c-1439-462a-bd51-a56296a88f9d" x="0" y="0" width="555" height="10"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+			</frame>
+			<textField>
+				<reportElement uuid="34008575-8ff2-4ccd-981e-7b271d7b14a2" x="0" y="0" width="100" height="10" forecolor="#E60101"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL "]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="4c7f18dc-fdf2-4890-8071-2a3fa369414c" x="325" y="0" width="60" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total_res_ne}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="675ee7ba-2844-4ecb-885e-ed70aed82c51" x="445" y="0" width="60" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total_global}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="88052729-bd83-48bb-b124-fc914abcba56" x="385" y="0" width="60" height="10"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total_res_nr}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<lastPageFooter>
+		<band height="50"/>
+	</lastPageFooter>
+</jasperReport>

@@ -1,0 +1,2463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lettre_cheque" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" scriptletClass="AmountToLetter" uuid="da556356-e7c6-48ef-a98e-367a77a6635e">
+	<property name="ireport.zoom" value="1.1000000000000068"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<property name="ireport.jasperserver.reportUnit" value="/openerp/bases/T2000_v7/lettre_cheque"/>
+	<property name="ireport.jasperserver.url" value="http://5.39.84.20:5080/jasperserver/services/repository"/>
+	<style name="table" fill="Solid" radius="100">
+		<box>
+			<topPen lineWidth="0.25" lineColor="#000000"/>
+			<leftPen lineWidth="0.25"/>
+			<bottomPen lineWidth="0.25"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Transparent" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.0" lineColor="#000000"/>
+			<leftPen lineWidth="0.25"/>
+			<bottomPen lineWidth="0.0" lineColor="#000000"/>
+			<rightPen lineWidth="0.25"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table hr_employee" uuid="f348d645-56d0-46ed-ac73-f272fba9d560">
+		<parameter name="ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT identification_id,rr.name,hr.prenom prenom,matricule,street,street2,zip,city,hj.name job,hgmp.name mode_reglement_p FROM hr_employee AS hr
+JOIN resource_resource rr ON hr.resource_id=rr.id
+LEFT JOIN hr_gp_mode_paiement hgmp ON hgmp.id=hr.mode_reglement_p
+FULL JOIN hr_job hj ON hr.job_id=hj.id
+WHERE hr.id=$P{ID};]]>
+		</queryString>
+		<field name="identification_id" class="java.lang.String">
+			<fieldDescription><![CDATA[Identification No]]></fieldDescription>
+		</field>
+		<field name="title2" class="java.lang.String">
+			<fieldDescription><![CDATA[Civilité]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String"/>
+		<field name="prenom" class="java.lang.String">
+			<fieldDescription><![CDATA[Prénom]]></fieldDescription>
+		</field>
+		<field name="matricule" class="java.lang.String">
+			<fieldDescription><![CDATA[Matricule]]></fieldDescription>
+		</field>
+		<field name="street" class="java.lang.String">
+			<fieldDescription><![CDATA[Street]]></fieldDescription>
+		</field>
+		<field name="street2" class="java.lang.String">
+			<fieldDescription><![CDATA[Street2]]></fieldDescription>
+		</field>
+		<field name="zip" class="java.lang.String"/>
+		<field name="city" class="java.lang.String">
+			<fieldDescription><![CDATA[City]]></fieldDescription>
+		</field>
+		<field name="job" class="java.lang.String"/>
+		<field name="mode_reglement_p" class="java.lang.String">
+			<fieldDescription><![CDATA[Mode de règlement]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="Table establishment_res_partner" uuid="0c244f63-34cf-49a4-814f-155d7d3c93fe">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT rp.*,hgoc.name org_cotis
+FROM hr_gp_payslip hgp
+FULL JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+FULL JOIN hr_gp_activity hga ON hgc.activity=hga.id
+FULL JOIN res_partner rp ON hga.establishment=rp.id
+FULL JOIN hr_gp_org_cotis hgoc ON hgoc.id=rp.org_cotis2
+WHERE hgp.id=$P{PAY_ID};]]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="lang" class="java.lang.String">
+			<fieldDescription><![CDATA[Language]]></fieldDescription>
+		</field>
+		<field name="company_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Company]]></fieldDescription>
+		</field>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="comment" class="java.lang.String">
+			<fieldDescription><![CDATA[Additional Information]]></fieldDescription>
+		</field>
+		<field name="ean13" class="java.lang.String">
+			<fieldDescription><![CDATA[EAN13 Barcode]]></fieldDescription>
+		</field>
+		<field name="color" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Color Index]]></fieldDescription>
+		</field>
+		<field name="image" class="java.lang.Object">
+			<fieldDescription><![CDATA[Photo]]></fieldDescription>
+		</field>
+		<field name="use_parent_address" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[Use Company Address]]></fieldDescription>
+		</field>
+		<field name="active" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[Active]]></fieldDescription>
+		</field>
+		<field name="street" class="java.lang.String">
+			<fieldDescription><![CDATA[street]]></fieldDescription>
+		</field>
+		<field name="supplier" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[Supplier]]></fieldDescription>
+		</field>
+		<field name="city" class="java.lang.String">
+			<fieldDescription><![CDATA[Commune]]></fieldDescription>
+		</field>
+		<field name="user_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Project Manager]]></fieldDescription>
+		</field>
+		<field name="zip" class="java.lang.String">
+			<fieldDescription><![CDATA[zip]]></fieldDescription>
+		</field>
+		<field name="title" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Title]]></fieldDescription>
+		</field>
+		<field name="function" class="java.lang.String">
+			<fieldDescription><![CDATA[Method]]></fieldDescription>
+		</field>
+		<field name="country_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Nationality]]></fieldDescription>
+		</field>
+		<field name="parent_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Parent]]></fieldDescription>
+		</field>
+		<field name="employee" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[Employee]]></fieldDescription>
+		</field>
+		<field name="type" class="java.lang.String">
+			<fieldDescription><![CDATA[Internal Type]]></fieldDescription>
+		</field>
+		<field name="email" class="java.lang.String">
+			<fieldDescription><![CDATA[E-Mail]]></fieldDescription>
+		</field>
+		<field name="vat" class="java.lang.String">
+			<fieldDescription><![CDATA[TIN]]></fieldDescription>
+		</field>
+		<field name="website" class="java.lang.String"/>
+		<field name="fax" class="java.lang.String">
+			<fieldDescription><![CDATA[Fax]]></fieldDescription>
+		</field>
+		<field name="street2" class="java.lang.String">
+			<fieldDescription><![CDATA[street2]]></fieldDescription>
+		</field>
+		<field name="phone" class="java.lang.String">
+			<fieldDescription><![CDATA[Téléphone]]></fieldDescription>
+		</field>
+		<field name="credit_limit" class="java.lang.Double">
+			<fieldDescription><![CDATA[Credit Limit]]></fieldDescription>
+		</field>
+		<field name="date" class="java.sql.Date"/>
+		<field name="tz" class="java.lang.String">
+			<fieldDescription><![CDATA[Timezone]]></fieldDescription>
+		</field>
+		<field name="customer" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[Customer]]></fieldDescription>
+		</field>
+		<field name="image_medium" class="java.lang.Object">
+			<fieldDescription><![CDATA[Medium-sized photo]]></fieldDescription>
+		</field>
+		<field name="mobile" class="java.lang.String">
+			<fieldDescription><![CDATA[Téléphone portable]]></fieldDescription>
+		</field>
+		<field name="ref" class="java.lang.String">
+			<fieldDescription><![CDATA[Ref.]]></fieldDescription>
+		</field>
+		<field name="image_small" class="java.lang.Object">
+			<fieldDescription><![CDATA[Smal-sized photo]]></fieldDescription>
+		</field>
+		<field name="birthdate" class="java.lang.String">
+			<fieldDescription><![CDATA[Birthdate]]></fieldDescription>
+		</field>
+		<field name="is_company" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[Is a Company]]></fieldDescription>
+		</field>
+		<field name="state_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[State]]></fieldDescription>
+		</field>
+		<field name="notification_email_send" class="java.lang.String">
+			<fieldDescription><![CDATA[Receive Messages by Email]]></fieldDescription>
+		</field>
+		<field name="opt_out" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[Opt-Out]]></fieldDescription>
+		</field>
+		<field name="signup_type" class="java.lang.String">
+			<fieldDescription><![CDATA[Signup Token Type]]></fieldDescription>
+		</field>
+		<field name="signup_expiration" class="java.sql.Timestamp">
+			<fieldDescription><![CDATA[Signup Expiration]]></fieldDescription>
+		</field>
+		<field name="signup_token" class="java.lang.String">
+			<fieldDescription><![CDATA[Signup Token]]></fieldDescription>
+		</field>
+		<field name="last_reconciliation_date" class="java.sql.Timestamp">
+			<fieldDescription><![CDATA[Latest Full Reconciliation Date]]></fieldDescription>
+		</field>
+		<field name="debit_limit" class="java.lang.Double">
+			<fieldDescription><![CDATA[Payable Limit]]></fieldDescription>
+		</field>
+		<field name="conv_coll" class="java.lang.String">
+			<fieldDescription><![CDATA[Convention collective]]></fieldDescription>
+		</field>
+		<field name="org_cotis2" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Organisme de cotisation]]></fieldDescription>
+		</field>
+		<field name="naf" class="java.lang.String">
+			<fieldDescription><![CDATA[NAF]]></fieldDescription>
+		</field>
+		<field name="siret_p" class="java.lang.String">
+			<fieldDescription><![CDATA[SIRET]]></fieldDescription>
+		</field>
+		<field name="n_affil" class="java.lang.String">
+			<fieldDescription><![CDATA[N° d'affiliation]]></fieldDescription>
+		</field>
+		<field name="vat_subjected" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[VAT Legal Statement]]></fieldDescription>
+		</field>
+		<field name="org_cotis" class="java.lang.String">
+			<fieldDescription><![CDATA[Organisme de cotisations]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="Table hr_gp_contractframe" uuid="e644569d-a45c-47a5-93e1-7ebcc0f89654">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgc.*,hga.name aname,hgco.name cname,hgconv.name convname
+FROM hr_gp_payslip hgp
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_gp_activity hga ON hgc.activity=hga.id
+JOIN hr_gp_activity hgconv ON hgc.convention=hgconv.id
+JOIN hr_gp_company hgco ON hgco.id=hga.company
+WHERE hgp.id=$P{PAY_ID};]]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="payslip_model" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Payslip model]]></fieldDescription>
+		</field>
+		<field name="date_begin" class="java.sql.Date">
+			<fieldDescription><![CDATA[Start Date]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String"/>
+		<field name="date_end" class="java.sql.Date">
+			<fieldDescription><![CDATA[End Date]]></fieldDescription>
+		</field>
+		<field name="convention" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Convention]]></fieldDescription>
+		</field>
+		<field name="employee_id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Employé]]></fieldDescription>
+		</field>
+		<field name="activity" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Activity]]></fieldDescription>
+		</field>
+		<field name="establishment" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Establishment]]></fieldDescription>
+		</field>
+		<field name="notes" class="java.lang.String">
+			<fieldDescription><![CDATA[Notes]]></fieldDescription>
+		</field>
+		<field name="aname" class="java.lang.String"/>
+		<field name="cname" class="java.lang.String"/>
+		<field name="convname" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Table hr_gp_payslip_line" uuid="8034694d-29fa-4969-867a-eb861893bc25">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID}
+ORDER BY hgpl.sequence;]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="R_TOTHRESTRAV" uuid="9724d16c-f0d6-4821-94fa-8b4ebe2d4530">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT r.hgp_id,id,sum(nullif(r.regex,'')::float) total FROM
+(SELECT hgp.id hgp_id,hgcu.id id,regexp_split_to_table(cum_an, E';') as regex FROM hr_gp_contractframe hgc
+JOIN hr_gp_payslip hgp ON hgp.ctt_id=hgc.id
+JOIN hr_gp_cumann hgcu ON hgcu.contractframe_key=hgc.id
+JOIN hr_gp_params_dict hgpd ON hgpd.id=hgcu.param_name
+WHERE hgp.id=$P{PAY_ID} and year_cum=extract(year from hgp.date_compute) and hgpd.name='R_TOTHRESTRAV') r
+group by id,r.hgp_id;]]>
+		</queryString>
+		<field name="hgp_id" class="java.lang.Integer"/>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="total" class="java.lang.Double"/>
+	</subDataset>
+	<subDataset name="R_TOTHRESUP" uuid="5822d34e-2b2a-4d11-b305-2de737b762a1">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='R_TOTHRESUP'
+ORDER BY hgpl.sequence;]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="R_TOTHREABS" uuid="28241560-3efd-4717-b237-19bba22e98e6">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='R_TOTHREABS'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="R_NETAPAYER" scriptletClass="AmountToLetter" uuid="1c25a8d0-7260-4ce8-a594-2e1c92a446c0">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='R_NETAPAYER'
+ORDER BY hgpl.sequence;]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="R_NETIMPOS" uuid="ea971c9e-977a-4eda-94ae-3e3b0426da0b">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='R_NETIMPOS'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="R_TOTCOTPAT" uuid="4ce398f7-1408-444c-9c4f-77f3bb3c5d0d">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='R_TOTCOTPAT'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="R_TOTCOTSAL" uuid="5a85f824-e108-46b8-bec6-6ab9de8e1405">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='R_TOTCOTSAL'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="BRUT_MOIS_TO" uuid="78e5d5e8-a9be-44c5-ab04-29160599ea41">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='BRUT_MOIS_TOT'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="Table hr_gp_payrun" uuid="724dffe5-b696-404e-a212-96c069ed2683">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpr.*
+FROM hr_gp_payslip hgp
+JOIN hr_gp_payrun hgpr ON hgp.pay_run=hgpr.id
+WHERE hgp.id=$P{PAY_ID}]]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="selection" class="java.lang.String">
+			<fieldDescription><![CDATA[Selection]]></fieldDescription>
+		</field>
+		<field name="date_begin" class="java.sql.Date">
+			<fieldDescription><![CDATA[Start Date]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String"/>
+		<field name="descr" class="java.lang.String">
+			<fieldDescription><![CDATA[Description]]></fieldDescription>
+		</field>
+		<field name="company" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Company]]></fieldDescription>
+		</field>
+		<field name="state" class="java.lang.String">
+			<fieldDescription><![CDATA[Status]]></fieldDescription>
+		</field>
+		<field name="date_end" class="java.sql.Date">
+			<fieldDescription><![CDATA[End Date]]></fieldDescription>
+		</field>
+		<field name="date_compute" class="java.sql.Date">
+			<fieldDescription><![CDATA[Date compute]]></fieldDescription>
+		</field>
+		<field name="date_pay" class="java.sql.Date">
+			<fieldDescription><![CDATA[Date payment]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="JRS_ABS_CONGE" uuid="fe09ba3f-ccfa-48cd-8196-f8d4064796cc">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='JRS_ABS_CONGE'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="SOLDE_CONGES_ACQUIS" uuid="a98d3b8f-a4c6-4db6-9450-165cc466bc1f">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='SOLDE_CONGES_ACQUIS'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="SOLDE_CONGES_RESTANT " uuid="0d5984d0-4bbd-4b62-acfa-9739bd8db78d">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='SOLDE_CONGES_RESTANT'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="TPS_TRAV_CTT" uuid="d1a33dd0-dab3-469b-8bd2-84fe7e6dc289">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpv.*
+FROM hr_gp_payslip hgp
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_gp_params_val hgpv ON hgc.id=hgpv.contractframe_key
+JOIN hr_gp_params_dict hgpd ON hgpv.param_name=hgpd.id
+WHERE hgp.id=$P{PAY_ID} and hgpd.name='TPS_TRAV_CTT']]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="date_end" class="java.sql.Date"/>
+		<field name="inp" class="java.lang.String"/>
+		<field name="activityframe_key" class="java.lang.Integer"/>
+		<field name="employee_key" class="java.lang.Integer"/>
+		<field name="date_begin" class="java.sql.Date"/>
+		<field name="contractframe_key" class="java.lang.Integer"/>
+		<field name="param_name" class="java.lang.Integer"/>
+		<field name="legalframe_key" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="company_key" class="java.lang.Integer"/>
+		<field name="date_end2" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="COEF_CTT" uuid="db576275-b0fd-4567-a3bc-bf2bfc25bae2">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpv.*
+FROM hr_gp_payslip hgp
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_gp_params_val hgpv ON hgc.id=hgpv.contractframe_key
+JOIN hr_gp_params_dict hgpd ON hgpv.param_name=hgpd.id
+WHERE hgp.id=$P{PAY_ID} and hgpd.name='COEF_CTT']]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="date_end" class="java.sql.Date"/>
+		<field name="inp" class="java.lang.String"/>
+		<field name="activityframe_key" class="java.lang.Integer"/>
+		<field name="employee_key" class="java.lang.Integer"/>
+		<field name="date_begin" class="java.sql.Date"/>
+		<field name="contractframe_key" class="java.lang.Integer"/>
+		<field name="param_name" class="java.lang.Integer"/>
+		<field name="legalframe_key" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="company_key" class="java.lang.Integer"/>
+		<field name="date_end2" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="STATUT_SALARIE" uuid="392533a0-6ce7-4a44-adb8-709486b2eb3e">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpv.*
+FROM hr_gp_payslip hgp
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_gp_params_val hgpv ON hgc.id=hgpv.contractframe_key
+JOIN hr_gp_params_dict hgpd ON hgpv.param_name=hgpd.id
+WHERE hgp.id=$P{PAY_ID} and hgpd.name='STATUT_SALARIE']]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="date_end" class="java.sql.Date"/>
+		<field name="inp" class="java.lang.String"/>
+		<field name="activityframe_key" class="java.lang.Integer"/>
+		<field name="employee_key" class="java.lang.Integer"/>
+		<field name="date_begin" class="java.sql.Date"/>
+		<field name="contractframe_key" class="java.lang.Integer"/>
+		<field name="param_name" class="java.lang.Integer"/>
+		<field name="legalframe_key" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="company_key" class="java.lang.Integer"/>
+		<field name="date_end2" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="BRUT_MOIS_TOT_N" uuid="0b3c56ea-a481-4e79-b0db-40d494aa19fd">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='BRUTMOISTOT_N'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="TOTCOTPAT_N" uuid="c0344da2-72ee-410e-8a08-a5f7a12da247">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='TOTCOTPAT_N'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="TOTCOTSAL_N" uuid="221edcb1-307a-4402-b324-11c97dc800dd">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='TOTCOTSAL_N'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="NETIMPOSABLE_N" uuid="881ee494-74ea-48dd-bc6c-2a6ced4350d2">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='NETIMPOSABLE_N'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="TOTHRESTRAV_N" uuid="21289aee-0d96-4671-bfd7-998e2abe544b">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='TOTHRESTRAV_N'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String"/>
+		<field name="base" class="java.math.BigDecimal"/>
+		<field name="rate" class="java.math.BigDecimal"/>
+		<field name="ratr" class="java.math.BigDecimal"/>
+		<field name="res_nr" class="java.math.BigDecimal"/>
+		<field name="res_ne" class="java.math.BigDecimal"/>
+		<field name="registee" class="java.math.BigDecimal"/>
+		<field name="register" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="R_TOTHRESTRAV_PERIODE" uuid="7a66b1bd-b956-4b47-b71b-043841caf036">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.sequence,hgpd.name,hgpd.title,hgpl.base,hgpl.rate,hgpl.ratr,hgpl.res_nr,hgpl.res_ne,hgpl.registee,hgpl.register
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='R_TOTHRESTRAV'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="sequence" class="java.lang.Integer">
+			<fieldDescription><![CDATA[Sequence]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String"/>
+		<field name="title" class="java.lang.String">
+			<fieldDescription><![CDATA[Title]]></fieldDescription>
+		</field>
+		<field name="base" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Base]]></fieldDescription>
+		</field>
+		<field name="rate" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Rate employee]]></fieldDescription>
+		</field>
+		<field name="ratr" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Rate employer]]></fieldDescription>
+		</field>
+		<field name="res_nr" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[ResultNr]]></fieldDescription>
+		</field>
+		<field name="res_ne" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[ResultNe]]></fieldDescription>
+		</field>
+		<field name="registee" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Registee]]></fieldDescription>
+		</field>
+		<field name="register" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[Register]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="EMPLOI_CTT" uuid="143e80d3-0294-4fca-8725-b7da67a6b097">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpv.*
+FROM hr_gp_payslip hgp
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_gp_params_val hgpv ON hgc.id=hgpv.contractframe_key
+JOIN hr_gp_params_dict hgpd ON hgpv.param_name=hgpd.id
+WHERE hgp.id=$P{PAY_ID} and hgpd.name='EMPLOI_CTT']]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="date_end" class="java.sql.Date"/>
+		<field name="inp" class="java.lang.String"/>
+		<field name="activityframe_key" class="java.lang.Integer"/>
+		<field name="employee_key" class="java.lang.Integer"/>
+		<field name="date_begin" class="java.sql.Date"/>
+		<field name="contractframe_key" class="java.lang.Integer"/>
+		<field name="param_name" class="java.lang.Integer"/>
+		<field name="legalframe_key" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="company_key" class="java.lang.Integer"/>
+		<field name="date_end2" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="DATE_ANC_SOC" uuid="dad45987-910a-45d3-b2c3-22a0e8e8b191">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpv.*
+FROM hr_gp_payslip hgp
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_gp_params_val hgpv ON hgc.id=hgpv.contractframe_key
+JOIN hr_gp_params_dict hgpd ON hgpv.param_name=hgpd.id
+WHERE hgp.id=$P{PAY_ID} and hgpd.name='DATE_ANC_SOC']]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="date_end" class="java.sql.Date"/>
+		<field name="inp" class="java.lang.String"/>
+		<field name="activityframe_key" class="java.lang.Integer"/>
+		<field name="employee_key" class="java.lang.Integer"/>
+		<field name="date_begin" class="java.sql.Date"/>
+		<field name="contractframe_key" class="java.lang.Integer"/>
+		<field name="param_name" class="java.lang.Integer"/>
+		<field name="legalframe_key" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="company_key" class="java.lang.Integer"/>
+		<field name="date_end2" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="NIV_CTT" uuid="0a809048-0c3e-4c87-a9e1-4381b1ad47d4">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpv.*
+FROM hr_gp_payslip hgp
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_gp_params_val hgpv ON hgc.id=hgpv.contractframe_key
+JOIN hr_gp_params_dict hgpd ON hgpv.param_name=hgpd.id
+WHERE hgp.id=$P{PAY_ID} and hgpd.name='NIV_CTT']]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="date_end" class="java.sql.Date"/>
+		<field name="inp" class="java.lang.String"/>
+		<field name="activityframe_key" class="java.lang.Integer"/>
+		<field name="employee_key" class="java.lang.Integer"/>
+		<field name="date_begin" class="java.sql.Date"/>
+		<field name="contractframe_key" class="java.lang.Integer"/>
+		<field name="param_name" class="java.lang.Integer"/>
+		<field name="legalframe_key" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="company_key" class="java.lang.Integer"/>
+		<field name="date_end2" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="INDICE_CTT" uuid="eae7f9a7-ba5c-49f7-9f66-974cf0ee4462">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpv.*
+FROM hr_gp_payslip hgp
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_gp_params_val hgpv ON hgc.id=hgpv.contractframe_key
+JOIN hr_gp_params_dict hgpd ON hgpv.param_name=hgpd.id
+WHERE hgp.id=$P{PAY_ID} and hgpd.name='INDICE_CTT']]>
+		</queryString>
+		<field name="id" class="java.lang.Integer"/>
+		<field name="create_uid" class="java.lang.Integer"/>
+		<field name="create_date" class="java.sql.Timestamp"/>
+		<field name="write_date" class="java.sql.Timestamp"/>
+		<field name="write_uid" class="java.lang.Integer"/>
+		<field name="date_end" class="java.sql.Date"/>
+		<field name="inp" class="java.lang.String"/>
+		<field name="activityframe_key" class="java.lang.Integer"/>
+		<field name="employee_key" class="java.lang.Integer"/>
+		<field name="date_begin" class="java.sql.Date"/>
+		<field name="contractframe_key" class="java.lang.Integer"/>
+		<field name="param_name" class="java.lang.Integer"/>
+		<field name="legalframe_key" class="java.lang.Integer"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="company_key" class="java.lang.Integer"/>
+		<field name="date_end2" class="java.sql.Date"/>
+	</subDataset>
+	<subDataset name="Emplois" uuid="8540a347-5652-4fd2-81d4-8c4ac709e9f6">
+		<parameter name="HE_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select distinct pc.name,he.id he_id,to_char(m.date,'YYYY-MM') date,
+sum(mil.duree_realise) duree_realise
+from mission m
+join mission_intervenant_line mil on m.id=mil.mission_id
+join hr_employee he on he.id=mil.intervenant
+join product_product pp on pp.id=m.tache
+join product_template pt on pp.product_tmpl_id=pt.id
+join product_category pc on pc.id=pt.categ_id
+JOIN hr_gp_contractframe hgc ON hgc.employee_id=he.id
+JOIN hr_gp_payslip hgp ON hgp.ctt_id=hgc.id
+JOIN hr_gp_payrun hgpr ON hgp.pay_run=hgpr.id
+where  hgp.id=$P{PAY_ID} and to_char(hgpr.date_begin,'YYYY-MM')=to_char(m.date,'YYYY-MM')
+group by pc.name,he.id,to_char(m.date,'YYYY-MM')
+order by to_char(m.date,'YYYY-MM'),duree_realise desc
+limit 1]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="he_id" class="java.lang.Integer"/>
+		<field name="date" class="java.lang.String"/>
+		<field name="duree_realise" class="java.lang.Double">
+			<fieldDescription><![CDATA[Durée réalisé]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="COMMENT_BRUT" uuid="c9cab54a-2f3f-415b-a113-7ff1c9e152c2">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.inp
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='COMMENT_BRUT'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="inp" class="java.lang.String">
+			<fieldDescription><![CDATA[Input]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="COMMENT_COT" uuid="92dbd6f7-3154-4c3f-98a0-b5054efc548b">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.inp
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='COMMENT_COT'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="inp" class="java.lang.String">
+			<fieldDescription><![CDATA[Input]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="COMMENT_NET" uuid="bec30c18-3aa1-4797-aec6-90d509cd8cf6">
+		<parameter name="PAY_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT hgpl.inp
+FROM hr_gp_payslip_line hgpl
+JOIN hr_gp_params_dict hgpd ON hgpl.param_name=hgpd.id
+WHERE pay_id=$P{PAY_ID} and hgpd.name='COMMENT_NET'
+ORDER BY hgpl.sequence]]>
+		</queryString>
+		<field name="inp" class="java.lang.String">
+			<fieldDescription><![CDATA[Input]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/quentin/Projets/jasper_report/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OERP_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT hgp.*,hr.id employee_id  FROM hr_gp_payslip hgp
+JOIN hr_gp_contractframe hgc ON hgp.ctt_id=hgc.id
+JOIN hr_employee hr ON hgc.employee_id=hr.id
+WHERE hgp.id=$P{OERP_ID};]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="create_uid" class="java.lang.Integer"/>
+	<field name="create_date" class="java.sql.Timestamp"/>
+	<field name="write_date" class="java.sql.Timestamp"/>
+	<field name="write_uid" class="java.lang.Integer"/>
+	<field name="ctt_id" class="java.lang.Integer"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="pay_run" class="java.lang.Integer"/>
+	<field name="date_compute" class="java.sql.Date"/>
+	<field name="log" class="java.lang.Boolean"/>
+	<field name="viewline" class="java.lang.String"/>
+	<field name="employee_id" class="java.lang.Integer"/>
+	<group name="Payslip" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<rectangle radius="10">
+					<reportElement uuid="939f22f2-c0fd-4262-96c1-11488f217b50" x="0" y="0" width="555" height="15"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement uuid="d201c1b7-3385-492f-b164-aee1cb966318" x="0" y="0" width="255" height="14" backcolor="#262B70"/>
+					<box>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Libellé]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="506dc53d-43b9-437f-88e6-ed62b89ca898" x="255" y="0" width="50" height="14" backcolor="#262B70"/>
+					<box>
+						<topPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Base]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="1b6fdd9e-8559-4ed7-ac85-f866fdf26e3a" x="305" y="0" width="50" height="14" backcolor="#262B70"/>
+					<box>
+						<topPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Tx Sal.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="172b5652-bc56-4000-a6d9-4af959f53598" x="355" y="0" width="50" height="14" backcolor="#262B70"/>
+					<box>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Gain]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="92e1ad7f-8452-40ec-9798-55a577f1081c" x="405" y="0" width="50" height="14" backcolor="#262B70"/>
+					<box>
+						<topPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Retenue]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="4960ebe3-18ee-4e15-a267-f21cee712e43" x="455" y="0" width="50" height="14" backcolor="#262B70"/>
+					<box>
+						<topPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Tx Pat.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6811f969-98ea-4800-a8cb-288a138f2422" x="505" y="0" width="50" height="14" backcolor="#262B70"/>
+					<box>
+						<topPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Montant Pat.7]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band height="802">
+			<frame>
+				<reportElement uuid="47fca60a-0863-4f6a-8a5d-a976f944e9c5" x="0" y="181" width="555" height="389"/>
+				<box>
+					<leftPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<staticText>
+					<reportElement uuid="5fa1b73d-6a0b-4d12-b03b-510f7d59c2f8" x="505" y="0" width="50" height="389"/>
+					<box>
+						<leftPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="a6e8bc9d-3176-44f2-8d41-535927b87db9" x="305" y="0" width="50" height="389"/>
+					<box>
+						<leftPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="747e0cfa-6143-4104-9951-9ecb666fe5b2" x="355" y="0" width="50" height="389"/>
+					<box>
+						<leftPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="c79c3177-8643-4ffb-b1a8-31de96142f71" x="0" y="0" width="60" height="389"/>
+					<box>
+						<leftPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" markup="none">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="43aa8bcd-1db6-4470-9974-eacafeb00615" x="405" y="0" width="50" height="389"/>
+					<box>
+						<leftPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="ed998e51-c406-4656-905a-6b198655db9d" x="255" y="0" width="50" height="389"/>
+					<box>
+						<leftPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="0f6c0c16-87ee-4da7-ad50-4dde97455c55" x="60" y="0" width="195" height="389"/>
+					<box>
+						<leftPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" markup="none">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="66d0c1bb-66fc-44c7-9bd3-0c730b1f989c" x="455" y="0" width="50" height="389"/>
+					<box>
+						<leftPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</background>
+	<pageHeader>
+		<band height="172" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="430576a8-067b-4a82-8b30-fc7160cff5b3" x="277" y="12" width="278" height="145"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Table hr_gp_contractframe" uuid="9349af85-752f-4599-a85b-96d38fa693cb">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="145" width="278">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="92b4f3c0-44c7-472e-a94e-58403f0b1d4b" x="0" y="0" width="152" height="10"/>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{cname}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="82d9d739-9c1e-4bdc-952d-d75bb8e4f3e8" x="132" y="101" width="145" height="10"/>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="8" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{convname}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="d01cee73-d19d-46e7-a0ca-8459d140c7c3" x="-1" y="0" width="555" height="171"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Table hr_employee" uuid="bb8b81db-c370-48ac-bef8-2049dca99d1a">
+						<datasetParameter name="ID">
+							<datasetParameterExpression><![CDATA[$F{employee_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="171" width="555">
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="52bae16f-3814-44cc-816c-9883868e32bf" x="135" y="79" width="100" height="10"/>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{identification_id}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="809706dd-5861-4765-80fd-b417d8b2d067" x="278" y="123" width="208" height="10"/>
+							<textElement>
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[( $F{title2} !=null ? $F{title2}  : '' ) + ' ' + $F{name} + ' ' + ( $F{prenom} !=null ? $F{prenom}  : '' )]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="fde9779e-e8d1-400a-b32d-07bedb0f87d6" x="135" y="69" width="100" height="10"/>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="c240ff4d-4b7c-4599-a66b-0e04dbddccb8" x="278" y="133" width="208" height="10"/>
+							<textElement>
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{street}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="b1f1f993-e18d-412d-9bdf-3fc6e0bb4088" x="278" y="143" width="208" height="10"/>
+							<textElement>
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{street2}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="73d9ce1e-3316-4f8e-8e17-e60250a2968e" x="278" y="153" width="38" height="10"/>
+							<textElement>
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{zip}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="f98b1aff-4b62-43c4-9853-736fa12ae876" x="316" y="153" width="170" height="10"/>
+							<textElement>
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="b695cc6d-f800-464a-81aa-775b997caacc" x="60" y="48" width="116" height="10"/>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{mode_reglement_p}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<frame>
+				<reportElement uuid="7ce01504-c83d-47fe-a2e4-5d4425fbaef3" x="277" y="0" width="278" height="171"/>
+				<componentElement>
+					<reportElement uuid="26619f1b-ed84-46df-874c-9b54880d018f" x="0" y="13" width="278" height="153"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="Table establishment_res_partner" uuid="be47e525-a506-45e2-bc63-1d3735ac52dd">
+							<datasetParameter name="PAY_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="153" width="278">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="c0bf8724-3745-44ef-8179-6120161adce8" x="0" y="8" width="152" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="f9bcec71-fd56-404d-bf98-289a70d836ca" x="132" y="59" width="146" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{siret_p}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="f056b4c6-7647-41e0-a61e-fc8615a621f6" x="132" y="69" width="146" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{naf}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="843f0b11-0ce7-47e1-9373-c81126c3cd1e" x="132" y="89" width="146" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{n_affil}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="47ecc255-bf76-4198-b2c6-cf7d9f2dcdd7" x="131" y="79" width="146" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isBold="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{org_cotis}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement uuid="e9d83029-d628-4094-8909-518487526fec" x="0" y="59" width="131" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isItalic="true"/>
+								</textElement>
+								<text><![CDATA[Siret :]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="05c5b3e5-f439-41e3-9e08-0d0b81d21266" x="0" y="69" width="131" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isItalic="true"/>
+								</textElement>
+								<text><![CDATA[NAF :]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="286afcaa-0f48-4c37-addc-c761dbedf7aa" x="0" y="79" width="131" height="10"/>
+								<textElement>
+									<font size="8" isItalic="true"/>
+								</textElement>
+								<text><![CDATA[Organisme de cotisation :]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="325516c9-eecb-4925-a6ed-caa6c14f18a3" x="0" y="89" width="131" height="10"/>
+								<textElement>
+									<font size="8" isItalic="true"/>
+								</textElement>
+								<text><![CDATA[N° d'affiliation :]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="6799b07f-1fc9-4854-a4e6-5ceec043a3f7" x="0" y="99" width="131" height="10"/>
+								<textElement verticalAlignment="Middle">
+									<font size="8" isItalic="true"/>
+								</textElement>
+								<text><![CDATA[Convention collective :]]></text>
+							</staticText>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="25af6e2a-c290-48c7-959e-fe984a347fb9" x="0" y="18" width="152" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{street}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="7f438fc8-f5cb-434a-ae9f-dd658d36fbf8" x="0" y="28" width="152" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{street2}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="2df3bf70-46ec-416d-920d-f840ed66718c" x="0" y="38" width="39" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{zip}]]></textFieldExpression>
+							</textField>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="2e6710b5-aee4-4d5e-8403-18bad38d0b72" x="39" y="38" width="113" height="10"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+				<textField>
+					<reportElement uuid="b4bb5d3f-b4af-4714-8b2b-d4177f7790d6" x="178" y="3" width="100" height="10"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement uuid="a305f560-4223-4e46-89ae-39a16a6444f7" x="0" y="0" width="267" height="161"/>
+				<rectangle radius="0">
+					<reportElement uuid="86ec2cd5-5c0e-49b3-bf1b-588c260f7bf1" x="0" y="0" width="255" height="100" backcolor="#262B70"/>
+					<graphicElement>
+						<pen lineWidth="0.25"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement uuid="5274ea5f-aa18-44ae-9bb3-5ad9314349b9" x="0" y="0" width="259" height="20" forecolor="#FEFEFE"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BULLETIN de PAIE]]></text>
+				</staticText>
+				<rectangle radius="0">
+					<reportElement uuid="4ceeeae8-2ebb-4f18-be5e-c15cc58f5798" x="0" y="20" width="255" height="134"/>
+					<graphicElement>
+						<pen lineWidth="0.25"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement uuid="5df7bb8d-fca6-49e4-a37f-8b8775cbe098" x="4" y="31" width="56" height="10"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Période du]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="3fdfbc7c-12d4-4266-94f6-5e888998afbf" x="114" y="31" width="12" height="10"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[au]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fec9d28d-c84e-4f8a-9303-b2f0493f5357" x="4" y="41" width="56" height="10"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Paiement le]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="8b6ba83d-c9e4-4663-92fa-14f4ced0e6a5" x="4" y="51" width="56" height="10"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Par]]></text>
+				</staticText>
+				<componentElement>
+					<reportElement uuid="03de0327-4d71-4831-95cf-949ad1fd1ab5" x="4" y="31" width="255" height="20"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="Table hr_gp_payrun" uuid="c84eb085-1fc8-4eab-ad20-b21e1838a4d2">
+							<datasetParameter name="PAY_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="20" width="255">
+							<textField pattern="dd/MM/yyyy">
+								<reportElement uuid="8d07950f-e635-4af2-b78f-e74a9564f72f" x="56" y="0" width="66" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{date_begin}]]></textFieldExpression>
+							</textField>
+							<textField pattern="dd/MM/yyyy">
+								<reportElement uuid="0270932b-b9c1-4a9e-bbed-f5355fe0954e" x="131" y="0" width="62" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{date_end}]]></textFieldExpression>
+							</textField>
+							<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+								<reportElement uuid="23c1fbcd-9d7b-4e24-9f2d-73943f7df043" x="56" y="10" width="100" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{date_pay}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+				<staticText>
+					<reportElement uuid="b44039cc-121a-44a0-ad30-bb9854ab2799" x="4" y="65" width="131" height="10"/>
+					<textElement>
+						<font size="8" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Matricule]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="71eddb3f-6819-462c-9206-17ca65202f16" x="4" y="75" width="131" height="10"/>
+					<textElement>
+						<font size="8" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[N° Sécu. sociale]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="638c5cc6-5b11-454b-83ac-ae09f7ff8476" x="4" y="85" width="131" height="10"/>
+					<textElement>
+						<font size="8" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Emploi]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="edafa22b-1129-4e35-972e-f62054cec6ad" x="4" y="95" width="131" height="10"/>
+					<textElement>
+						<font size="8" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Qualification]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="b37d7517-c391-4aa0-9d8b-44e1ab499f4d" x="4" y="104" width="131" height="10"/>
+					<textElement>
+						<font size="8" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Ancienneté]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="61d8c7dc-ee37-4d13-8b08-eaae8380a89f" x="4" y="114" width="131" height="10"/>
+					<textElement>
+						<font size="8" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Horaire]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="10c20e94-0d5a-4e3a-816f-2c12bf2e0128" x="4" y="124" width="131" height="10"/>
+					<textElement>
+						<font size="8" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Indice]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="06673798-1fc3-4ec7-ba1f-be8699a7f200" x="4" y="134" width="131" height="10"/>
+					<textElement>
+						<font size="8" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Niveau]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="4ba5b396-d2fa-452f-b519-c9ead6bb4f55" x="4" y="144" width="131" height="10"/>
+					<textElement>
+						<font size="8" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Coefficient]]></text>
+				</staticText>
+				<componentElement>
+					<reportElement uuid="494db08e-8d52-4e1c-9db8-b1fcabd289eb" x="135" y="84" width="100" height="10"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="EMPLOI_CTT" uuid="e735cdf1-e5f6-40f7-9e29-cc6b9f7f92df">
+							<datasetParameter name="PAY_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="10" width="100">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="e1c2f366-cc00-4ee5-b7a1-7cd00aaee9f1" x="0" y="0" width="100" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+				<componentElement>
+					<reportElement uuid="b3f21e69-5ee9-424a-82f3-3bcfebda2e5b" x="135" y="95" width="100" height="10"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="STATUT_SALARIE" uuid="e729a25a-a89f-44a5-9cf8-ad4468c622de">
+							<datasetParameter name="PAY_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="10" width="100">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="48910f58-f7a1-4115-be31-094cb051f543" x="0" y="0" width="100" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+				<componentElement>
+					<reportElement uuid="9c9815d5-f042-4e7c-b4d7-2d6894192325" x="135" y="104" width="100" height="10"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="DATE_ANC_SOC" uuid="6cf6bb5b-24db-468c-82a9-53d74e6b9277">
+							<datasetParameter name="PAY_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="10" width="100">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="a698f52f-9070-43fe-83e3-43ddfc804077" x="0" y="0" width="100" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+				<componentElement>
+					<reportElement uuid="932a83c3-2ed0-478b-ab6c-a777c52c24e2" x="135" y="113" width="100" height="10"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="TPS_TRAV_CTT" uuid="e69aa790-7d8c-4c14-810d-726b310948df">
+							<datasetParameter name="PAY_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="10" width="100">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="3a53e4b6-3ceb-4b96-b38c-96eea43e3658" x="0" y="0" width="100" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+				<componentElement>
+					<reportElement uuid="87e4c3fd-505c-4aa7-a12c-de42b99b5b52" x="135" y="122" width="100" height="10"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="INDICE_CTT" uuid="c05891e3-7d06-4aaf-88f1-b2c65f44382d">
+							<datasetParameter name="PAY_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="10" width="100">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="49d87c8b-0760-4ab1-9eca-7ee4574fb179" x="0" y="0" width="100" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+				<componentElement>
+					<reportElement uuid="2dabe10e-44ff-4007-a37e-d773a9e3eb5b" x="135" y="133" width="100" height="10"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="NIV_CTT" uuid="334c5a68-cc97-4e7b-bb17-fb238f88f07e">
+							<datasetParameter name="PAY_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="10" width="100">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="8cbfc232-be6d-4fa2-8672-0e9263be4f00" x="0" y="0" width="100" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+				<componentElement>
+					<reportElement uuid="124c4b7d-b2d6-4fd3-9057-8666d6cceb4a" x="135" y="143" width="100" height="10"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="COEF_CTT" uuid="c2dfb1c6-d86a-4179-960f-5b8b80d2a336">
+							<datasetParameter name="PAY_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="10" width="100">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="3d7e1e29-5b6d-4c3f-af1a-cf580ae43ee1" x="0" y="0" width="100" height="10"/>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</frame>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="100">
+			<subreport>
+				<reportElement uuid="6e86dfeb-19d3-4410-8e3f-2e238ca48be2" positionType="Float" x="0" y="0" width="555" height="13"/>
+				<subreportParameter name="PAY_ID">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:lettre_cheque_brut.jrxml"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="a7daf810-0d6e-43d9-ae8a-84a02af79f60" positionType="Float" x="0" y="27" width="555" height="13"/>
+				<subreportParameter name="PAY_ID">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:lettre_cheque_cot.jrxml"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="e9aa4f61-9ea4-4955-abd1-47871bd78574" positionType="Float" x="0" y="54" width="555" height="13" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="PAY_ID">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:lettre_cheque_net.jrxml"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="1485c077-a7b2-407d-a85d-0a62f8a85034" positionType="Float" x="0" y="82" width="555" height="13"/>
+				<subreportParameter name="PAY_ID">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["repo:lettre_cheque_cum.jrxml"]]></subreportExpression>
+			</subreport>
+			<componentElement>
+				<reportElement uuid="2200f103-31b6-4231-b7fa-aec7adc67254" positionType="Float" x="60" y="16" width="495" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="COMMENT_BRUT" uuid="89a64979-497a-40ed-a84c-e943d541b6ca">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="495">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="bc79bc92-7d4c-408e-ba75-6f926739e1e0" isPrintRepeatedValues="false" x="0" y="0" width="495" height="10"/>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="8" isItalic="true"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="625a319a-2d4a-462d-aa2c-c1f4b4e65a13" positionType="Float" x="60" y="42" width="495" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="COMMENT_COT" uuid="9ee2393d-4e50-4a61-a613-0561d026c355">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="495">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="fbc9974c-30f9-4e57-8ea2-352439da710f" isPrintRepeatedValues="false" x="0" y="0" width="495" height="10"/>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="8" isItalic="true"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="e16c63f1-d1e8-4c17-9cdd-7cb0093cc689" positionType="Float" x="60" y="69" width="495" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="COMMENT_NET" uuid="403c17c5-da53-4e42-88d7-2c9195caad0a">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="495">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="536104be-a874-4e8b-bc38-8e1a1bd2b55f" isPrintRepeatedValues="false" x="0" y="0" width="495" height="10"/>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font size="8" isItalic="true"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{inp}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="271">
+			<componentElement>
+				<reportElement uuid="34ccd529-6350-4a29-b0fd-15c53fa898fe" x="79" y="124" width="265" height="50"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_NETAPAYER" uuid="4bdddff9-3427-417b-8f59-fddee2007a10">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="50" width="265">
+						<textField isStretchWithOverflow="true">
+							<reportElement uuid="556484fb-0d70-4a19-865c-acb9d1703d3c" x="69" y="13" width="192" height="35"/>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$P{REPORT_SCRIPTLET}.getLettre($F{registee})]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<rectangle radius="0">
+				<reportElement uuid="58025fa2-4319-42a0-b5b6-4a2371c9d281" x="0" y="0" width="224" height="40"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement uuid="f7cd6643-545a-4559-beac-6a0a4e9b24b4" x="224" y="0" width="164" height="40"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement uuid="613a89a6-a971-4a46-8b44-b51b71ede6cc" x="388" y="0" width="167" height="40"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="4d2d2f67-ac2c-4a6e-bb86-e1120a1b67a3" x="0" y="10" width="74" height="10"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Heures travaillées]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="292ae288-06d9-4857-b172-924f3dc78816" x="0" y="20" width="74" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Heures sup]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="aa4d1a6c-3ea1-456d-8fc6-e0bc6cef0809" x="74" y="10" width="74" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_TOTHRESTRAV_PERIODE" uuid="cf1cf9a8-b446-4ada-b1c6-fddb2ff00af1">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="74">
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement uuid="e3ffac94-a4e1-4466-bb50-216c07ec4f84" isPrintRepeatedValues="false" x="0" y="0" width="74" height="10"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="ed0838f1-03f2-485b-af7b-50258076ea07" x="74" y="20" width="74" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_TOTHRESUP" uuid="82241638-3183-4024-b6ec-7cbc82f15395">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="74">
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement uuid="594787c9-fe4e-4300-bc69-05ca3217f027" x="0" y="0" width="74" height="10"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<rectangle radius="0">
+				<reportElement uuid="d423450d-627a-439b-ba2d-60d6f0576deb" x="0" y="58" width="60" height="20"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement uuid="84015790-3a35-40e3-86f7-28aba2d2e461" x="60" y="48" width="82" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement uuid="d2f2038b-c88b-4d4e-8c33-1b387f44700b" x="142" y="48" width="82" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement uuid="35b1d0d4-c957-474f-8fc9-0242c04226df" x="224" y="48" width="82" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement uuid="6e709467-10a6-4cbd-bde4-36ba591c8897" x="306" y="48" width="82" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement uuid="2cf89dfa-cf35-4e88-a147-981ff1b43495" x="388" y="48" width="85" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="0">
+				<reportElement uuid="5e34b0f0-71ab-429b-8af2-1817aed48754" x="473" y="48" width="82" height="30"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement uuid="5d0b69ea-d6fa-4604-819b-77814aca000b" x="413" y="58" width="60" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_NETIMPOS" uuid="5a95cdae-eb1c-41f4-b574-3ef754954316">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="60">
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement uuid="3761e350-ef44-4800-a678-528226557970" x="0" y="0" width="60" height="10"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="79f8d6dc-987e-4516-bfc0-9170abeefdde" x="246" y="58" width="60" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_TOTCOTPAT" uuid="eae43952-7945-41a9-b627-6469fdd77a92">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="60">
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement uuid="287e318a-faf5-4b69-8396-327d99c7d05b" x="0" y="0" width="60" height="10"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{register}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="bbdf9567-a2da-4446-8385-200e8838fcc4" x="164" y="58" width="60" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_TOTCOTSAL" uuid="4cf4ac24-19c5-4cba-b2fa-03624abd5cb5">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="60">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="b6c8fd0d-60a7-4bcb-ad2c-0c7faab84407" x="0" y="0" width="60" height="10"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="f22fa9c5-c71f-47e0-bf18-2d5b9868d6ca" x="82" y="58" width="60" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="BRUT_MOIS_TO" uuid="f1e8b444-9d0d-4a1b-9458-31dab3885bfc">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="60">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="1d14d1ea-396f-4616-8fa7-5590685c17cb" x="0" y="0" width="60" height="10"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="a1492f2b-af1b-44cb-96c1-95e37ef35b67" x="82" y="68" width="60" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="BRUT_MOIS_TOT_N" uuid="dfe8297f-025a-4686-bc95-c7965da72e39">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="60">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="606998b6-283e-45bc-a3a5-70399460b9ba" x="0" y="0" width="60" height="10"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="8d627292-fc8c-41da-97b1-2ce02e2c2184" x="305" y="10" width="83" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="JRS_ABS_CONGE" uuid="dab94bde-a51a-4ce9-ae7d-c6511fcbcd2a">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="83">
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement uuid="5d24e8c4-cb3b-4c52-ab90-19db0c2aa766" x="0" y="0" width="83" height="10"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="ce49c6a7-b492-47da-9bb1-cf92a4312978" x="305" y="30" width="83" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="SOLDE_CONGES_ACQUIS" uuid="a7c2ba65-3b43-4300-8de7-43b7709befd4">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="83">
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement uuid="135c2d40-2d13-42e9-b32c-33289326b3a9" x="0" y="0" width="83" height="10"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="42e85297-410f-4c25-b33c-391917f9162d" x="305" y="20" width="83" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="SOLDE_CONGES_RESTANT " uuid="76070091-2e8a-4aca-a719-4335fb689252">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="83">
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement uuid="a88c886b-8c6a-4fd4-9c46-e7bca036c266" x="0" y="0" width="83" height="10"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="300259e6-35f9-4f30-8784-32df4467b1d4" x="495" y="58" width="60" height="20"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_NETAPAYER" uuid="ea395bbf-ae7a-46be-93c2-e80612087459">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="20" width="60">
+						<textField pattern="#,##0.00;-#,##0.00">
+							<reportElement uuid="cb736261-63d6-4511-8126-4e7437d8bdc5" x="0" y="0" width="60" height="20"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement uuid="1496edf5-7c6e-49e2-83e8-ce505dc077a3" x="142" y="48" width="82" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Charges sociales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a78d1f3-511a-4e9c-b9fa-5c27025704d6" x="224" y="48" width="82" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Charges patronales]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5a96c2b1-bf31-4668-bd50-63c3e7e9c112" x="388" y="48" width="85" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Net imposable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56d305fd-b33f-42b9-a0af-f1ff1e55b542" x="473" y="48" width="82" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Net à payer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5cbeec91-f84b-4b4d-ad85-9b6b50a4d6fa" x="224" y="0" width="164" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Congés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2e1103f8-70d7-428c-a6b8-decabc54f3c9" x="0" y="30" width="74" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Nbre de jours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3655c052-67ce-45ee-81ba-e133222c6b3c" x="224" y="30" width="82" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Acquis :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="199d834e-2838-4cd4-84bd-96ef8e7e8b90" x="224" y="10" width="82" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Pris :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9d0f7567-2e61-424f-91e4-a5df509dd718" x="224" y="20" width="82" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Restant :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3f9d3765-405d-4076-a313-bcc356473b33" x="306" y="48" width="82" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Avantages en nature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e1d21538-fe91-491a-bb72-ddc57b01e6a4" x="60" y="48" width="82" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Salaire brut]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1613b2ad-d318-42b3-bddf-dd6e2ab17f6f" x="0" y="68" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Année]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="313d1770-46d3-4f5b-a0a1-c4ba93f10bdb" x="0" y="58" width="60" height="10"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Mois]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7a9f97dd-2fdd-4414-9f6d-2fa89242bea7" x="388" y="0" width="167" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Date des congés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="73fb6af3-5361-448d-b6af-ffa06fcd99e9" x="74" y="0" width="74" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Période]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="81e17492-da75-4b17-b3c8-071fcc012ac4" x="148" y="0" width="76" height="10"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<text><![CDATA[Année]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="1d93f5a7-9508-4006-bb89-661e5142fc94" x="164" y="68" width="60" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="TOTCOTSAL_N" uuid="7280fb3d-42f6-468e-8dbe-6e9e6b402e85">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="60">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="32d1a120-bb1b-4076-9180-e930bf93540b" x="0" y="0" width="60" height="10"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="8c4462b5-7fe2-4310-a371-fe0195ae42e3" x="246" y="68" width="60" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="TOTCOTPAT_N" uuid="42ef69cc-1e76-4432-bbd2-2bb5844c97f4">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="60">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="dd9cdc61-14e3-4a1c-b766-0b6450e56df2" x="0" y="0" width="60" height="10"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_nr}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="b078d898-54b8-4ebf-bb10-fd2f37652e99" x="413" y="68" width="60" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="NETIMPOSABLE_N" uuid="293e8825-376d-4196-8192-51db5d5ee7b8">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="60">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="2cc0a880-f098-4935-8d31-b1ff92f12e6d" x="0" y="0" width="60" height="10"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="cec7c1b6-85e2-455f-84c6-20ad0774ef8d" x="148" y="10" width="76" height="10"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="TOTHRESTRAV_N" uuid="123a9dfc-99a3-4218-9719-58069633d53f">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="10" width="76">
+						<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+							<reportElement uuid="7a4ad461-c39d-4289-b2a7-e3971216a8d4" isPrintRepeatedValues="false" x="0" y="0" width="74" height="10"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="8"/>
+								<paragraph leftIndent="1" rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{res_ne}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<componentElement>
+				<reportElement uuid="bcc8ec04-1593-45af-9a10-41f85a881255" x="95" y="161" width="249" height="17"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Table hr_employee" uuid="ceb847cc-7ca9-4b9e-8ab7-d8d18edc4004">
+						<datasetParameter name="ID">
+							<datasetParameterExpression><![CDATA[$F{employee_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="17" width="249">
+						<textField>
+							<reportElement uuid="f6f7401f-fe5e-44fe-a238-b1cd35e935a5" x="4" y="1" width="241" height="16"/>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[( $F{title2} !=null ? $F{title2}  : '' ) + ' ' + $F{name} + ' ' + ( $F{prenom} !=null ? $F{prenom}  : '' )]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="adcf2c2b-4f2e-4508-9dfa-7d6dea849140" x="365" y="188" width="93" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="c27f0268-35d4-4b3d-9e42-b37c400b21b9" x="347" y="152" width="94" height="29"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="R_NETAPAYER" uuid="5d314ebb-a148-4e8d-a8b8-3d67cbc97c6e">
+						<datasetParameter name="PAY_ID">
+							<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="29" width="94">
+						<textField>
+							<reportElement uuid="dc602b12-62cd-40f1-93fa-55c217a8dc5a" x="2" y="7" width="77" height="20"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="9"/>
+								<paragraph rightIndent="1"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{registee}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="10" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2b6c5b5c-0124-45a2-a0aa-19c3641d0137" x="0" y="0" width="555" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATTENTION: CONSERVEZ PRECIEUSEMENT CE BULLETIN SANS LIMITATION DE DUREE.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

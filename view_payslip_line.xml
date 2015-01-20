@@ -1,0 +1,150 @@
+<openerp>
+<data>
+
+	<record model="ir.ui.view" id="pay_slip_line_tree_view">
+		<field name="name">pay_slip_line.tree</field>
+		<field name="model">hr_gp.payslip_line</field>
+<!--		<field name="type">tree</field>-->
+		<field name="arch" type="xml">	
+			<tree string="Slip line tree">
+				<field name="pay_id"/>
+				<field name="param_name" select="1"/>
+				<field name="title"/>
+				<field name="inp"/>
+				<field name="res_ne"/>
+				<field name="res_nr"/>
+				<field name="registee"/>
+				<field name="register"/>
+				<field name="printable"/>
+				<field name="cumul"/>
+				<field name="sequence"/>
+				<field name="seqcalc"/>
+				<field name="group"/>
+			</tree>
+		</field>
+	</record>
+	<record model="ir.ui.view" id="pay_slip_line_form_view">
+		<field name="name">pay_slip_line.form</field>
+		<field name="model">hr_gp.payslip_line</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Slip line form" version="7.0">
+                            <header>
+                                <field name="state" widget="statusbar" statusbar_visible="draft,calc,val,clo"/>
+                            </header>
+                            <sheet>
+                                    <div>
+                                        <h1>Ligne de paie</h1>
+                                    </div>
+                               <group col="4" colspan="4">
+<!--                                        <field name="payslip_id" readonly="1"/>
+-->					
+                                        <field name="param_name" domain="[('entity_type','in',('pay','payreg'))]"  on_change="onchange_paramdict(param_name)"/>
+					<field name="title" size="48" nolabel = "1"/>
+					<newline/>
+				</group>
+                               
+				<group col="8" colspan="8">
+<!--					<field name="payslip_id" readonly="1"/>   -->
+					<field name="category" readonly="1"/>
+					<field name="entity_type" readonly="1"/>
+					<field name="format" readonly="1"/>
+					<newline/>
+				</group>
+
+				<notebook colspan="4">
+					<page string="Saisie" attrs="{'invisible':[('category','!=','v')]}">
+						<sheet>
+                                                    <div style="text-align:center">
+                                                        <h3>Introduire une valeur</h3>
+                                                    </div>
+                                                        <group col="4" colspan="4">
+                                                                <field name="inp"/>
+                                                        </group>
+                                                        <hr style="color:#d3d3d3"/>
+                                                    <div style="text-align:center">
+                                                        <h3>ou Obtenir du calendrier</h3>
+                                                    </div>
+                                                        <group col="1" colspan="1">
+                                                            <div style="text-align:center">    
+                                                            <button name="getvalfromcalendar" string="Get qty from calendar" attrs="{'invisible':[('category','!=','v')]}" type="object"/>
+                                                            </div>
+                                                        </group>
+                                                         <hr style="color:#d3d3d3"/>
+                                                    <div style="text-align:center">
+                                                        <h3>ou Nombre de jours entre 2 dates</h3>
+                                                    </div>
+                                                        <group col="4" colspan="4">
+                                                                <field name="ddeb"/>
+                                                                <button name="diff_date_cal" colspan="2" string="^ jours calendriers ^" type="object" attrs="{'readonly':['|', ('ddeb','=',''),('dfin','=','')]}"/>
+                                                                <field name="dfin"/>                                                                
+                                                                <button name="diff_date_ouv" colspan="2" string="^ jours ouvrables ^" type="object" attrs="{'readonly':['|', ('ddeb','=',''),('dfin','=','')]}"/>
+                                                        </group>
+                                                </sheet>
+					</page>
+
+					<page string="Result">
+                                             <sheet>
+                                                <separator string="Salarié" colspan="2"/>
+                                                <group col="2" colspan="2" attrs="{'invisible':[('category','=','r')]}">
+							<field name="res_ne" attrs="{'invisible':[('format','!=','n')]}"/>
+							<field name="res_t" attrs="{'invisible':[('format','!=','t')]}"/>
+							<field name="res_d" attrs="{'invisible':[('format','!=','d')]}"/>
+						</group>
+                                                <field name="registee" attrs="{'invisible':[('category','!=','r')]}"/>
+                                                
+                                                <separator string="Employeur" colspan="2"/>
+                                                <group col="2" colspan="2" attrs="{'invisible':[('category','=','r')]}">
+							<field name="res_nr"/>
+						</group>
+                                                <field name="register" attrs="{'invisible':[('category','!=','r')]}"/>
+                                           </sheet>
+					</page>
+					
+					<page string="formule" attrs="{'invisible':[('category','!=','f')]}">
+						<group col="6" colspan="6">
+							<field name="a_"/>
+							<field name="b_"/>
+							<field name="c_"/>
+							<field name="d_"/>
+							<field name="e_"/>
+							<field name="f_"/>
+						</group>
+						<group col="3" colspan="3">
+							<field name="base"/>
+							<field name="base_formula" nolabel="1"/>
+						</group>
+						<group col="6" colspan="6">
+							<field name="rate"/>
+							<field name="rate_formula" nolabel="1" size = "24"/>
+							<field name="ratr"/>
+							<field name="ratr_formula" nolabel="1" size = "24"/>
+							<field name="qtye"/>
+							<field name="qtye_formula" nolabel="1" size = "24"/>
+							<field name="qtyr"/>
+							<field name="qtyr_formula" nolabel="1" size = "24"/>
+						</group>
+						<group col="6" colspan="6">
+							<field name="val_sim_e"/>
+							<button name="calculate" string="calculez" type="object"/>
+							<newline/>
+						</group>
+					</page>
+
+					<page string="Informations">
+						<field name="printable"/>
+						<field name="cumul"/>
+						<field name="sequence"/>
+						<field name="group"/>
+					</page>
+
+				</notebook>
+			
+                              </sheet>
+-->                             
+                        </form>
+		</field>
+	</record>
+    
+</data>
+</openerp>

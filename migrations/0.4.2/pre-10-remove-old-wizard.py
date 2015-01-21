@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    jasper_server module for OpenERP
-#    Copyright (c) 2008-2009 EVERLIBRE (http://everlibre.fr) Eric VERNICHON
-#    Copyright (C) 2009-2011 SYLEAM ([http://www.syleam.fr]) Christophe CHAUVET
+#    jasper_server module for OpenERP, Management module for Jasper Server
+#    Copyright (C) 2010 SYLEAM Info Services (<http://www.syleam.fr/>)
+#              Christophe CHAUVET
 #
 #    This file is a part of jasper_server
 #
@@ -18,13 +18,28 @@
 #    GNU General Public License for more details.
 #
 #    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see [http://www.gnu.org/licenses/].
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
 
+__name__ = "Remove old wizard entry"
 
-#import make_template
-#import format_choice
+
+def migrate(cr, v):
+    """
+    Put your explanation here
+
+    :param cr: Current cursor to the database
+    :param v: version number
+    """
+    cr.execute("""DELETE
+                  FROM   ir_act_wizard
+                  WHERE id IN (
+                      SELECT res_id
+                      FROM   ir_model_data
+                      WHERE  module='jasper_server'
+                      AND    model = 'ir.actions.wizard')
+                  AND model NOT IN ('jasper.document','ir.model')""")
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

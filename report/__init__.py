@@ -3,7 +3,7 @@
 #
 #    jasper_server module for OpenERP
 #    Copyright (c) 2008-2009 EVERLIBRE (http://everlibre.fr) Eric VERNICHON
-#    Copyright (C) 2009-2011 SYLEAM ([http://www.syleam.fr]) Christophe CHAUVET
+#    Copyright (C) 2009 SYLEAM ([http://www.syleam.fr]) Christophe CHAUVET
 #
 #    This file is a part of jasper_server
 #
@@ -22,9 +22,6 @@
 #
 ##############################################################################
 
-
-#import make_template
-#import format_choice
-
+#import jasper
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

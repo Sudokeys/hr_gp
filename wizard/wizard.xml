@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-
         ##############################################################################
         #
         #    jasper_server module for OpenERP
@@ -25,6 +24,25 @@
         #
         ##############################################################################
 
+        <!-- Wizard must be rewrite to osv.osv_memory -->
+        <!--
+        <wizard id="wizard_jasper_document_print"
+            name="jasper_server.document_print"
+            model="jasper.document"
+            string="Document Print"/>
+
+        <wizard id="wizard_jasper_make_template"
+            name="jasper_server.make_template"
+            model="ir.model"
+            string="Make XML Template"
+            menu="False"/>
+
+        <menuitem id="menu_jasper_make_template" 
+            parent="menu_jasper"
+            sequence="20"
+            action="wizard_jasper_make_template"
+            type="wizard"/>
+        -->
 
     </data>
 </openerp>
